@@ -12,8 +12,8 @@ import Foundation
     var actorName: String { get }
     var runId: String { get }
     
-    optional func messageReceived(channel: String, message: String)
+    func messageReceived(channel: String, message: AnyObject, from: String)
     
-    optional func responseReceived(channelName: String, requestName: String?, response: String)
-    optional func requestReceived(channelName: String, request: String) -> [String:AnyObject]?
+    func responseReceived(channelName: String, requestName: String?, response: AnyObject)
+    func requestReceived(channelName: String, request: AnyObject) -> AnyObject?
 }

@@ -10,8 +10,8 @@ import Foundation
 
 // This protocol allows client to control the asynchronous callback
 @objc public protocol NutellaDelegate {
-    optional func messageReceived(channel: String, message: String)
+    optional func messageReceived(channel: String, message: AnyObject, from: String)
     
-    optional func responseReceived(channelName: String, requestName: String?, response: String)
-    optional func requestReceived(channelName: String, request: String) -> [String:AnyObject]
+    optional func responseReceived(channelName: String, requestName: String?, response: AnyObject)
+    optional func requestReceived(channelName: String, request: AnyObject) -> AnyObject?
 }

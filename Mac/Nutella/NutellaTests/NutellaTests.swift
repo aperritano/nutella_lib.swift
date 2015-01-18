@@ -28,34 +28,55 @@ class NutellaTests: XCTestCase, NutellaDelegate {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
     
     func testPublish() {
-        nutella?.net.publish("test/channel", message: ["ciao":"mondo"])
-    }
-    
-    func testRequestSync() {
-        nutella?.net.syncRequest("test/request", message: ["test":"test"], requestName: "test_request")
+        nutella?.net.subscribe("test/publish")
+        nutella?.net.publish("test/publish", message: ["ciao":"mondo"])
         
         expectation = expectationWithDescription("Response back")
         
-        waitForExpectationsWithTimeout(300, handler: nil)
+        waitForExpectationsWithTimeout(5, handler: nil)
+    }
+    
+    func testRequestSync() {
+        nutella?.net.handleRequest("test/request1")
+        nutella?.net.handleRequest("test/request2")
+        nutella?.net.syncRequest("test/request1", message: ["test":"test"], requestName: "test_request1")
+        nutella?.net.syncRequest("test/request2", message: ["test":"test"], requestName: "test_request2")
+    
+        expectation = expectationWithDescription("Response 1 back")
+        
+        waitForExpectationsWithTimeout(5, handler: nil)
     }
     
     // NutellaDelegate
     
-    func responseReceived(channelName: String, requestName: String?, response: String) {
-        expectation?.fulfill()
+    var c = 0
+    func responseReceived(channelName: String, requestName: String?, response: AnyObject) {
+        if let status = response["response"] as? String {
+            if status == "everything ok" {
+                if( channelName == "test/request1" && requestName == "test_request1") {
+                    c++
+                }
+                if( channelName == "test/request2" && requestName == "test_request2") {
+                    c++
+                }
+            }
+        }
+        println(c)
+        if( c == 2 ) {
+            expectation?.fulfill()
+        }
+    }
+    
+    func requestReceived(channelName: String, request: AnyObject) -> AnyObject? {
+        return ["response": "everything ok"]
+    }
+    
+    func messageReceived(channel: String, message: AnyObject, from: String) {
+        if channel == "test/publish" && from == "test_actor" {
+            expectation?.fulfill()
+        }
     }
     
 }

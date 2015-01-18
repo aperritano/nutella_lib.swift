@@ -26,15 +26,15 @@ public class Nutella: NutellaNetDelegate {
     
     // NutellaNetDelegate
     
-    func messageReceived(channel: String, message: String) {
-        self.delegate?.messageReceived?(channel, message: message)
+    func messageReceived(channel: String, message: AnyObject, from: String) {
+        self.delegate?.messageReceived?(channel, message: message, from: from)
     }
     
-    func responseReceived(channelName: String, requestName: String?, response: String) {
+    func responseReceived(channelName: String, requestName: String?, response: AnyObject) {
         self.delegate?.responseReceived?(channelName, requestName: requestName, response: response)
     }
     
-    func requestReceived(channelName: String, request: String) -> [String:AnyObject]? {
+    func requestReceived(channelName: String, request: AnyObject) -> AnyObject? {
         return self.delegate?.requestReceived?(channelName, request: request)
     }
 }
