@@ -2,9 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:MobileGUI/NutellaMobileGUI/NutellaMobileGUI.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Common">
    </FileRef>
    <FileRef
       location = "group:Mac/Nutella/Nutella.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:iOS/Nutella/Nutella.xcodeproj">
    </FileRef>
 </Workspace>

@@ -11,7 +11,7 @@
 		9991B65E1A65CF94003F35BE /* Nutella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9991B65D1A65CF94003F35BE /* Nutella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9991B6641A65CF94003F35BE /* Nutella.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9991B6581A65CF94003F35BE /* Nutella.framework */; };
 		9991B66B1A65CF94003F35BE /* NutellaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9991B66A1A65CF94003F35BE /* NutellaTests.swift */; };
-		9991B6781A65CFB4003F35BE /* Nutella.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9991B6741A65CFB4003F35BE /* Nutella.swift */; };
+		9991B6781A65CFB4003F35BE /* NutellaMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9991B6741A65CFB4003F35BE /* NutellaMain.swift */; };
 		9991B6791A65CFB4003F35BE /* NutellaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9991B6751A65CFB4003F35BE /* NutellaDelegate.swift */; };
 		9991B67A1A65CFB4003F35BE /* NutellaNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9991B6761A65CFB4003F35BE /* NutellaNet.swift */; };
 		9991B67B1A65CFB4003F35BE /* NutellaNetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9991B6771A65CFB4003F35BE /* NutellaNetDelegate.swift */; };
@@ -19,7 +19,7 @@
 		9991B6821A65EDE2003F35BE /* SimpleMQTTClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9991B6811A65EDE2003F35BE /* SimpleMQTTClient.framework */; };
 		99AF26E81A67798900DCD8A6 /* NutellaNetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AF26E71A67798900DCD8A6 /* NutellaNetRequest.swift */; };
 		99E63F3D1A65F523003AC851 /* SimpleMQTTClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9991B6811A65EDE2003F35BE /* SimpleMQTTClient.framework */; };
-		99E63F441A65F761003AC851 /* SimpleMQTTClient.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9991B6811A65EDE2003F35BE /* SimpleMQTTClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		99E63F441A65F761003AC851 /* SimpleMQTTClient.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 9991B6811A65EDE2003F35BE /* SimpleMQTTClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,14 +33,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		99E63F431A65F755003AC851 /* CopyFiles */ = {
+		99E63F431A65F755003AC851 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				99E63F441A65F761003AC851 /* SimpleMQTTClient.framework in CopyFiles */,
+				99E63F441A65F761003AC851 /* SimpleMQTTClient.framework in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -53,7 +54,7 @@
 		9991B6631A65CF94003F35BE /* NutellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NutellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9991B6691A65CF94003F35BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9991B66A1A65CF94003F35BE /* NutellaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutellaTests.swift; sourceTree = "<group>"; };
-		9991B6741A65CFB4003F35BE /* Nutella.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Nutella.swift; path = ../../Common/Nutella.swift; sourceTree = "<group>"; };
+		9991B6741A65CFB4003F35BE /* NutellaMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NutellaMain.swift; path = ../../Common/NutellaMain.swift; sourceTree = "<group>"; };
 		9991B6751A65CFB4003F35BE /* NutellaDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NutellaDelegate.swift; path = ../../Common/NutellaDelegate.swift; sourceTree = "<group>"; };
 		9991B6761A65CFB4003F35BE /* NutellaNet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NutellaNet.swift; path = ../../Common/NutellaNet.swift; sourceTree = "<group>"; };
 		9991B6771A65CFB4003F35BE /* NutellaNetDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NutellaNetDelegate.swift; path = ../../Common/NutellaNetDelegate.swift; sourceTree = "<group>"; };
@@ -142,7 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				993E1B821A6789E500FA2F9A /* SwiftyJSON.swift */,
-				9991B6741A65CFB4003F35BE /* Nutella.swift */,
+				9991B6741A65CFB4003F35BE /* NutellaMain.swift */,
 				9991B6751A65CFB4003F35BE /* NutellaDelegate.swift */,
 				9991B6761A65CFB4003F35BE /* NutellaNet.swift */,
 				99AF26E71A67798900DCD8A6 /* NutellaNetRequest.swift */,
@@ -199,7 +200,7 @@
 				9991B65F1A65CF94003F35BE /* Sources */,
 				9991B6601A65CF94003F35BE /* Frameworks */,
 				9991B6611A65CF94003F35BE /* Resources */,
-				99E63F431A65F755003AC851 /* CopyFiles */,
+				99E63F431A65F755003AC851 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -271,7 +272,7 @@
 				9991B6791A65CFB4003F35BE /* NutellaDelegate.swift in Sources */,
 				9991B67A1A65CFB4003F35BE /* NutellaNet.swift in Sources */,
 				9991B67B1A65CFB4003F35BE /* NutellaNetDelegate.swift in Sources */,
-				9991B6781A65CFB4003F35BE /* Nutella.swift in Sources */,
+				9991B6781A65CFB4003F35BE /* NutellaMain.swift in Sources */,
 				993E1B831A6789E500FA2F9A /* SwiftyJSON.swift in Sources */,
 				99AF26E81A67798900DCD8A6 /* NutellaNetRequest.swift in Sources */,
 			);
