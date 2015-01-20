@@ -9,6 +9,9 @@
 import Foundation
 import SimpleMQTTClient
 
+/**
+    This class is the Nutella module that takes care of the network connections and message delivery.
+*/
 public class NutellaNet: SimpleMQTTClientDelegate {
     weak var delegate: NutellaNetDelegate?
     
@@ -33,6 +36,12 @@ public class NutellaNet: SimpleMQTTClientDelegate {
         }
     }
     
+    /**
+        Initialize the module connecting it to the Nutella server.
+    
+        :param: host Hostname of the Nutella server.
+        :param: clientId The client id. Leave it nil.
+    */
     public init(host: String, clientId optionalClientId: String?) {
         self.mqtt = SimpleMQTTClient(host: host, synchronous: true, clientId: optionalClientId)
         self.mqtt.connect(host)
@@ -40,14 +49,29 @@ public class NutellaNet: SimpleMQTTClientDelegate {
         self.mqtt.delegate = self
     }
     
+    /**
+        Subscribe to a Nutella channel. Every time it will receive a message the delegate function messageReceived will be called.
+        
+        :param: channel The Nutella channel that you want to subscribe.
+    */
     public func subscribe(channel: String) {
         mqtt.subscribe(urlInit+channel)
     }
     
+    /**
+        Unsubscribe from a Nutella channel.
+    
+        :param: channel The Nutella channel that you want to unsubscribe.
+    */
     public func unsubscribe(channel: String) {
         mqtt.unsubscribe(urlInit+channel)
     }
     
+    /**
+        Publish a message on a Nutella channel.
+    
+        :param: channel The Nutella channel where you want to publish.
+    */
     public func publish(channel: String, message: AnyObject) {
         var actorName = ""
         if let an = delegate?.actorName {
@@ -60,8 +84,16 @@ public class NutellaNet: SimpleMQTTClientDelegate {
         mqtt.publish(urlInit+channel, message: json.rawString(options: nil)!)
     }
     
+    /**
+        Execute a sychronous request of information on the specified Nutella channel.
+    
+        :param: channel The name of the channel on which executing the request.
+        :param: message A dictionary that represent the message.
+        :param: requestName An optional name assigned to the request in order to recognize it later.
+    */
     public func syncRequest(channel: String, message: [String:AnyObject], requestName: String?) {
         var id = Int(arc4random_uniform(1000000000))
+        // FIX: there's the possibility (1/1000000000 of times) that two requests have the same id. You're more likely to win the lottery.
         
         requests[id] = NutellaNetRequest(channel: channel,
             id: id,
@@ -78,22 +110,35 @@ public class NutellaNet: SimpleMQTTClientDelegate {
         mqtt.publish(urlInit+channel, message: json.rawString(options: nil)!)
     }
     
+    /**
+        Not yet implemented, sorry, use syncRequest that is almost the same
+    */
     public func asyncRequest(channel: String, message: String, requestName: String?) {
         
     }
     
+    /**
+        Handle a request coming from a client. The delegate function requestReceived will be invoked every time a new request is received.
+    
+        :param: channel The name of the Nutella channel on which listening.
+    */
     public func handleRequest(channel: String) {
         handlingChannels.append(urlInit+channel)
         mqtt.subscribe(urlInit+channel)
     }
     
+    /**
+        Stop handing requests on the specified channel.
+    
+        :param: channel The Nutella channel on wich stopping to receiving requests.
+    */
     public func unhandleRequest(channel: String) {
         let realChannel = urlInit + channel
         handlingChannels = handlingChannels.filter() { $0 != realChannel }  // Remove channel
         mqtt.unsubscribe(urlInit+channel)
     }
     
-    // SimpleMQTTClientDelegate
+    // MARK: SimpleMQTTClientDelegate
     public func messageReceived(channel: String, message: String) {
         
         // Remove the runId

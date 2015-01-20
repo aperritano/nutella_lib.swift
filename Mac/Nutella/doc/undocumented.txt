@@ -1,0 +1,58 @@
+NutellaNet.swift
+	weak var delegate: NutellaNetDelegate?
+	var mqtt: SimpleMQTTClient
+	var host: String
+	var requests = [Int:NutellaNetRequest]()
+	var handlingChannels = [String]()
+	var urlInit: String
+	public init(host: String, clientId optionalClientId: String?)
+	public func messageReceived(channel: String, message: String)
+	public func disconnected()
+	public func connected()
+NutellaNetDelegate.swift
+	@objc protocol NutellaNetDelegate
+NutellaMain.swift
+	var actorName: String
+	var runId: String
+	public init(host: String, actorName: String, runId: String, clientId: String? = nil)
+	func messageReceived(channel: String, message: AnyObject, from: String)
+	func responseReceived(channelName: String, requestName: String?, response: AnyObject)
+	func requestReceived(channelName: String, request: AnyObject) -> AnyObject?
+SwiftyJSON.swift
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public struct JSON
+	public func ==(lhs: JSON, rhs: JSON) -> Bool
+	public func <=(lhs: JSON, rhs: JSON) -> Bool
+	public func >=(lhs: JSON, rhs: JSON) -> Bool
+	public func >(lhs: JSON, rhs: JSON) -> Bool
+	public func <(lhs: JSON, rhs: JSON) -> Bool
+	public func ==(lhs: NSNumber, rhs: NSNumber) -> Bool
+	public func !=(lhs: NSNumber, rhs: NSNumber) -> Bool
+	public func <(lhs: NSNumber, rhs: NSNumber) -> Bool
+	public func >(lhs: NSNumber, rhs: NSNumber) -> Bool
+	public func <=(lhs: NSNumber, rhs: NSNumber) -> Bool
+	public func >=(lhs: NSNumber, rhs: NSNumber) -> Bool
+	public struct JSON
+NSValue.h
+	class NSNumber : NSValue
+NutellaNetRequest.swift
+	struct NutellaNetRequest

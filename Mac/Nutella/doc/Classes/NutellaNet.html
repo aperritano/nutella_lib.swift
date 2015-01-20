@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NutellaNet Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script type="text/javascript">
+    window.jazzy = {'docset': false}
+    if (typeof window.dash != 'undefined') {
+      document.documentElement.className += ' dash'
+      window.jazzy.docset = true
+    }
+    if (navigator.userAgent.match(/xcode/i)) {
+      document.documentElement.className += ' xcode'
+      window.jazzy.docset = true
+    }
+    </script>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+  </head>
+  <body id="reference" class="Swift">
+    <a name="//apple_ref/swift/Class/NutellaNet" class="dashAnchor"></a>
+    <a title="NutellaNet Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p class="header-text"><a href="../index.html"> Docs</a> (30% documented)</p>
+        <p id="header-links"><a href="https://github.com/nutella-framework/nutella_lib.swift.git"><img id="header-icon" src="../img/gh.png" height="16px" width="16px" />View on GitHub</a></p>
+      </div>
+    </header>
+    <section id="valence">
+      <div class="content-wrapper">
+        <p id="hierarchial_navigation">
+        <a href="../index.html" id="design_resources_link"> Reference</a>
+        <img id="carat" src="../img/carat.png" height="10px" width="6px" />
+        NutellaNet Class Reference
+        </p>
+      </div>
+    </section>
+    <div class="content-wrapper">
+      <nav class="book-parts">
+        <ul class="nav-parts">
+          <li class="part-name tasks">
+          <a href="../Classes.html">Classes</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Classes/Nutella.html">Nutella</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Classes/NutellaNet.html">NutellaNet</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Global Variables.html#/s:v7Nutella11ErrorDomainGSQSS_">ErrorDomain</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Global Variables.html#/s:v7Nutella20ErrorUnsupportedTypeGSQSi_">ErrorUnsupportedType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Enums.html">Enums</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Enums.html#/s:O7Nutella4Type">Type</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Extensions.html#/s:Si">Int</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Extensions.html#/s:SS">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="part-name tasks">
+          <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-chapters">
+              <li class="nav-chapter">
+                <a href="../Protocols/NutellaDelegate.html">NutellaDelegate</a>
+              </li>
+              <li class="nav-chapter">
+                <a href="../Protocols.html#/s:P7Nutella13SubscriptType">SubscriptType</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="pixel-line"></div>
+      <div class="rubber-band-gap"></div>
+      <article class="chapter">
+      <a name="/"></a>
+        <h1 class="chapter-name">NutellaNet</h1>
+        <section>
+          <section class="section">
+            <p class="para">This class is the Nutella module that takes care of the network connections and message delivery.</p>
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                
+                <a name="/Unnamed"></a>
+                
+              </div>
+              <ul class="task-group-list">
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC7Nutella10NutellaNetcFMS0_FT4hostSS8clientIdGSqSS__S0_">
+                    <a name="//apple_ref/swift/Method/init(host:clientId:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC7Nutella10NutellaNetcFMS0_FT4hostSS8clientIdGSqSS__S0_">init(host:clientId:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Initialize the module connecting it to the Nutella server.</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">host</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">clientId</span> <span class="nv">optionalClientId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">host</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">Hostname of the Nutella server.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">clientId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">The client id. Leave it nil.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC7Nutella10NutellaNet9subscribeFS0_FSST_">
+                    <a name="//apple_ref/swift/Method/subscribe(_:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC7Nutella10NutellaNet9subscribeFS0_FSST_">subscribe(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Subscribe to a Nutella channel. Every time it will receive a message the delegate function messageReceived will be called.</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">subscribe</span><span class="p">(</span><span class="nv">channel</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">channel</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">The Nutella channel that you want to subscribe.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC7Nutella10NutellaNet11unsubscribeFS0_FSST_">
+                    <a name="//apple_ref/swift/Method/unsubscribe(_:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC7Nutella10NutellaNet11unsubscribeFS0_FSST_">unsubscribe(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Unsubscribe from a Nutella channel.</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">unsubscribe</span><span class="p">(</span><span class="nv">channel</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">channel</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">The Nutella channel that you want to unsubscribe.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC7Nutella10NutellaNet7publishFS0_FTSS7messagePSs9AnyObject__T_">
+                    <a name="//apple_ref/swift/Method/publish(_:message:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC7Nutella10NutellaNet7publishFS0_FTSS7messagePSs9AnyObject__T_">publish(_:message:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Publish a message on a Nutella channel.</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">publish</span><span class="p">(</span><span class="nv">channel</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">channel</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">The Nutella channel where you want to publish.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC7Nutella10NutellaNet11syncRequestFS0_FTSS7messageGVSs10DictionarySSPSs9AnyObject__11requestNameGSqSS__T_">
+                    <a name="//apple_ref/swift/Method/syncRequest(_:message:requestName:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC7Nutella10NutellaNet11syncRequestFS0_FTSS7messageGVSs10DictionarySSPSs9AnyObject__11requestNameGSqSS__T_">syncRequest(_:message:requestName:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Execute a sychronous request of information on the specified Nutella channel.</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">syncRequest</span><span class="p">(</span><span class="nv">channel</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span><span class="kt">AnyObject</span><span class="p">],</span> <span class="nv">requestName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">channel</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">The name of the channel on which executing the request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">message</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">A dictionary that represent the message.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">requestName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">An optional name assigned to the request in order to recognize it later.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC7Nutella10NutellaNet12asyncRequestFS0_FTSS7messageSS11requestNameGSqSS__T_">
+                    <a name="//apple_ref/swift/Method/asyncRequest(_:message:requestName:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC7Nutella10NutellaNet12asyncRequestFS0_FTSS7messageSS11requestNameGSqSS__T_">asyncRequest(_:message:requestName:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Not yet implemented, sorry, use syncRequest that is almost the same</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">asyncRequest</span><span class="p">(</span><span class="nv">channel</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">requestName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC7Nutella10NutellaNet13handleRequestFS0_FSST_">
+                    <a name="//apple_ref/swift/Method/handleRequest(_:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC7Nutella10NutellaNet13handleRequestFS0_FSST_">handleRequest(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Handle a request coming from a client. The delegate function requestReceived will be invoked every time a new request is received.</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="nv">channel</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">channel</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">The name of the Nutella channel on which listening.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item symbol">
+                  <div class="task-group-term">
+                    <code>
+                    <a name="/s:FC7Nutella10NutellaNet15unhandleRequestFS0_FSST_">
+                    <a name="//apple_ref/swift/Method/unhandleRequest(_:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC7Nutella10NutellaNet15unhandleRequestFS0_FSST_">unhandleRequest(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointy-thing-container"></div>
+                    <section class="section instance-method">
+                      <div class="pointy-thing"></div>
+                      <div class="abstract">
+                        <p class="para">Stop handing requests on the specified channel.</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+            
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">unhandleRequest</span><span class="p">(</span><span class="nv">channel</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="parameters">
+                        <h4>Parameters</h4>
+                        <table class="graybox" border="0" cellspacing="0" cellpadding="5">
+                          <tbody>
+                            <tr>
+                              <td scope="row">
+                                <code>
+                                <em class="term">channel</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div class="definition">
+                                  <p class="para">The Nutella channel on wich stopping to receiving requests.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p class="copyright">&copy; 2015 <a class="link" href="" target="_blank" rel="external">Gianluca Venturini</a>. All rights reserved. (Last updated: 2015-01-20)</p>
+          <p class="copyright">Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.0.20</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
