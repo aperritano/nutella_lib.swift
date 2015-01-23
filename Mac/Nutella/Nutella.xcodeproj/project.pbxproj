@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		993179E31A72228A003F196F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993179E21A72228A003F196F /* Dictionary.swift */; };
 		993E1B831A6789E500FA2F9A /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993E1B821A6789E500FA2F9A /* SwiftyJSON.swift */; };
 		9991B65E1A65CF94003F35BE /* Nutella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9991B65D1A65CF94003F35BE /* Nutella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9991B6641A65CF94003F35BE /* Nutella.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9991B6581A65CF94003F35BE /* Nutella.framework */; };
@@ -47,6 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		993179E21A72228A003F196F /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = ../../Common/Dictionary.swift; sourceTree = "<group>"; };
 		993E1B821A6789E500FA2F9A /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = ../../Common/SwiftyJSON.swift; sourceTree = "<group>"; };
 		9991B6581A65CF94003F35BE /* Nutella.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nutella.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9991B65C1A65CF94003F35BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		9991B67C1A65CFC0003F35BE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				993179E21A72228A003F196F /* Dictionary.swift */,
 				993E1B821A6789E500FA2F9A /* SwiftyJSON.swift */,
 				9991B6741A65CFB4003F35BE /* NutellaMain.swift */,
 				9991B6751A65CFB4003F35BE /* NutellaDelegate.swift */,
@@ -273,6 +276,7 @@
 				9991B67A1A65CFB4003F35BE /* NutellaNet.swift in Sources */,
 				9991B67B1A65CFB4003F35BE /* NutellaNetDelegate.swift in Sources */,
 				9991B6781A65CFB4003F35BE /* NutellaMain.swift in Sources */,
+				993179E31A72228A003F196F /* Dictionary.swift in Sources */,
 				993E1B831A6789E500FA2F9A /* SwiftyJSON.swift in Sources */,
 				99AF26E81A67798900DCD8A6 /* NutellaNetRequest.swift in Sources */,
 			);

@@ -41,8 +41,8 @@ class NutellaTests: XCTestCase, NutellaDelegate {
     func testRequestSync() {
         nutella?.net.handleRequest("test/request1")
         nutella?.net.handleRequest("test/request2")
-        nutella?.net.syncRequest("test/request1", message: ["test":"test"], requestName: "test_request1")
-        nutella?.net.syncRequest("test/request2", message: ["test":"test"], requestName: "test_request2")
+        nutella?.net.asyncRequest("test/request1", message: ["test":"test"], requestName: "test_request1")
+        nutella?.net.asyncRequest("test/request2", message: ["test":"test"], requestName: "test_request2")
     
         expectation = expectationWithDescription("Response 1 back")
         
