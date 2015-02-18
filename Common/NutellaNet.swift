@@ -13,7 +13,25 @@ import SimpleMQTTClient
     This class is the Nutella module that takes care of the network connections and message delivery.
 */
 public class NutellaNet: SimpleMQTTClientDelegate {
+    class Subscription {
+        var subscribe: Bool
+        var request: Bool
+        var response: Bool
+        
+        init(subscribe: Bool, request: Bool, response: Bool) {
+            self.subscribe = subscribe
+            self.request = request
+            self.response = response
+        }
+        
+        var subscribed: Bool {
+            return subscribe || request || response
+        }
+    }
+    
+    
     weak var delegate: NutellaNetDelegate?
+    weak var configDelegate: NutellaConfigDelegate?
     
     var mqtt: SimpleMQTTClient
     var host: String
@@ -21,13 +39,13 @@ public class NutellaNet: SimpleMQTTClientDelegate {
     // Requests informations
     var requests = [Int:NutellaNetRequest]()
     
-    // Handling channel informations
-    var handlingChannels = [String]()
+    // Subscribed channels
+    var subscribed = [String: Subscription]()
     
     // Application run ID
     var urlInit: String {
         get {
-            if let runId = self.delegate?.runId {
+            if let runId = self.configDelegate?.runId {
                 return runId + "/"
             }
             else {
@@ -44,9 +62,12 @@ public class NutellaNet: SimpleMQTTClientDelegate {
     */
     public init(host: String, clientId optionalClientId: String?) {
         self.mqtt = SimpleMQTTClient(host: host, synchronous: true, clientId: optionalClientId)
-        self.mqtt.connect(host)
         self.host = host
         self.mqtt.delegate = self
+        
+        if(DEBUG) {
+            println("[\(self)] init host: \(host) optionalClientId: \(optionalClientId)")
+        }
     }
     
     /**
@@ -55,7 +76,19 @@ public class NutellaNet: SimpleMQTTClientDelegate {
         :param: channel The Nutella channel that you want to subscribe.
     */
     public func subscribe(channel: String) {
-        mqtt.subscribe(urlInit+channel)
+        if var subscription = self.subscribed[channel] {
+            if subscription.subscribe != true {
+                mqtt.subscribe(urlInit+channel)
+                subscription.subscribe = true
+            }
+            else {
+                println("WARNING: you're already subscribed to the channel " + channel)
+            }
+        }
+        else {
+            mqtt.subscribe(urlInit+channel)
+            self.subscribed[channel] = Subscription(subscribe: true, request: false, response: false)
+        }
     }
     
     /**
@@ -64,7 +97,21 @@ public class NutellaNet: SimpleMQTTClientDelegate {
         :param: channel The Nutella channel that you want to unsubscribe.
     */
     public func unsubscribe(channel: String) {
-        mqtt.unsubscribe(urlInit+channel)
+        if(DEBUG) {
+            println("[\(self)] unsubscribe channel: \(channel)")
+        }
+        
+        if var subscription = self.subscribed[channel] {
+            if subscription.subscribe == true {
+                subscription.subscribe = false
+                if subscription.subscribed == false {
+                    mqtt.unsubscribe(urlInit+channel)
+                }
+            }
+        }
+        else {
+            println("WARNING: you're not subscribed to the channel "+channel)
+        }
     }
     
     /**
@@ -73,19 +120,30 @@ public class NutellaNet: SimpleMQTTClientDelegate {
         :param: channel The Nutella channel where you want to publish.
     */
     public func publish(channel: String, message: AnyObject) {
-        var actorName = ""
-        if let an = delegate?.actorName {
-            actorName = an
+        if(DEBUG) {
+            println("[\(self)] publish channel: \(channel) message: \(message)")
         }
+        
+        var componentId = self.configDelegate?.componentId;
+        var resourceId = self.configDelegate?.resourceId;
+        
+        var from = "";
+        
+        if let cid = componentId {
+            from += cid
+            if let rid =  resourceId {
+                from += "/" + rid
+            }
+        }
+        
         var finalMessage: [String:AnyObject] = [String:AnyObject]()
-        if message is String {
-            finalMessage = ["payload": message,
-                            "from": actorName]
-        }
-        else if let m = message as? Dictionary<String, AnyObject>{
-            finalMessage["from"] = actorName
-            finalMessage.update(m)
-        }
+        
+        finalMessage = [
+            "from": from,
+            "type": "publish",
+            "payload": message
+        ]
+
         var json = JSON(finalMessage)
         
         mqtt.publish(urlInit+channel, message: json.rawString(options: nil)!)
@@ -99,26 +157,52 @@ public class NutellaNet: SimpleMQTTClientDelegate {
         :param: requestName An optional name assigned to the request in order to recognize it later.
     */
     public func asyncRequest(channel: String, message: AnyObject, requestName: String?) {
+        if(DEBUG) {
+            println("[\(self)] asyncRequest channel: \(channel) message: \(message)")
+        }
+        
+        var componentId = self.configDelegate?.componentId;
+        var resourceId = self.configDelegate?.resourceId;
+        
         var id = Int(arc4random_uniform(1000000000))
-        // FIX: there's the possibility (1/1000000000 of times) that two requests have the same id. You're more likely to win the lottery.
+        
+        var from = "";
+        
+        if let cid = componentId {
+            from += cid
+            if let rid =  resourceId {
+                from += "/" + rid
+            }
+        }
         
         requests[id] = NutellaNetRequest(channel: channel,
             id: id,
             name: requestName,
             message: message)
         
-        mqtt.subscribe(urlInit+channel)
-        
-        var finalMessage: [String:AnyObject] = ["id": id,
-            "messageType": "request"]
-        
-        if message is String {
-            finalMessage["payload"] = message
+        if var subscription = self.subscribed[channel] {
+            if subscription.subscribed == false {
+                mqtt.subscribe(urlInit+channel)
+            }
+            
+            if subscription.response == false {
+                subscription.response = true
+            }
+            else {
+                println("WARNING: you're already requesting on the channel "+channel)
+            }
         }
-        else if let m = message as? Dictionary<String, AnyObject>{
-            finalMessage.update(m)
+        else {
+            self.subscribed[channel] = Subscription(subscribe: false, request: false, response: true)
+            mqtt.subscribe(urlInit+channel)
         }
         
+        var finalMessage: [String:AnyObject] = [
+            "id": id,
+            "from": from,
+            "type": "request",
+            "payload": message
+        ]
         
         var json = JSON(finalMessage)
         mqtt.publish(urlInit+channel, message: json.rawString(options: nil)!)
@@ -128,7 +212,7 @@ public class NutellaNet: SimpleMQTTClientDelegate {
         Not yet implemented, sorry, use asyncRequest that is almost the same
     */
     public func syncRequest(channel: String, message: String, requestName: String?) {
-        
+        println("WARNING: syncRequest method is not yet implemented, use asyncRequest")
     }
     
     /**
@@ -137,8 +221,27 @@ public class NutellaNet: SimpleMQTTClientDelegate {
         :param: channel The name of the Nutella channel on which listening.
     */
     public func handleRequest(channel: String) {
-        handlingChannels.append(urlInit+channel)
-        mqtt.subscribe(urlInit+channel)
+        
+        if(DEBUG) {
+            println("[\(self)] handleRequest channel: \(channel)")
+        }
+        
+        if var subscription = self.subscribed[channel] {
+            if subscription.subscribed == false {
+                mqtt.subscribe(urlInit+channel)
+            }
+            
+            if subscription.request == false {
+                subscription.request = true
+            }
+            else {
+                println("WARNING: you're already handling requests on the channel "+channel)
+            }
+        }
+        else {
+            self.subscribed[channel] = Subscription(subscribe: false, request: true, response: false)
+            mqtt.subscribe(urlInit+channel)
+        }
     }
     
     /**
@@ -147,19 +250,61 @@ public class NutellaNet: SimpleMQTTClientDelegate {
         :param: channel The Nutella channel on wich stopping to receiving requests.
     */
     public func unhandleRequest(channel: String) {
+        
+        if(DEBUG) {
+            println("[\(self)] unhandleRequest channel: \(channel)")
+        }
+        
         let realChannel = urlInit + channel
-        handlingChannels = handlingChannels.filter() { $0 != realChannel }  // Remove channel
-        mqtt.unsubscribe(urlInit+channel)
+        
+        if var subscription = self.subscribed[channel] {
+            if subscription.request == true {
+                subscription.request = false
+            }
+            else {
+                println("WARNING: You're not handling the requests on channel "+channel)
+            }
+            
+            if subscription.subscribed == false {
+                mqtt.unsubscribe(urlInit+channel)
+            }
+        }
+        else {
+            println("WARNING: You're not handling the requests on channel "+channel)
+        }
+        
     }
     
     // MARK: SimpleMQTTClientDelegate
     public func messageReceived(channel: String, message: String) {
         
-        // Remove the runId
+        if(DEBUG) {
+            println("[\(self)] messageReceived channel: \(channel) message: message")
+        }
+        
+        if(channel == "") {
+            return  // Discard messages arriving from nowhere
+        }
+        
+        // Extract the eventual wildcard
+        let wildcard = mqtt.wildcardSubscribed(channel)
+        
+        // Remove the runId from the channel
         var path:[String] = channel.componentsSeparatedByString("/")
         path.removeAtIndex(0)
         let newChannel = "/".join(path)
         
+        var subscriptionKey = newChannel
+        
+        if var w = wildcard {
+            // Remove the runId from the wildcard
+            path = w.componentsSeparatedByString("/")
+            path.removeAtIndex(0)
+            w = "/".join(path)
+            
+            subscriptionKey = w
+        }
+                
         var error: NSError?
         var data:NSData! = message.dataUsingEncoding(NSUTF8StringEncoding,
             allowLossyConversion: true)
@@ -177,28 +322,79 @@ public class NutellaNet: SimpleMQTTClientDelegate {
                         
             // Check if is a valid request
             if let id = jsonDic["id"] as? Int {
-                if let messageType = jsonDic["messageType"] as? String {
-                    if messageType == "request" {
-                        if contains(self.handlingChannels, channel) {
-                            //println("Valid request")
-                            // Reply if the delegate implements the requestReceived function
-                            if let reply: AnyObject = self.delegate?.requestReceived(newChannel, request: jsonDic) {
-                                
-                                //Publish the message
-                                var finalMessage: [String:AnyObject] = ["id": id,
-                                    "messageType": "response"]
-                                
-                                if reply is String {
-                                    finalMessage["payload"] = reply
+                if let type = jsonDic["type"] as? String {
+                    if let payload: AnyObject = jsonDic["payload"] {
+                        if let from = jsonDic["from"] as? String {
+                            
+                            var fromComponents:[String] = from.componentsSeparatedByString("/")
+                            var componentId = ""
+                            var resourceId = ""
+                            
+                            if(fromComponents.count > 0) {
+                                componentId = fromComponents[0];
+                            }
+                            if(fromComponents.count > 1) {
+                                resourceId = fromComponents[1];
+                            }
+                            
+                            if type == "request" {
+                                if self.subscribed[subscriptionKey]?.request == true {
+                                    // Reply if the delegate implements the requestReceived function
+                                    if let reply: AnyObject = self.delegate?.requestReceived?(newChannel, request: payload, componentId: componentId, resourceId: resourceId) {
+                                        
+                                        var componentId = self.configDelegate?.componentId;
+                                        var resourceId = self.configDelegate?.resourceId;
+                                        
+                                        //Publish the response
+                                        
+                                        var from = "";
+                                        
+                                        if let cid = componentId {
+                                            from += cid
+                                            if let rid =  resourceId {
+                                                from += "/" + rid
+                                            }
+                                        }
+                                        
+                                        var finalMessage: [String:AnyObject] = [
+                                            "id": id,
+                                            "from": from,
+                                            "type": "response"]
+                                        
+                                        finalMessage["payload"] = reply
+                                            
+                                        var json = JSON(finalMessage)
+                                        
+                                        mqtt.publish(channel, message: json.rawString(options: nil)!)
+                                        
+                                        requestResponse = true
+                                    }
                                 }
-                                else if let r = reply as? Dictionary<String, AnyObject>{
-                                    finalMessage.update(r)
-                                }
-                                var json = JSON(finalMessage)
-                                
-                                mqtt.publish(channel, message: json.rawString(options: nil)!)
-                                
-                                requestResponse = true
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // Check if is a valid publish message
+            if let type = jsonDic["type"] as? String {
+                if let from = jsonDic["from"] as? String {
+                    
+                    var fromComponents:[String] = from.componentsSeparatedByString("/")
+                    var componentId = ""
+                    var resourceId = ""
+                    
+                    if(fromComponents.count > 0) {
+                        componentId = fromComponents[0];
+                    }
+                    if(fromComponents.count > 1) {
+                        resourceId = fromComponents[1];
+                    }
+                    
+                    if type == "publish" {
+                        if let payload: AnyObject = jsonDic["payload"] {
+                            if self.subscribed[subscriptionKey]?.subscribe == true {
+                                self.delegate?.messageReceived?(newChannel, message: payload, componentId: componentId, resourceId: resourceId)
                             }
                         }
                     }
@@ -207,11 +403,49 @@ public class NutellaNet: SimpleMQTTClientDelegate {
             
             // Check if is a valid response
             if let id = jsonDic["id"] as? Int {
+                if let type = jsonDic["type"] as? String {
+                    if let payload: AnyObject = jsonDic["payload"] {
+                        if let from = jsonDic["from"] as? String {
+                            
+                            var fromComponents:[String] = from.componentsSeparatedByString("/")
+                            var componentId = ""
+                            var resourceId = ""
+                            
+                            if(fromComponents.count > 0) {
+                                componentId = fromComponents[0];
+                            }
+                            if(fromComponents.count > 1) {
+                                resourceId = fromComponents[1];
+                            }
+                            
+                            if type == "response" {
+                                if let request = requests[id] {
+                                    if self.subscribed[subscriptionKey]?.response == true {
+                                        self.delegate?.responseReceived?(newChannel, requestName: request.name, response: payload)
+                                        self.subscribed[subscriptionKey]!.response = false
+                                        
+                                        if self.subscribed[subscriptionKey]!.subscribed == false {
+                                            mqtt.unsubscribe(channel)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+            
+            /*
+            
+            // Check if is a valid response
+            if let id = jsonDic["id"] as? Int {
                 if let messageType = jsonDic["messageType"] as? String {
                     if messageType == "response" {
                         if let request = requests[id] {
                             //println("Valid response")
-                            self.delegate?.responseReceived(newChannel,
+                            self.delegate?.responseReceived?(newChannel,
                                 requestName: request.name,
                                 response: jsonDic)
                             
@@ -223,16 +457,15 @@ public class NutellaNet: SimpleMQTTClientDelegate {
             
             if requestResponse == false {
                 if let from = jsonDic["from"] as? String {
-                    self.delegate?.messageReceived(newChannel, message: jsonDic, from: from)
+                    self.delegate?.messageReceived?(newChannel, message: jsonDic, from: from)
                 }
             }
         }
-        
-        
-    }
+
+        */
     
     public func disconnected() {
-        mqtt.connect(self.host)
+        // Do nothing and wait for the reconnection
     }
     
     public func connected() {

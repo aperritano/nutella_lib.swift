@@ -75,18 +75,71 @@ typedef struct _NSZone NSZone;
 @class NSError;
 @protocol SimpleMQTTClientDelegate;
 
+
+/// This class provide a simple interface that let you use the MQTT protocol
 SWIFT_CLASS("_TtC16SimpleMQTTClient16SimpleMQTTClient")
 @interface SimpleMQTTClient : NSObject <MQTTSessionDelegate>
 @property (nonatomic) BOOL synchronous;
 @property (nonatomic, weak) id <SimpleMQTTClientDelegate> delegate;
+
+/// Delegate initializer.
+///
+/// \param synchronous If true the client is synchronous, otherwise all the functions will return immediately without waiting for acks.
+///
+/// \param clientId The client id used internally by the protocol. You need to have a good reason for set this, otherwise it is better to let the function generate it for you.
 - (instancetype)initWithSynchronous:(BOOL)synchronous clientId:(NSString *)optionalClientId OBJC_DESIGNATED_INITIALIZER;
+
+/// Convenience initializers. It inizialize the client and connect to a server
+///
+/// \param host The hostname.
+///
+/// \param synchronous If synchronous or not
+///
+/// \param clientId An optional client id, you need to have a good reason for setting this, otherwise let the system generate it for you.
 - (instancetype)initWithHost:(NSString *)host synchronous:(BOOL)synchronous clientId:(NSString *)optionalClientId;
+
+/// Subscribe to an MQTT channel.
+///
+/// \param channel The name of the channel.
 - (void)subscribe:(NSString *)channel;
+
+/// Unsubscribe from an MQTT channel.
+///
+/// \param channel The name of the channel.
 - (void)unsubscribe:(NSString *)channel;
+
+/// Return an array of channels, it contains also the wildcards.
+///
+/// \returns Array of strings, every sstring is a channel subscribed.
 - (NSArray *)getSubscribedChannels;
+
+/// Return true if is subscribeb or no to a channel, takes into account wildcards.
+///
+/// \param channel Channel name.
+///
+/// \returns true if is is subscribed to the channel.
 - (BOOL)isSubscribed:(NSString *)channel;
+
+/// Return the wildcard that contains the current channel if there's any
+///
+/// \param channel Channel name.
+///
+/// \returns the String of the wildcard
+- (NSString *)wildcardSubscribed:(NSString *)channel;
+
+/// Publish a message on the desired MQTT channel.
+///
+/// \param channel The name of the channel.
+///
+/// \param message The message.
 - (void)publish:(NSString *)channel message:(NSString *)message;
+
+/// Disconnect the client immediately.
 - (void)disconnect;
+
+/// Connect the client to an MQTT server.
+///
+/// \param host The hostname of the server.
 - (void)connect:(NSString *)host;
 - (void)newMessage:(MQTTSession *)session data:(NSData *)data onTopic:(NSString *)topic qos:(MQTTQosLevel)qos retained:(BOOL)retained mid:(uint32_t)mid;
 - (void)handleEvent:(MQTTSession *)session event:(MQTTSessionEvent)eventCode error:(NSError *)error;
@@ -95,11 +148,23 @@ SWIFT_CLASS("_TtC16SimpleMQTTClient16SimpleMQTTClient")
 @end
 
 
+
+/// This delegate protocol allows to control the status change of the MQTT client.
 SWIFT_PROTOCOL("_TtP16SimpleMQTTClient24SimpleMQTTClientDelegate_")
 @protocol SimpleMQTTClientDelegate
 @optional
+
+/// Called when a new message is received
+///
+/// \param channel The name of the channel
+///
+/// \param message The message
 - (void)messageReceived:(NSString *)channel message:(NSString *)message;
+
+/// Called when the client will be disconnected.
 - (void)disconnected;
+
+/// Called when the client will be sconnected.
 - (void)connected;
 @end
 

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ESTBeaconManager.h"
+#import "ESTConfig.h"
+
 //! Project version number for Nutella.
 FOUNDATION_EXPORT double NutellaVersionNumber;
 

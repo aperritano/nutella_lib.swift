@@ -7,19 +7,32 @@
 //  jazzy -o doc -a "Gianluca Venturini" -g "https://github.com/nutella-framework/nutella_lib.swift.git" --skip-undocumented
 //
 
+#if DEBUG
+    let DEBUG = true
+#else
+    let DEBUG = false
+#endif
+
 import Foundation
 
 /**
     This is the main class that contains all the modules. It acts as a interface with the external world.
 */
-public class Nutella: NutellaNetDelegate {
-    var actorName: String
+public class Nutella: NutellaConfigDelegate {
+    var componentId: String
     var runId: String
+    public var resourceId: String?
+    
     
     /**
         Nutella network module, it enable the explicit interaction using MQTT protocol.
     */
     public var net: NutellaNet
+    
+    /**
+        Nutella location module, it enable the detection of near beacon
+    */
+    public var location: NutellaLocation
     
     /**
         The NutellaDelegateused in order to manage the notification about the status of Nutella.
@@ -34,25 +47,34 @@ public class Nutella: NutellaNetDelegate {
         :param: runId The run id of the instance of the application.
         :param: clientId The client id used for techinical reason. Do not use it unless you have a valid motivation, the system will take care of generating it if left null
     */
-    public init(host: String, actorName: String, runId: String, clientId: String? = nil) {
-        self.actorName = actorName
-        self.runId = runId
-        self.net = NutellaNet(host: host, clientId: clientId)
+    public init(brokerHostname: String, runId: String, componentId: String) {
         
-        self.net.delegate = self
+        self.componentId = componentId
+        self.runId = runId
+        self.net = NutellaNet(host: brokerHostname, clientId: nil)
+        self.location = NutellaLocation(locationServer: brokerHostname)
+        
+        if(DEBUG) {
+            println("[\(self)] init brokerHostname: \(brokerHostname) runId: \(runId) componentId: \(componentId)")
+        }
+        
+        self.net.configDelegate = self
+        self.location.configDelegate = self
     }
     
-    // MARK: NutellaNetDelegate
+    /**
+        Nutella newtork module delegate.
+    */
     
-    func messageReceived(channel: String, message: AnyObject, from: String) {
-        self.delegate?.messageReceived?(channel, message: message, from: from)
+    public var netDelegate: NutellaNetDelegate? {
+        get {
+            return self.net.delegate
+        }
+        set(delegate) {
+            self.net.delegate = delegate
+        }
     }
     
-    func responseReceived(channelName: String, requestName: String?, response: AnyObject) {
-        self.delegate?.responseReceived?(channelName, requestName: requestName, response: response)
-    }
     
-    func requestReceived(channelName: String, request: AnyObject) -> AnyObject? {
-        return self.delegate?.requestReceived?(channelName, request: request)
-    }
+    
 }

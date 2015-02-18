@@ -7,6 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		992305DF1A742F1600C50F89 /* libEstimoteSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 992305DE1A742F1600C50F89 /* libEstimoteSDK.a */; };
+		992305E61A7430C500C50F89 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 992305E51A7430C500C50F89 /* SystemConfiguration.framework */; };
+		992305E81A7430CE00C50F89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 992305E71A7430CE00C50F89 /* Foundation.framework */; };
+		992305EA1A7430D700C50F89 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 992305E91A7430D700C50F89 /* CoreBluetooth.framework */; };
+		992305EC1A7430DF00C50F89 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 992305EB1A7430DF00C50F89 /* CoreLocation.framework */; };
+		992306051A743F8800C50F89 /* ESTBeacon.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305EE1A743F8800C50F89 /* ESTBeacon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		992306061A743F8800C50F89 /* ESTBeaconDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305EF1A743F8800C50F89 /* ESTBeaconDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		992306071A743F8800C50F89 /* ESTBeaconFirmwareVO.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305F01A743F8800C50F89 /* ESTBeaconFirmwareVO.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		992306081A743F8800C50F89 /* ESTBeaconManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305F11A743F8800C50F89 /* ESTBeaconManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		992306091A743F8800C50F89 /* ESTBeaconRegion.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305F21A743F8800C50F89 /* ESTBeaconRegion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9923060A1A743F8800C50F89 /* ESTBeaconUpdateConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305F31A743F8800C50F89 /* ESTBeaconUpdateConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9923060B1A743F8800C50F89 /* ESTBeaconUpdateInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305F41A743F8800C50F89 /* ESTBeaconUpdateInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9923060C1A743F8800C50F89 /* ESTBeaconVO.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305F51A743F8800C50F89 /* ESTBeaconVO.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9923060D1A743F8800C50F89 /* ESTBulkUpdater.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305F61A743F8800C50F89 /* ESTBulkUpdater.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9923060E1A743F8800C50F89 /* ESTConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305F71A743F8800C50F89 /* ESTConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9923060F1A743F8800C50F89 /* ESTDateRule.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305F81A743F8800C50F89 /* ESTDateRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		992306101A743F8800C50F89 /* ESTDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305F91A743F8800C50F89 /* ESTDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		992306111A743F8800C50F89 /* ESTFirmwareInfoVO.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305FA1A743F8800C50F89 /* ESTFirmwareInfoVO.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		992306121A743F8800C50F89 /* ESTMotionRule.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305FB1A743F8800C50F89 /* ESTMotionRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		992306131A743F8800C50F89 /* ESTNearable.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305FC1A743F8800C50F89 /* ESTNearable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		992306141A743F8800C50F89 /* ESTNearableManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305FD1A743F8800C50F89 /* ESTNearableManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		992306151A743F8800C50F89 /* ESTNearableRule.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305FE1A743F8800C50F89 /* ESTNearableRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		992306161A743F8800C50F89 /* ESTOrientationRule.h in Headers */ = {isa = PBXBuildFile; fileRef = 992305FF1A743F8800C50F89 /* ESTOrientationRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		992306171A743F8800C50F89 /* ESTProximityRule.h in Headers */ = {isa = PBXBuildFile; fileRef = 992306001A743F8800C50F89 /* ESTProximityRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		992306181A743F8800C50F89 /* ESTRule.h in Headers */ = {isa = PBXBuildFile; fileRef = 992306011A743F8800C50F89 /* ESTRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		992306191A743F8800C50F89 /* ESTTemperatureRule.h in Headers */ = {isa = PBXBuildFile; fileRef = 992306021A743F8800C50F89 /* ESTTemperatureRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9923061A1A743F8800C50F89 /* ESTTrigger.h in Headers */ = {isa = PBXBuildFile; fileRef = 992306031A743F8800C50F89 /* ESTTrigger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9923061B1A743F8800C50F89 /* ESTTriggerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 992306041A743F8800C50F89 /* ESTTriggerManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9923061D1A743FE700C50F89 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9923061C1A743FE700C50F89 /* Dictionary.swift */; };
+		9923061F1A74442600C50F89 /* NutellaLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9923061E1A74442600C50F89 /* NutellaLocation.swift */; };
+		992306211A74486300C50F89 /* NutellaConfigDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992306201A74486300C50F89 /* NutellaConfigDelegate.swift */; };
 		993339201A6DD6C3005EB04C /* Nutella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9933391F1A6DD6C3005EB04C /* Nutella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		993339261A6DD6C3005EB04C /* Nutella.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9933391A1A6DD6C3005EB04C /* Nutella.framework */; };
 		9933392D1A6DD6C3005EB04C /* NutellaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9933392C1A6DD6C3005EB04C /* NutellaTests.swift */; };
@@ -17,8 +48,12 @@
 		993339431A6DD6E6005EB04C /* NutellaNetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9933393D1A6DD6E6005EB04C /* NutellaNetDelegate.swift */; };
 		993339461A6DD7DB005EB04C /* SimpleMQTTClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 993339451A6DD7DB005EB04C /* SimpleMQTTClient.framework */; };
 		993339491A6DD8E4005EB04C /* SimpleMQTTClient.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 993339451A6DD7DB005EB04C /* SimpleMQTTClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9938CF261A8C18BC0074DCF1 /* SimpleMQTTClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 993339451A6DD7DB005EB04C /* SimpleMQTTClient.framework */; };
 		996DE19A1A6DDE190036449B /* NutellaMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996DE1991A6DDE190036449B /* NutellaMain.swift */; };
 		99DFC3631A6DDEDE0009E83C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DFC3621A6DDEDE0009E83C /* UIKit.framework */; };
+		99E03F651A8C6C4100E04B13 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 992305E91A7430D700C50F89 /* CoreBluetooth.framework */; };
+		99E03F661A8C6C4900E04B13 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 992305EB1A7430DF00C50F89 /* CoreLocation.framework */; };
+		99E03F681A8C6C5F00E04B13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 992305E71A7430CE00C50F89 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +80,37 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		992305DE1A742F1600C50F89 /* libEstimoteSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libEstimoteSDK.a; path = Libraries/EstimoteSDK/libEstimoteSDK.a; sourceTree = "<group>"; };
+		992305E51A7430C500C50F89 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		992305E71A7430CE00C50F89 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		992305E91A7430D700C50F89 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		992305EB1A7430DF00C50F89 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		992305EE1A743F8800C50F89 /* ESTBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTBeacon.h; path = Libraries/EstimoteSDK/Headers/ESTBeacon.h; sourceTree = "<group>"; };
+		992305EF1A743F8800C50F89 /* ESTBeaconDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTBeaconDefinitions.h; path = Libraries/EstimoteSDK/Headers/ESTBeaconDefinitions.h; sourceTree = "<group>"; };
+		992305F01A743F8800C50F89 /* ESTBeaconFirmwareVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTBeaconFirmwareVO.h; path = Libraries/EstimoteSDK/Headers/ESTBeaconFirmwareVO.h; sourceTree = "<group>"; };
+		992305F11A743F8800C50F89 /* ESTBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTBeaconManager.h; path = Libraries/EstimoteSDK/Headers/ESTBeaconManager.h; sourceTree = "<group>"; };
+		992305F21A743F8800C50F89 /* ESTBeaconRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTBeaconRegion.h; path = Libraries/EstimoteSDK/Headers/ESTBeaconRegion.h; sourceTree = "<group>"; };
+		992305F31A743F8800C50F89 /* ESTBeaconUpdateConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTBeaconUpdateConfig.h; path = Libraries/EstimoteSDK/Headers/ESTBeaconUpdateConfig.h; sourceTree = "<group>"; };
+		992305F41A743F8800C50F89 /* ESTBeaconUpdateInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTBeaconUpdateInfo.h; path = Libraries/EstimoteSDK/Headers/ESTBeaconUpdateInfo.h; sourceTree = "<group>"; };
+		992305F51A743F8800C50F89 /* ESTBeaconVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTBeaconVO.h; path = Libraries/EstimoteSDK/Headers/ESTBeaconVO.h; sourceTree = "<group>"; };
+		992305F61A743F8800C50F89 /* ESTBulkUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTBulkUpdater.h; path = Libraries/EstimoteSDK/Headers/ESTBulkUpdater.h; sourceTree = "<group>"; };
+		992305F71A743F8800C50F89 /* ESTConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTConfig.h; path = Libraries/EstimoteSDK/Headers/ESTConfig.h; sourceTree = "<group>"; };
+		992305F81A743F8800C50F89 /* ESTDateRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTDateRule.h; path = Libraries/EstimoteSDK/Headers/ESTDateRule.h; sourceTree = "<group>"; };
+		992305F91A743F8800C50F89 /* ESTDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTDefinitions.h; path = Libraries/EstimoteSDK/Headers/ESTDefinitions.h; sourceTree = "<group>"; };
+		992305FA1A743F8800C50F89 /* ESTFirmwareInfoVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTFirmwareInfoVO.h; path = Libraries/EstimoteSDK/Headers/ESTFirmwareInfoVO.h; sourceTree = "<group>"; };
+		992305FB1A743F8800C50F89 /* ESTMotionRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTMotionRule.h; path = Libraries/EstimoteSDK/Headers/ESTMotionRule.h; sourceTree = "<group>"; };
+		992305FC1A743F8800C50F89 /* ESTNearable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTNearable.h; path = Libraries/EstimoteSDK/Headers/ESTNearable.h; sourceTree = "<group>"; };
+		992305FD1A743F8800C50F89 /* ESTNearableManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTNearableManager.h; path = Libraries/EstimoteSDK/Headers/ESTNearableManager.h; sourceTree = "<group>"; };
+		992305FE1A743F8800C50F89 /* ESTNearableRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTNearableRule.h; path = Libraries/EstimoteSDK/Headers/ESTNearableRule.h; sourceTree = "<group>"; };
+		992305FF1A743F8800C50F89 /* ESTOrientationRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTOrientationRule.h; path = Libraries/EstimoteSDK/Headers/ESTOrientationRule.h; sourceTree = "<group>"; };
+		992306001A743F8800C50F89 /* ESTProximityRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTProximityRule.h; path = Libraries/EstimoteSDK/Headers/ESTProximityRule.h; sourceTree = "<group>"; };
+		992306011A743F8800C50F89 /* ESTRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTRule.h; path = Libraries/EstimoteSDK/Headers/ESTRule.h; sourceTree = "<group>"; };
+		992306021A743F8800C50F89 /* ESTTemperatureRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTTemperatureRule.h; path = Libraries/EstimoteSDK/Headers/ESTTemperatureRule.h; sourceTree = "<group>"; };
+		992306031A743F8800C50F89 /* ESTTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTTrigger.h; path = Libraries/EstimoteSDK/Headers/ESTTrigger.h; sourceTree = "<group>"; };
+		992306041A743F8800C50F89 /* ESTTriggerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESTTriggerManager.h; path = Libraries/EstimoteSDK/Headers/ESTTriggerManager.h; sourceTree = "<group>"; };
+		9923061C1A743FE700C50F89 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = ../../Common/Dictionary.swift; sourceTree = "<group>"; };
+		9923061E1A74442600C50F89 /* NutellaLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NutellaLocation.swift; path = ../../Common/NutellaLocation.swift; sourceTree = "<group>"; };
+		992306201A74486300C50F89 /* NutellaConfigDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NutellaConfigDelegate.swift; path = ../../Common/NutellaConfigDelegate.swift; sourceTree = "<group>"; };
 		9933391A1A6DD6C3005EB04C /* Nutella.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nutella.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9933391E1A6DD6C3005EB04C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9933391F1A6DD6C3005EB04C /* Nutella.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Nutella.h; sourceTree = "<group>"; };
@@ -66,6 +132,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				992305EC1A7430DF00C50F89 /* CoreLocation.framework in Frameworks */,
+				992305EA1A7430D700C50F89 /* CoreBluetooth.framework in Frameworks */,
+				992305E81A7430CE00C50F89 /* Foundation.framework in Frameworks */,
+				992305E61A7430C500C50F89 /* SystemConfiguration.framework in Frameworks */,
+				992305DF1A742F1600C50F89 /* libEstimoteSDK.a in Frameworks */,
 				99DFC3631A6DDEDE0009E83C /* UIKit.framework in Frameworks */,
 				993339461A6DD7DB005EB04C /* SimpleMQTTClient.framework in Frameworks */,
 			);
@@ -75,16 +146,68 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99E03F681A8C6C5F00E04B13 /* Foundation.framework in Frameworks */,
+				99E03F661A8C6C4900E04B13 /* CoreLocation.framework in Frameworks */,
+				99E03F651A8C6C4100E04B13 /* CoreBluetooth.framework in Frameworks */,
 				993339261A6DD6C3005EB04C /* Nutella.framework in Frameworks */,
+				9938CF261A8C18BC0074DCF1 /* SimpleMQTTClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		992305E21A742F3400C50F89 /* Estimote */ = {
+			isa = PBXGroup;
+			children = (
+				992305ED1A743F6200C50F89 /* Headers */,
+				992305DE1A742F1600C50F89 /* libEstimoteSDK.a */,
+			);
+			name = Estimote;
+			sourceTree = "<group>";
+		};
+		992305E31A742F4000C50F89 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				992305E21A742F3400C50F89 /* Estimote */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		992305ED1A743F6200C50F89 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				992305EE1A743F8800C50F89 /* ESTBeacon.h */,
+				992305EF1A743F8800C50F89 /* ESTBeaconDefinitions.h */,
+				992305F01A743F8800C50F89 /* ESTBeaconFirmwareVO.h */,
+				992305F11A743F8800C50F89 /* ESTBeaconManager.h */,
+				992305F21A743F8800C50F89 /* ESTBeaconRegion.h */,
+				992305F31A743F8800C50F89 /* ESTBeaconUpdateConfig.h */,
+				992305F41A743F8800C50F89 /* ESTBeaconUpdateInfo.h */,
+				992305F51A743F8800C50F89 /* ESTBeaconVO.h */,
+				992305F61A743F8800C50F89 /* ESTBulkUpdater.h */,
+				992305F71A743F8800C50F89 /* ESTConfig.h */,
+				992305F81A743F8800C50F89 /* ESTDateRule.h */,
+				992305F91A743F8800C50F89 /* ESTDefinitions.h */,
+				992305FA1A743F8800C50F89 /* ESTFirmwareInfoVO.h */,
+				992305FB1A743F8800C50F89 /* ESTMotionRule.h */,
+				992305FC1A743F8800C50F89 /* ESTNearable.h */,
+				992305FD1A743F8800C50F89 /* ESTNearableManager.h */,
+				992305FE1A743F8800C50F89 /* ESTNearableRule.h */,
+				992305FF1A743F8800C50F89 /* ESTOrientationRule.h */,
+				992306001A743F8800C50F89 /* ESTProximityRule.h */,
+				992306011A743F8800C50F89 /* ESTRule.h */,
+				992306021A743F8800C50F89 /* ESTTemperatureRule.h */,
+				992306031A743F8800C50F89 /* ESTTrigger.h */,
+				992306041A743F8800C50F89 /* ESTTriggerManager.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
 		993339101A6DD6C3005EB04C = {
 			isa = PBXGroup;
 			children = (
+				992305E31A742F4000C50F89 /* Libraries */,
 				993339471A6DD7E1005EB04C /* Frameworks */,
 				993339441A6DD6EB005EB04C /* Common */,
 				9933391C1A6DD6C3005EB04C /* Nutella */,
@@ -139,12 +262,15 @@
 		993339441A6DD6EB005EB04C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				9923061E1A74442600C50F89 /* NutellaLocation.swift */,
 				996DE1991A6DDE190036449B /* NutellaMain.swift */,
 				993339381A6DD6E6005EB04C /* SwiftyJSON.swift */,
 				9933393A1A6DD6E6005EB04C /* NutellaDelegate.swift */,
 				9933393B1A6DD6E6005EB04C /* NutellaNet.swift */,
 				9933393C1A6DD6E6005EB04C /* NutellaNetRequest.swift */,
 				9933393D1A6DD6E6005EB04C /* NutellaNetDelegate.swift */,
+				9923061C1A743FE700C50F89 /* Dictionary.swift */,
+				992306201A74486300C50F89 /* NutellaConfigDelegate.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -152,6 +278,10 @@
 		993339471A6DD7E1005EB04C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				992305EB1A7430DF00C50F89 /* CoreLocation.framework */,
+				992305E91A7430D700C50F89 /* CoreBluetooth.framework */,
+				992305E71A7430CE00C50F89 /* Foundation.framework */,
+				992305E51A7430C500C50F89 /* SystemConfiguration.framework */,
 				99DFC3621A6DDEDE0009E83C /* UIKit.framework */,
 				993339451A6DD7DB005EB04C /* SimpleMQTTClient.framework */,
 			);
@@ -165,7 +295,30 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				992306061A743F8800C50F89 /* ESTBeaconDefinitions.h in Headers */,
+				992306111A743F8800C50F89 /* ESTFirmwareInfoVO.h in Headers */,
+				992306161A743F8800C50F89 /* ESTOrientationRule.h in Headers */,
+				9923060F1A743F8800C50F89 /* ESTDateRule.h in Headers */,
+				9923060E1A743F8800C50F89 /* ESTConfig.h in Headers */,
+				992306091A743F8800C50F89 /* ESTBeaconRegion.h in Headers */,
+				992306101A743F8800C50F89 /* ESTDefinitions.h in Headers */,
+				9923060A1A743F8800C50F89 /* ESTBeaconUpdateConfig.h in Headers */,
+				992306191A743F8800C50F89 /* ESTTemperatureRule.h in Headers */,
+				992306151A743F8800C50F89 /* ESTNearableRule.h in Headers */,
+				9923060D1A743F8800C50F89 /* ESTBulkUpdater.h in Headers */,
+				9923060C1A743F8800C50F89 /* ESTBeaconVO.h in Headers */,
+				9923061B1A743F8800C50F89 /* ESTTriggerManager.h in Headers */,
+				992306131A743F8800C50F89 /* ESTNearable.h in Headers */,
+				992306071A743F8800C50F89 /* ESTBeaconFirmwareVO.h in Headers */,
+				9923061A1A743F8800C50F89 /* ESTTrigger.h in Headers */,
+				992306181A743F8800C50F89 /* ESTRule.h in Headers */,
+				992306141A743F8800C50F89 /* ESTNearableManager.h in Headers */,
+				992306081A743F8800C50F89 /* ESTBeaconManager.h in Headers */,
 				993339201A6DD6C3005EB04C /* Nutella.h in Headers */,
+				992306121A743F8800C50F89 /* ESTMotionRule.h in Headers */,
+				992306171A743F8800C50F89 /* ESTProximityRule.h in Headers */,
+				9923060B1A743F8800C50F89 /* ESTBeaconUpdateInfo.h in Headers */,
+				992306051A743F8800C50F89 /* ESTBeacon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,7 +415,10 @@
 				9933393E1A6DD6E6005EB04C /* SwiftyJSON.swift in Sources */,
 				993339401A6DD6E6005EB04C /* NutellaDelegate.swift in Sources */,
 				993339421A6DD6E6005EB04C /* NutellaNetRequest.swift in Sources */,
+				9923061D1A743FE700C50F89 /* Dictionary.swift in Sources */,
 				996DE19A1A6DDE190036449B /* NutellaMain.swift in Sources */,
+				9923061F1A74442600C50F89 /* NutellaLocation.swift in Sources */,
+				992306211A74486300C50F89 /* NutellaConfigDelegate.swift in Sources */,
 				993339411A6DD6E6005EB04C /* NutellaNet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,9 +538,19 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/Libraries/EstimoteSDK/Headers",
+				);
 				INFOPLIST_FILE = Nutella/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/EstimoteSDK",
+				);
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-DDEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -401,9 +567,18 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/Libraries/EstimoteSDK/Headers",
+				);
 				INFOPLIST_FILE = Nutella/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/EstimoteSDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -415,6 +590,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -432,6 +608,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = NutellaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

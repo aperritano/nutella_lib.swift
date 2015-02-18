@@ -10,15 +10,20 @@ import UIKit
 import Nutella
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, NutellaNetDelegate {
 
     var window: UIWindow?
+    
+    var nutella: Nutella?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        var nutella = Nutella(host: "127.0.0.1", actorName: "test_actor", runId:"test")
-        nutella.net.publish("test/ios", message: ["publish":"Sent from iOS application"])
+        nutella = Nutella(brokerHostname: "10.0.0.4", runId: "test_run", componentId: "test_component")
+        nutella?.resourceId = "test_resource"
+        nutella?.netDelegate = self
+        
+        nutella?.location.startMonitorning()
+        
         return true
     }
 
@@ -44,6 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func responseReceived(channelName: String, requestName: String?, response: AnyObject) {
+        println("Response received")
+    }
 }
 
