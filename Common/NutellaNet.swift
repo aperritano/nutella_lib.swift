@@ -323,52 +323,55 @@ public class NutellaNet: SimpleMQTTClientDelegate {
             // Check if is a valid request
             if let id = jsonDic["id"] as? Int {
                 if let type = jsonDic["type"] as? String {
-                    if let payload: AnyObject = jsonDic["payload"] {
-                        if let from = jsonDic["from"] as? String {
-                            
-                            var fromComponents:[String] = from.componentsSeparatedByString("/")
-                            var componentId = ""
-                            var resourceId = ""
-                            
-                            if(fromComponents.count > 0) {
-                                componentId = fromComponents[0];
-                            }
-                            if(fromComponents.count > 1) {
-                                resourceId = fromComponents[1];
-                            }
-                            
-                            if type == "request" {
-                                if self.subscribed[subscriptionKey]?.request == true {
-                                    // Reply if the delegate implements the requestReceived function
-                                    if let reply: AnyObject = self.delegate?.requestReceived?(newChannel, request: payload, componentId: componentId, resourceId: resourceId) {
-                                        
-                                        var componentId = self.configDelegate?.componentId;
-                                        var resourceId = self.configDelegate?.resourceId;
-                                        
-                                        //Publish the response
-                                        
-                                        var from = "";
-                                        
-                                        if let cid = componentId {
-                                            from += cid
-                                            if let rid =  resourceId {
-                                                from += "/" + rid
-                                            }
+                    if let from = jsonDic["from"] as? String {
+                        
+                        var fromComponents:[String] = from.componentsSeparatedByString("/")
+                        var componentId = ""
+                        var resourceId = ""
+                        
+                        if(fromComponents.count > 0) {
+                            componentId = fromComponents[0];
+                        }
+                        if(fromComponents.count > 1) {
+                            resourceId = fromComponents[1];
+                        }
+                        
+                        if type == "request" {
+                            if self.subscribed[subscriptionKey]?.request == true {
+                                var payload: AnyObject? = nil
+                                if let p: AnyObject = jsonDic["payload"] {
+                                    payload = p
+                                }
+                                
+                                // Reply if the delegate implements the requestReceived function
+                                if let reply: AnyObject = self.delegate?.requestReceived?(newChannel, request: payload, componentId: componentId, resourceId: resourceId) {
+                                    
+                                    var componentId = self.configDelegate?.componentId;
+                                    var resourceId = self.configDelegate?.resourceId;
+                                    
+                                    //Publish the response
+                                    
+                                    var from = "";
+                                    
+                                    if let cid = componentId {
+                                        from += cid
+                                        if let rid =  resourceId {
+                                            from += "/" + rid
                                         }
-                                        
-                                        var finalMessage: [String:AnyObject] = [
-                                            "id": id,
-                                            "from": from,
-                                            "type": "response"]
-                                        
-                                        finalMessage["payload"] = reply
-                                            
-                                        var json = JSON(finalMessage)
-                                        
-                                        mqtt.publish(channel, message: json.rawString(options: nil)!)
-                                        
-                                        requestResponse = true
                                     }
+                                    
+                                    var finalMessage: [String:AnyObject] = [
+                                        "id": id,
+                                        "from": from,
+                                        "type": "response"]
+                                    
+                                    finalMessage["payload"] = reply
+                                        
+                                    var json = JSON(finalMessage)
+                                    
+                                    mqtt.publish(channel, message: json.rawString(options: nil)!)
+                                    
+                                    requestResponse = true
                                 }
                             }
                         }

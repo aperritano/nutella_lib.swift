@@ -157,7 +157,7 @@ class NutellaTests: XCTestCase, NutellaNetDelegate {
 
     }
     
-    func requestReceived(channelName: String, request: AnyObject, componentId: String?, resourceId: String?) -> AnyObject?{
+    func requestReceived(channelName: String, request: AnyObject?, componentId: String?, resourceId: String?) -> AnyObject?{
         return ["status": "ok"]
     }
     

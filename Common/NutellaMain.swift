@@ -60,6 +60,8 @@ public class Nutella: NutellaConfigDelegate {
         
         self.net.configDelegate = self
         self.location.configDelegate = self
+        
+        self.location.downloadBeaconList()
     }
     
     /**

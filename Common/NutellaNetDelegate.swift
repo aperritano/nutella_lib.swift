@@ -33,5 +33,5 @@ import Foundation
     :param: channelName The name of the Nutella chennal on which the request is received.
     :param: request The dictionary/array/string containing the JSON representation of the request.
     */
-    optional func requestReceived(channelName: String, request: AnyObject, componentId: String?, resourceId: String?) -> AnyObject?
+    optional func requestReceived(channelName: String, request: AnyObject?, componentId: String?, resourceId: String?) -> AnyObject?
 }
