@@ -5,7 +5,6 @@ nutella library for Swift
 
 1. Download the frameworks:
   * In order to use Nutella framework for your applications download it from <a href="https://github.com/nutella-framework/nutella_lib.swift/releases/latest"> here </a>.
-  * This framework needs also the SimpleMQTTClient, you can download it from here: <a href="https://github.com/gianluca-venturini/simple-swift-mqtt-client/releases/latest"> here </a>.
 
 2. Drag and drop them in your project
 <img src="https://cloud.githubusercontent.com/assets/6535621/5811058/08997b0a-a016-11e4-8ef5-79e8977d4ce2.png">

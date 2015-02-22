@@ -9,7 +9,7 @@
 import Foundation
 
 /**
-    This protocol allows client to control the asynchronous callbacks.
+    This protocol is there for future uses
 */
 @objc public protocol NutellaDelegate {
 }
