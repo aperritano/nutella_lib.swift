@@ -76,12 +76,14 @@ typedef struct _NSZone NSZone;
 
 
 
-/// This protocol allows client to control the asynchronous callbacks.
+/// This protocol is there for future uses
 SWIFT_PROTOCOL("_TtP7Nutella15NutellaDelegate_")
 @protocol NutellaDelegate
 @end
 
 
+
+/// This protocol allows client to control the asynchronous requests, response and message received
 SWIFT_PROTOCOL("_TtP7Nutella18NutellaNetDelegate_")
 @protocol NutellaNetDelegate
 @optional
@@ -118,6 +120,7 @@ SWIFT_PROTOCOL("_TtP7Nutella18NutellaNetDelegate_")
 SWIFT_CLASS("_TtC7Nutella15NutellaLocation")
 @interface NutellaLocation : NSObject <NutellaNetDelegate, CLLocationManagerDelegate>
 - (void)downloadBeaconList;
+- (void)downloadResourceList;
 - (void)startMonitoringRegions:(NSArray *)uuids;
 - (void)startMonitorning;
 - (void)stopMonitoring;

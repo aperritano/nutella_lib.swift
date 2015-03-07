@@ -19,10 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NutellaNetDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         nutella = Nutella(brokerHostname: "10.0.0.4", runId: "crepe", componentId: "test_component")
-        nutella?.resourceId = "test_resource"
+        nutella?.resourceId = "iPad1"
         nutella?.netDelegate = self
-        
-        nutella?.location.startMonitorning()
         
         return true
     }

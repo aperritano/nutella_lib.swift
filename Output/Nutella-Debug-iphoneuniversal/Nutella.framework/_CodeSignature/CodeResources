@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/SimpleMQTTClient</key>
 		<data>
-		KPstI1bm9AMXBzcl2TiNAx1zUeo=
+		PUx/qsl5FdT2+oVO9MqW1lwIBC0=
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -146,7 +146,7 @@
 		</data>
 		<key>Headers/Nutella-Swift.h</key>
 		<data>
-		seGDBmSU/VnslVLZ04CSHcF92do=
+		K61oebPnGqPa4Yu1v7KFkv80ZVg=
 		</data>
 		<key>Headers/Nutella.h</key>
 		<data>
@@ -158,11 +158,19 @@
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftdoc</key>
 		<data>
-		325EfQEzdLRc5npEhInWSmd86Hw=
+		hnsvqUOrV1wpsc9O7cjFOV4Dv/U=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftmodule</key>
 		<data>
-		9QrDssclFvtcYsGIzcNXngavue0=
+		JddNDBT6y8d7cAQ+/D37TBgI0Eo=
+		</data>
+		<key>Modules/Nutella.swiftmodule/arm64.swiftdoc</key>
+		<data>
+		hnsvqUOrV1wpsc9O7cjFOV4Dv/U=
+		</data>
+		<key>Modules/Nutella.swiftmodule/arm64.swiftmodule</key>
+		<data>
+		uMJc4gdpuMYAtNJ7D3u7cDkWQog=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -213,7 +221,7 @@
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/SimpleMQTTClient</key>
 		<data>
-		KPstI1bm9AMXBzcl2TiNAx1zUeo=
+		PUx/qsl5FdT2+oVO9MqW1lwIBC0=
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -313,7 +321,7 @@
 		</data>
 		<key>Headers/Nutella-Swift.h</key>
 		<data>
-		seGDBmSU/VnslVLZ04CSHcF92do=
+		K61oebPnGqPa4Yu1v7KFkv80ZVg=
 		</data>
 		<key>Headers/Nutella.h</key>
 		<data>
@@ -321,11 +329,19 @@
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftdoc</key>
 		<data>
-		325EfQEzdLRc5npEhInWSmd86Hw=
+		hnsvqUOrV1wpsc9O7cjFOV4Dv/U=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftmodule</key>
 		<data>
-		9QrDssclFvtcYsGIzcNXngavue0=
+		JddNDBT6y8d7cAQ+/D37TBgI0Eo=
+		</data>
+		<key>Modules/Nutella.swiftmodule/arm64.swiftdoc</key>
+		<data>
+		hnsvqUOrV1wpsc9O7cjFOV4Dv/U=
+		</data>
+		<key>Modules/Nutella.swiftmodule/arm64.swiftmodule</key>
+		<data>
+		uMJc4gdpuMYAtNJ7D3u7cDkWQog=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>

@@ -21,7 +21,15 @@ import Foundation
 public class Nutella: NutellaConfigDelegate {
     var componentId: String
     var runId: String
-    public var resourceId: String?
+    
+    public var resourceId: String? {
+        get {
+            return self.location.resourceId
+        }
+        set(resourceId) {
+            self.location.resourceId = resourceId
+        }
+    }
     
     
     /**
@@ -62,6 +70,9 @@ public class Nutella: NutellaConfigDelegate {
         self.location.configDelegate = self
         
         self.location.downloadBeaconList()
+        self.location.downloadResourceList()
+        
+        self.location.startMonitorning()
     }
     
     /**
