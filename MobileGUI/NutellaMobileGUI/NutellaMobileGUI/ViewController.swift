@@ -7,9 +7,24 @@
 //
 
 import UIKit
+import Nutella
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, NutellaNetDelegate {
+    
+    var nutella: Nutella?
 
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var textLabel: UITextField!
+    
+    @IBAction func startMonitoring(sender: AnyObject) {
+        var resourceId = segmentedControl.titleForSegmentAtIndex(segmentedControl.selectedSegmentIndex)
+        
+        
+        nutella = Nutella(brokerHostname: textLabel.text, runId: "crepe", componentId: "test_component")
+        nutella?.resourceId = resourceId
+        nutella?.netDelegate = self
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,7 +34,11 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    
+    func responseReceived(channelName: String, requestName: String?, response: AnyObject) {
+        println("Response received")
+    }
 
 }
 

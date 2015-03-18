@@ -10,17 +10,12 @@ import UIKit
 import Nutella
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, NutellaNetDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    var nutella: Nutella?
-
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        nutella = Nutella(brokerHostname: "10.0.0.4", runId: "crepe", componentId: "test_component")
-        nutella?.resourceId = "iPad1"
-        nutella?.netDelegate = self
+        
         
         return true
     }
@@ -45,10 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NutellaNetDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-    func responseReceived(channelName: String, requestName: String?, response: AnyObject) {
-        println("Response received")
     }
 }
 

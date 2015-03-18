@@ -179,6 +179,10 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                 if beacon != nil {
                     let distance = (clBeacon as CLBeacon).accuracy
                     
+                    if distance < 0 {
+                        continue
+                    }
+                    
                     // If the beacon is associated to a resource
                     if let resource = beacon!.resource {
                         if let clientResource = self.resource {
