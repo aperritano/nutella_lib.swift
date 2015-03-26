@@ -16,6 +16,7 @@ class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDeleg
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var textLabel: UITextField!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var stepper: UIStepper!
     
     @IBAction func startMonitoring(sender: AnyObject) {
         self.startButton.enabled = false
@@ -28,10 +29,21 @@ class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDeleg
         nutella?.resourceId = resourceId
         nutella?.netDelegate = self
         nutella?.locationDelegate = self
+        
+        nutella?.location.resource[resourceId!]?.notifyEnter = true
     }
+    
     @IBAction func ipadSelectionChanged(sender: AnyObject) {
+        nutella?.location.resource[nutella!.resourceId!]?.notifyEnter = false
+        
         var resourceId = segmentedControl.titleForSegmentAtIndex(segmentedControl.selectedSegmentIndex)
+        
+        nutella?.location.resource[resourceId!]?.notifyEnter = true
+        
         nutella?.resourceId = resourceId
+        if let x = nutella?.location.resource[resourceId!]?.continuous.x {
+            self.stepper.value = x
+        }
     }
     
     @IBAction func positionChanged(sender: AnyObject) {
@@ -58,11 +70,24 @@ class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDeleg
         println("Response received")
     }
     
-    func managedResourceUpdated(resource: NLManagedResource) {
+    // MARK: NutellaLocationDelegate
+    func resourceUpdated(resource: NLManagedResource) {
         // Update resource
         println(resource.rid)
         println(resource.continuous.x)
         println(resource.continuous.y)
+    }
+    
+    func resourceEntered(dynamicResource: NLManagedResource, staticResource: NLManagedResource) {
+        println("---- ENTER ----")
+        println(dynamicResource.rid)
+        println(staticResource.rid)
+    }
+    
+    func resourceExited(dynamicResource: NLManagedResource, staticResource: NLManagedResource) {
+        println("---- EXIT ----")
+        println(dynamicResource.rid)
+        println(staticResource.rid)
     }
 
 }

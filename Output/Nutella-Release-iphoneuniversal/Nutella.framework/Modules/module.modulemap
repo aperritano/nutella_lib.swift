@@ -1,0 +1,10 @@
+framework module Nutella {
+  umbrella header "Nutella.h"
+
+  export *
+  module * { export * }
+}
+
+module Nutella.Swift {
+    header "Nutella-Swift.h"
+}

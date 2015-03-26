@@ -34,7 +34,7 @@
 		</data>
 		<key>Headers/SimpleMQTTClient-Swift.h</key>
 		<data>
-		gnVQcDgBY00F5HwhCIEjOyH2l+Y=
+		r4pFzPYifGQXmSiq1aBAcYzbt3E=
 		</data>
 		<key>Headers/SimpleMQTTClient.h</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		kltvcQtUtJ3nYOuxP3jDMIOciow=
+		7ZN733QlkMJProLXu76hWERzX5Q=
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm.swiftdoc</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm.swiftmodule</key>
 		<data>
-		R+n3PQtcdhO8IfNARB6gAusPml0=
+		+E6mx4WYB6BiuFNdKCOGk37QoqY=
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		N1TbIanvpahZNLbjVaWYowHQNqo=
+		TkzyD9JEDCDX0yFB6AosSL0waEc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -97,7 +97,7 @@
 		</data>
 		<key>Headers/SimpleMQTTClient-Swift.h</key>
 		<data>
-		gnVQcDgBY00F5HwhCIEjOyH2l+Y=
+		r4pFzPYifGQXmSiq1aBAcYzbt3E=
 		</data>
 		<key>Headers/SimpleMQTTClient.h</key>
 		<data>
@@ -109,7 +109,7 @@
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm.swiftmodule</key>
 		<data>
-		R+n3PQtcdhO8IfNARB6gAusPml0=
+		+E6mx4WYB6BiuFNdKCOGk37QoqY=
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -117,7 +117,7 @@
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		N1TbIanvpahZNLbjVaWYowHQNqo=
+		TkzyD9JEDCDX0yFB6AosSL0waEc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>

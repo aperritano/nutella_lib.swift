@@ -41,6 +41,8 @@ class NLResource {
             self.parameters = parameters
             
             self.notifyUpdate = false
+            self.notifyEnter = false
+            self.notifyExit = false
     }
     convenience init(rid: String) {
         self.init(model: NLResourceModel.UNKNOWN,
@@ -58,6 +60,10 @@ class NLResource {
     
     // Satates that when an update is received the NutellaLocationDelegate must be notified of it
     var notifyUpdate: Bool
+    
+    // Satates that when a resource enter/exit the range the NutellaLocationDelegate must be notified of it
+    var notifyEnter: Bool
+    var notifyExit: Bool
     
     // Resource coordinates
     var continuous: NLResourceContinuous?
@@ -110,7 +116,6 @@ public class NLManagedResource: NLManaged {
     public var continuous: NLManagedResourceContinuous
     public var discrete: NLManagedResourceDiscrete
     
-    // Every time the resource is modified the NutellaLocationDelegate is notified
     public var notifyUpdate: Bool? {
         get {
             return resource?.notifyUpdate
@@ -120,6 +125,23 @@ public class NLManagedResource: NLManaged {
         }
     }
     
+    public var notifyEnter: Bool? {
+        get {
+            return resource?.notifyEnter
+        }
+        set(notifyEnter) {
+            resource?.notifyEnter = notifyEnter!
+        }
+    }
+    
+    public var notifyExit: Bool? {
+        get {
+            return resource?.notifyExit
+        }
+        set(notifyExit) {
+            resource?.notifyExit = notifyExit!
+        }
+    }
 }
 
 protocol NLManagedResourceDelegate : class {
@@ -298,8 +320,6 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         
         resource.delegate = self
         
-        println("Location initialization")
-        
         net.delegate = self
         
         // Request the authorization to access the user location in every moment
@@ -346,7 +366,6 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
     }
     
     public func locationManager(manager: CLLocationManager, didRangeBeacons: [AnyObject], inRegion: CLBeaconRegion) {
-        println("Monitor region")
         for clBeacon in didRangeBeacons {
             println(clBeacon.proximityUUID);
             println(clBeacon.major);
@@ -379,7 +398,6 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                         if let clientResource = self._resource {
                             if(clientResource.type == NLResourceType.STATIC &&
                                resource.type == NLResourceType.DYNAMIC) {
-                                    println("Send beacon update");
                                     self.net.publish("location/resource/update", message: [
                                         "rid": beacon!.rid,
                                         "proximity": ["rid": myRid,
@@ -404,6 +422,82 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         }
     }
     
+    func updateResource(resource: Dictionary<String, AnyObject>) {
+        if let rid = resource["rid"] as? String {
+            if let type = resource["type"] as? String {
+                if let model = resource["model"] as? String {
+                    if let parameters = resource["parameters"] as? Dictionary<String, AnyObject> {
+                        var r = self.resource.resources[rid]
+                        
+                        if r == nil {
+                            r = NLResource(rid: rid)
+                        }
+                        
+                        switch(type) {
+                        case "STATIC":
+                            r!.type = NLResourceType.STATIC
+                            break
+                        case "DYNAMIC":
+                            r!.type = NLResourceType.DYNAMIC
+                            break
+                        default:
+                            r!.type = NLResourceType.UNKNOWN
+                        }
+                        
+                        switch(model) {
+                        case "IMAC":
+                            r!.model = NLResourceModel.IMAC
+                            break
+                        case "IPHONE":
+                            r!.model = NLResourceModel.IPHONE
+                            break
+                        case "IPAD":
+                            r!.model = NLResourceModel.IPAD
+                            break
+                        case "IBEACON":
+                            r!.model = NLResourceModel.IBEACON
+                            break
+                        default:
+                            r!.model = NLResourceModel.UNKNOWN
+                        }
+                        
+                        if let continuous = resource["continuous"] as? Dictionary<String, AnyObject> {
+                            r!.trackingSystem = NLResourceTrackingSystem.CONTINUOUS
+                            if let x = continuous["x"] as? Double {
+                                if let y = continuous["y"] as? Double {
+                                    r!.continuous = NLResourceContinuous(x: x, y: y)
+                                }
+                            }
+                        }
+                        
+                        if let discrete = resource["discrete"] as? Dictionary<String, AnyObject> {
+                            r!.trackingSystem = NLResourceTrackingSystem.DISCRETE
+                            if let x = discrete["x"] as? Double {
+                                if let y = discrete["y"] as? Double {
+                                    r!.discrete = NLResourceDiscrete(x: x, y: y)
+                                }
+                            }
+                        }
+                        
+                        if let proximity = resource["proximity"] as? Dictionary<String, AnyObject> {
+                            r!.trackingSystem = NLResourceTrackingSystem.PROXIMITY
+                            if let baseStationRid = proximity["rid"] as? String {
+                                if let distance = proximity["distance"] as? Double {
+                                    r!.proximity = NLResourceProximity(rid: rid, distance: distance)
+                                }
+                            }
+                        }
+                        
+                        // Update the resource if updates enabled
+                        if r?.notifyUpdate == true {
+                            self.delegate?.resourceUpdated(NLManagedResource(resource: r!, delegate: self))
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     
     
     // MARK: NutellaNetDelegate
@@ -412,79 +506,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         if channel == "location/resources/updated" {
             if let resources = message["resources"] as? [Dictionary<String, AnyObject>] {
                 for resource in resources {
-                    if let rid = resource["rid"] as? String {
-                        if let type = resource["type"] as? String {
-                            if let model = resource["model"] as? String {
-                                if let parameters = resource["parameters"] as? Dictionary<String, AnyObject> {
-                                    var r = self.resource.resources[rid]
-                                    
-                                    if r == nil {
-                                        r = NLResource(rid: rid)
-                                    }
-                                    
-                                    switch(type) {
-                                        case "STATIC":
-                                            r!.type = NLResourceType.STATIC
-                                            break
-                                        case "DYNAMIC":
-                                            r!.type = NLResourceType.DYNAMIC
-                                            break
-                                        default:
-                                            r!.type = NLResourceType.UNKNOWN
-                                    }
-                                    
-                                    switch(model) {
-                                        case "IMAC":
-                                            r!.model = NLResourceModel.IMAC
-                                            break
-                                        case "IPHONE":
-                                            r!.model = NLResourceModel.IPHONE
-                                            break
-                                        case "IPAD":
-                                            r!.model = NLResourceModel.IPAD
-                                            break
-                                        case "IBEACON":
-                                            r!.model = NLResourceModel.IBEACON
-                                            break
-                                        default:
-                                            r!.model = NLResourceModel.UNKNOWN
-                                    }
-                                    
-                                    if let continuous = resource["continuous"] as? Dictionary<String, AnyObject> {
-                                        r!.trackingSystem = NLResourceTrackingSystem.CONTINUOUS
-                                        if let x = continuous["x"] as? Double {
-                                            if let y = continuous["y"] as? Double {
-                                                r!.continuous = NLResourceContinuous(x: x, y: y)
-                                            }
-                                        }
-                                    }
-                                    
-                                    if let discrete = resource["discrete"] as? Dictionary<String, AnyObject> {
-                                        r!.trackingSystem = NLResourceTrackingSystem.DISCRETE
-                                        if let x = discrete["x"] as? Double {
-                                            if let y = discrete["y"] as? Double {
-                                                r!.discrete = NLResourceDiscrete(x: x, y: y)
-                                            }
-                                        }
-                                    }
-                                    
-                                    if let proximity = resource["proximity"] as? Dictionary<String, AnyObject> {
-                                        r!.trackingSystem = NLResourceTrackingSystem.PROXIMITY
-                                        if let baseStationRid = proximity["rid"] as? String {
-                                            if let distance = proximity["distance"] as? Double {
-                                                r!.proximity = NLResourceProximity(rid: rid, distance: distance)
-                                            }
-                                        }
-                                    }
-                                    
-                                    // Update the resource if updates enabled
-                                    if r?.notifyUpdate == true {
-                                        self.delegate?.managedResourceUpdated(NLManagedResource(resource: r!, delegate: self))
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    updateResource(resource)
                 }
             }
         }
@@ -492,13 +514,43 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         // Resource enter
         if let match = channel.rangeOfString("^location/resource/static/.*/enter$", options: .RegularExpressionSearch) {
             let baseStationRid = channel.substringWithRange(Range<String.Index>(start: advance(channel.startIndex, 25), end: advance(channel.endIndex,-6)))
-            println("ENTER")
+            
+            // Update the resources
+            if let resources = message["resources"] as? [Dictionary<String, AnyObject>] {
+                for resource in resources {
+                    updateResource(resource)
+                    if let rid = resource["rid"] as? String {
+                        let dynamicResource = self.resource.resources[rid]
+                        let staticResource = self.resource.resources[baseStationRid]
+                        
+                        if dynamicResource != nil && staticResource !=  nil && staticResource?.notifyEnter == true {
+                            self.delegate?.resourceEntered(NLManagedResource(resource: dynamicResource!, delegate: self),
+                                staticResource: NLManagedResource(resource: staticResource!, delegate: self))
+                        }
+                    }
+                }
+            }
         }
         
         // Resource exit
         if let match = channel.rangeOfString("^location/resource/static/.*/exit$", options: .RegularExpressionSearch) {
             let baseStationRid = channel.substringWithRange(Range<String.Index>(start: advance(channel.startIndex, 25), end: advance(channel.endIndex,-5)))
-            println("EXIT")
+            
+            // Update the resources
+            if let resources = message["resources"] as? [Dictionary<String, AnyObject>] {
+                for resource in resources {
+                    updateResource(resource)
+                    if let rid = resource["rid"] as? String {
+                        let dynamicResource = self.resource.resources[rid]
+                        let staticResource = self.resource.resources[baseStationRid]
+                        
+                        if dynamicResource != nil && staticResource !=  nil && staticResource?.notifyExit == true {
+                            self.delegate?.resourceExited(NLManagedResource(resource: dynamicResource!, delegate: self),
+                                staticResource: NLManagedResource(resource: staticResource!, delegate: self))
+                        }
+                    }
+                }
+            }
         }
     }
     
@@ -638,7 +690,6 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         Update the resource on server
     */
     func updateResource(resource: NLResource) {
-        println("Update resource " + resource.rid)
         var message: [String:AnyObject] = [
             "rid": resource.rid
         ]

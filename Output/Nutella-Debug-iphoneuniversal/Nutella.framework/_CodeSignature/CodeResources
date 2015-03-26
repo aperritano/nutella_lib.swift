@@ -6,7 +6,7 @@
 	<dict>
 		<key>Frameworks/SimpleMQTTClient.framework/Info.plist</key>
 		<data>
-		kltvcQtUtJ3nYOuxP3jDMIOciow=
+		7ZN733QlkMJProLXu76hWERzX5Q=
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/SimpleMQTTClient.swiftmodule/arm.swiftdoc</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/SimpleMQTTClient.swiftmodule/arm.swiftmodule</key>
 		<data>
-		R+n3PQtcdhO8IfNARB6gAusPml0=
+		+E6mx4WYB6BiuFNdKCOGk37QoqY=
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/SimpleMQTTClient.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/SimpleMQTTClient.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		N1TbIanvpahZNLbjVaWYowHQNqo=
+		TkzyD9JEDCDX0yFB6AosSL0waEc=
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/SimpleMQTTClient.swiftmodule/i386.swiftdoc</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/SimpleMQTTClient.swiftmodule/i386.swiftmodule</key>
 		<data>
-		rBPzBnzvfbTs6y2ctYaqFYEqPug=
+		MwZ9jQL2oLtSZ+nkgyb/7r2ik7U=
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/SimpleMQTTClient.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/SimpleMQTTClient.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		Fu1nadMgAeksVWRzXAejAoY817o=
+		vWc4FBNQ2L32d+mmYwdaIiGfqEI=
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/module.modulemap</key>
 		<data>
@@ -46,11 +46,11 @@
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/SimpleMQTTClient</key>
 		<data>
-		qqXK4gOuIuAsI8ZV30bWv4J4VPA=
+		QUhFN2SMEt9vgWsJYagaoC7968k=
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/_CodeSignature/CodeResources</key>
 		<data>
-		h22GQGxynIcwONmWqUrLKupmGx8=
+		7+Ra7Khd4URjDrWrsKo0BXmSn3Q=
 		</data>
 		<key>Headers/ESTBeacon.h</key>
 		<data>
@@ -162,15 +162,15 @@
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftmodule</key>
 		<data>
-		JEV6TaBm5GvdotRIjrX7hwZDin0=
+		7jXiIua7g6vIJ6JJrbYJ6wCFL4s=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		jkwapZx7H82Lv4UzzQUN9VLLQGI=
+		J4ClxBdhaQEZCCTl8zxmNWGTSJY=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		W8F2V+TTtgFCyuDZk1muhBRaQkU=
+		TWaiNtHUQ8EJf2S8bTeDUtY+kvM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -181,7 +181,7 @@
 	<dict>
 		<key>Frameworks/SimpleMQTTClient.framework/Info.plist</key>
 		<data>
-		kltvcQtUtJ3nYOuxP3jDMIOciow=
+		7ZN733QlkMJProLXu76hWERzX5Q=
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/SimpleMQTTClient.swiftmodule/arm.swiftdoc</key>
 		<data>
@@ -189,7 +189,7 @@
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/SimpleMQTTClient.swiftmodule/arm.swiftmodule</key>
 		<data>
-		R+n3PQtcdhO8IfNARB6gAusPml0=
+		+E6mx4WYB6BiuFNdKCOGk37QoqY=
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/SimpleMQTTClient.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -197,7 +197,7 @@
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/SimpleMQTTClient.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		N1TbIanvpahZNLbjVaWYowHQNqo=
+		TkzyD9JEDCDX0yFB6AosSL0waEc=
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/SimpleMQTTClient.swiftmodule/i386.swiftdoc</key>
 		<data>
@@ -205,7 +205,7 @@
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/SimpleMQTTClient.swiftmodule/i386.swiftmodule</key>
 		<data>
-		rBPzBnzvfbTs6y2ctYaqFYEqPug=
+		MwZ9jQL2oLtSZ+nkgyb/7r2ik7U=
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/SimpleMQTTClient.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -213,7 +213,7 @@
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/SimpleMQTTClient.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		Fu1nadMgAeksVWRzXAejAoY817o=
+		vWc4FBNQ2L32d+mmYwdaIiGfqEI=
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/Modules/module.modulemap</key>
 		<data>
@@ -221,11 +221,11 @@
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/SimpleMQTTClient</key>
 		<data>
-		qqXK4gOuIuAsI8ZV30bWv4J4VPA=
+		QUhFN2SMEt9vgWsJYagaoC7968k=
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/_CodeSignature/CodeResources</key>
 		<data>
-		h22GQGxynIcwONmWqUrLKupmGx8=
+		7+Ra7Khd4URjDrWrsKo0BXmSn3Q=
 		</data>
 		<key>Headers/ESTBeacon.h</key>
 		<data>
@@ -333,15 +333,15 @@
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftmodule</key>
 		<data>
-		JEV6TaBm5GvdotRIjrX7hwZDin0=
+		7jXiIua7g6vIJ6JJrbYJ6wCFL4s=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		jkwapZx7H82Lv4UzzQUN9VLLQGI=
+		J4ClxBdhaQEZCCTl8zxmNWGTSJY=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		W8F2V+TTtgFCyuDZk1muhBRaQkU=
+		TWaiNtHUQ8EJf2S8bTeDUtY+kvM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>

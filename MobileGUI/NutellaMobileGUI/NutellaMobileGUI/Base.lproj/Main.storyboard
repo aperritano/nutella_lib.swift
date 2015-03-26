@@ -74,6 +74,7 @@
                     <connections>
                         <outlet property="segmentedControl" destination="eQE-kf-Im5" id="Lz0-uk-0pd"/>
                         <outlet property="startButton" destination="A7L-ly-HWM" id="Ua3-kj-c33"/>
+                        <outlet property="stepper" destination="9Zn-RX-mSd" id="3ie-bu-zvG"/>
                         <outlet property="textLabel" destination="IkC-5w-UhW" id="Kpb-Yk-Meb"/>
                     </connections>
                 </viewController>

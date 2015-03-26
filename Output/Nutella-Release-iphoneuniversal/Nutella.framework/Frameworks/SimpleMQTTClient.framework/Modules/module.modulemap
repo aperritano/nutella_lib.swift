@@ -1,0 +1,10 @@
+framework module SimpleMQTTClient {
+  umbrella header "SimpleMQTTClient.h"
+
+  export *
+  module * { export * }
+}
+
+module SimpleMQTTClient.Swift {
+    header "SimpleMQTTClient-Swift.h"
+}
