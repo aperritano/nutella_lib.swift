@@ -17,20 +17,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eQE-kf-Im5">
-                                <rect key="frame" x="16" y="286" width="568" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eQE-kf-Im5">
+                                <rect key="frame" x="16" y="134" width="568" height="29"/>
                                 <segments>
                                     <segment title="iPad1"/>
                                     <segment title="iPad2"/>
                                     <segment title="iPad3"/>
                                     <segment title="iPad4"/>
                                     <segment title="iPad5"/>
-                                    <segment title="iPad5"/>
                                     <segment title="iPad6"/>
+                                    <segment title="iPad7"/>
                                 </segments>
+                                <connections>
+                                    <action selector="ipadSelectionChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="dDI-Cl-28G"/>
+                                </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7L-ly-HWM">
-                                <rect key="frame" x="284" y="391" width="33" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7L-ly-HWM">
+                                <rect key="frame" x="284" y="221" width="33" height="30"/>
                                 <state key="normal" title="Start">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -38,20 +41,28 @@
                                     <action selector="startMonitoring:" destination="BYZ-38-t0r" eventType="touchDown" id="8Pk-cf-aRl"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="131.193.79.236" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IkC-5w-UhW">
-                                <rect key="frame" x="188" y="190" width="224" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="10.0.0.4" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IkC-5w-UhW">
+                                <rect key="frame" x="188" y="43" width="224" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="224" id="hGq-Od-h8F"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="9Zn-RX-mSd">
+                                <rect key="frame" x="253" y="280" width="94" height="29"/>
+                                <connections>
+                                    <action selector="positionChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="mnC-HD-eJe"/>
+                                </connections>
+                            </stepper>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eQE-kf-Im5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="121-84-32a"/>
                             <constraint firstItem="IkC-5w-UhW" firstAttribute="centerX" secondItem="eQE-kf-Im5" secondAttribute="centerX" id="3hb-Ys-sqH"/>
                             <constraint firstItem="eQE-kf-Im5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="56A-q8-cOk"/>
+                            <constraint firstItem="9Zn-RX-mSd" firstAttribute="centerX" secondItem="A7L-ly-HWM" secondAttribute="centerX" id="IcE-eB-eUS"/>
+                            <constraint firstItem="9Zn-RX-mSd" firstAttribute="top" secondItem="A7L-ly-HWM" secondAttribute="bottom" constant="26" id="QlZ-QX-bue"/>
                             <constraint firstItem="eQE-kf-Im5" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="VQy-29-jzK"/>
                             <constraint firstItem="eQE-kf-Im5" firstAttribute="centerX" secondItem="A7L-ly-HWM" secondAttribute="centerX" id="Wbi-jH-5ud"/>
                             <constraint firstItem="A7L-ly-HWM" firstAttribute="top" secondItem="eQE-kf-Im5" secondAttribute="bottom" constant="77" id="o2Z-T4-ZPW"/>
@@ -62,6 +73,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="segmentedControl" destination="eQE-kf-Im5" id="Lz0-uk-0pd"/>
+                        <outlet property="startButton" destination="A7L-ly-HWM" id="Ua3-kj-c33"/>
                         <outlet property="textLabel" destination="IkC-5w-UhW" id="Kpb-Yk-Meb"/>
                     </connections>
                 </viewController>

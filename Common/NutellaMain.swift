@@ -73,6 +73,7 @@ public class Nutella: NutellaConfigDelegate {
         self.location.downloadResourceList()
         
         self.location.startMonitorning()
+        self.location.subscribeResourceUpdate()
     }
     
     /**
@@ -85,6 +86,18 @@ public class Nutella: NutellaConfigDelegate {
         }
         set(delegate) {
             self.net.delegate = delegate
+        }
+    }
+    
+    /**
+        Nutella location module delegate
+    */
+    public var locationDelegate: NutellaLocationDelegate? {
+        get {
+            return self.location.delegate
+        }
+        set(delegate) {
+            self.location.delegate = delegate
         }
     }
     
