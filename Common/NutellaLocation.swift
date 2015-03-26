@@ -71,6 +71,9 @@ class NLResource {
     var proximity: NLResourceProximity?
 }
 
+/**
+    This class manages part of a resource and keep it synchronized with the server
+*/
 public class NLManaged {
     weak var delegate: NLManagedResourceDelegate?
     weak var resource: NLResource?
@@ -81,6 +84,9 @@ public class NLManaged {
     }
 }
 
+/**
+    This class manages a resource and keep it synchronized with the server, it exposes the right permission for every part of the resource
+*/
 public class NLManagedResource: NLManaged {
     
     override init(resource: NLResource, delegate: NLManagedResourceDelegate?) {
@@ -148,6 +154,9 @@ protocol NLManagedResourceDelegate : class {
     func updateResource(resource: NLResource)
 }
 
+/**
+    Model of a resource
+*/
 public enum NLResourceModel {
     case IMAC
     case IPHONE
@@ -156,12 +165,18 @@ public enum NLResourceModel {
     case UNKNOWN
 }
 
+/**
+    Type of resource
+*/
 public enum NLResourceType {
     case STATIC
     case DYNAMIC
     case UNKNOWN
 }
 
+/**
+    Tracking system type
+*/
 public enum NLResourceTrackingSystem {
     case CONTINUOUS
     case DISCRETE
@@ -177,6 +192,9 @@ public struct NLResourceDiscrete {
     public var x, y: Double
 }
 
+/**
+    Manages the continuous coordinate of a resource
+*/
 public class NLManagedResourceContinuous: NLManaged {
     public var x: Double? {
         get {
@@ -202,6 +220,9 @@ public class NLManagedResourceContinuous: NLManaged {
     }
 }
 
+/**
+    Manages the discrete coordinate of a resource
+*/
 public class NLManagedResourceDiscrete: NLManaged {
     public var x: Double? {
         get {
@@ -232,6 +253,9 @@ public struct NLResourceProximity {
     var distance: Double
 }
 
+/**
+    Manages all the resources and keep them accessible to the client
+*/
 public class NLResourceManager {
     var resources = [String:NLResource]()
     
@@ -256,6 +280,9 @@ func == (left: NLBeacon, right: CLBeacon) -> Bool {
         left.major == right.major
 }
 
+/**
+    This class enables the communication with RoomPlaces module
+*/
 public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDelegate, NLManagedResourceDelegate {
     
     var delegate: NutellaLocationDelegate?
@@ -301,6 +328,9 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         }
     }
     
+    /**
+        Resource manager: enable the access to the resources
+    */
     public var resource: NLResourceManager!
     
     // Resource associated with nutella client
@@ -686,9 +716,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
     
     // MARK: NLManagedResourceDelegate
     
-    /**
-        Update the resource on server
-    */
+    // Update the resource on the server
     func updateResource(resource: NLResource) {
         var message: [String:AnyObject] = [
             "rid": resource.rid
