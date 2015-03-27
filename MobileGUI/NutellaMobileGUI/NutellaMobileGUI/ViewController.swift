@@ -9,7 +9,7 @@
 import UIKit
 import Nutella
 
-class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDelegate {
+class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDelegate, UITableViewDataSource {
     
     var nutella: Nutella?
 
@@ -17,6 +17,7 @@ class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDeleg
     @IBOutlet weak var textLabel: UITextField!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stepper: UIStepper!
+    @IBOutlet weak var parametersTableView: UITableView!
     
     @IBAction func startMonitoring(sender: AnyObject) {
         self.startButton.enabled = false
@@ -34,16 +35,21 @@ class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDeleg
     }
     
     @IBAction func ipadSelectionChanged(sender: AnyObject) {
+        nutella?.location.resource[nutella!.resourceId!]?.notifyUpdate = false
         nutella?.location.resource[nutella!.resourceId!]?.notifyEnter = false
+        nutella?.location.resource[nutella!.resourceId!]?.notifyExit = false
         
         var resourceId = segmentedControl.titleForSegmentAtIndex(segmentedControl.selectedSegmentIndex)
         
+        nutella?.location.resource[resourceId!]?.notifyUpdate = true
         nutella?.location.resource[resourceId!]?.notifyEnter = true
+        nutella?.location.resource[resourceId!]?.notifyExit = true
         
         nutella?.resourceId = resourceId
         if let x = nutella?.location.resource[resourceId!]?.continuous.x {
             self.stepper.value = x
         }
+        parametersTableView.reloadData()
     }
     
     @IBAction func positionChanged(sender: AnyObject) {
@@ -51,7 +57,6 @@ class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDeleg
         if let stepper = sender as? UIStepper {
             let position = stepper.value
             nutella?.location.resource[resourceId!]?.continuous.x = position
-            nutella?.location.resource[resourceId!]?.notifyUpdate = true
         }
     }
     
@@ -76,6 +81,7 @@ class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDeleg
         println(resource.rid)
         println(resource.continuous.x)
         println(resource.continuous.y)
+        parametersTableView.reloadData()
     }
     
     func resourceEntered(dynamicResource: NLManagedResource, staticResource: NLManagedResource) {
@@ -88,6 +94,46 @@ class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDeleg
         println("---- EXIT ----")
         println(dynamicResource.rid)
         println(staticResource.rid)
+    }
+    
+    // MARK: UITableViewDataSource
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("ciao") as? UITableViewCell
+        if cell == nil{
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "ciao")
+            
+        }
+        if tableView.tag == 1 {
+            let key = self.nutella!.location.resource[self.nutella!.resourceId!]!.parameters[indexPath.row]
+            let value = self.nutella!.location.resource[self.nutella!.resourceId!]!.parameter[key]!
+            cell!.textLabel?.text = key + ":" + value
+        }
+        return cell!
+
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView.tag == 1 {
+            if let numParam = self.nutella?.location.resource[self.nutella!.resourceId!]?.parameters.count {
+                return numParam
+            }
+            return 0
+        }
+        else if tableView.tag == 2 {
+            return 0
+        }
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if tableView.tag == 1 {
+            return "Property"
+        }
+        else if tableView.tag == 2 {
+            return "Dynamic resources"
+        }
+        return "Table"
     }
 
 }

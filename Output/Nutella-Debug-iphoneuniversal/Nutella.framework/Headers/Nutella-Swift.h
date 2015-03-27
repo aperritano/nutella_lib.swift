@@ -117,6 +117,8 @@ SWIFT_PROTOCOL("_TtP7Nutella18NutellaNetDelegate_")
 @class CLLocationManager;
 @class CLBeaconRegion;
 
+
+/// This class enables the communication with RoomPlaces module
 SWIFT_CLASS("_TtC7Nutella15NutellaLocation")
 @interface NutellaLocation : NSObject <NutellaNetDelegate, CLLocationManagerDelegate>
 - (void)downloadBeaconList;

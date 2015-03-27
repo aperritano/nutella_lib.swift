@@ -92,6 +92,7 @@ public class NLManagedResource: NLManaged {
     override init(resource: NLResource, delegate: NLManagedResourceDelegate?) {
         self.continuous = NLManagedResourceContinuous(resource: resource, delegate: delegate)
         self.discrete = NLManagedResourceDiscrete(resource: resource, delegate: delegate)
+        self.parameter = NLManagedResourceParameterManager(resource: resource, delegate: delegate)
         super.init(resource: resource, delegate: delegate)
     }
     
@@ -121,6 +122,17 @@ public class NLManagedResource: NLManaged {
     }
     public var continuous: NLManagedResourceContinuous
     public var discrete: NLManagedResourceDiscrete
+    public var parameter: NLManagedResourceParameterManager
+    
+    public var parameters: [String] {
+        var keys = [String]()
+        if let resource = self.resource {
+            for (key, value) in resource.parameters {
+                keys.append(key)
+            }
+        }
+        return keys
+    }
     
     public var notifyUpdate: Bool? {
         get {
@@ -251,6 +263,20 @@ public class NLManagedResourceDiscrete: NLManaged {
 public struct NLResourceProximity {
     var rid: String
     var distance: Double
+}
+
+public class NLManagedResourceParameterManager: NLManaged {
+    public subscript(key: String) -> String? {
+        get {
+            return self.resource?.parameters[key]
+        }
+        set(newValue) {
+            self.resource?.parameters[key] = newValue
+            if let resource = self.resource {
+                self.delegate?.updateResource(resource)
+            }
+        }
+    }
 }
 
 /**
@@ -461,6 +487,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                         
                         if r == nil {
                             r = NLResource(rid: rid)
+                            self.resource.resources[rid] = r
                         }
                         
                         switch(type) {
@@ -515,6 +542,24 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                                 if let distance = proximity["distance"] as? Double {
                                     r!.proximity = NLResourceProximity(rid: rid, distance: distance)
                                 }
+                            }
+                        }
+                        
+                        // Update resource parameters
+                        if let parameters = resource["parameters"] as? Dictionary<String, String> {
+                            r!.parameters = parameters
+                        }
+                        
+                        // Search the corresponding beacon and connect it
+                        if let beacon = self.beacons[rid] {
+                            beacon.resource = r!
+                            r!.beacon = beacon
+                        }
+                        
+                        // Set the resource type of the client
+                        if let resourceId = self.resourceId {
+                            if resourceId == rid {
+                                self._resource = r!
                             }
                         }
                         
@@ -628,6 +673,8 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
             if let r = response as? Dictionary<String, [AnyObject]> {
                 if let resources = response["resources"] as? [Dictionary<String, AnyObject>] {
                     for resource in resources {
+                        updateResource(resource)
+                        /*
                         if let rid = resource["rid"] as? String {
                             if let model = resource["model"] as? String {
                                 if let type = resource["type"] as? String {
@@ -702,6 +749,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                                 }
                             }
                         }
+                        */
                     }
                 }
             }
