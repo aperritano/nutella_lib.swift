@@ -46,7 +46,12 @@ public class NutellaNet: SimpleMQTTClientDelegate {
     var urlInit: String {
         get {
             if let runId = self.configDelegate?.runId {
-                return runId + "/"
+                if let appId = self.configDelegate?.appId {
+                    return "/nutella/apps/" + appId + "/runs/" + runId + "/"
+                }
+                else {
+                    return "/"
+                }
             }
             else {
                 return "/"
@@ -124,17 +129,21 @@ public class NutellaNet: SimpleMQTTClientDelegate {
             println("[\(self)] publish channel: \(channel) message: \(message)")
         }
         
-        var componentId = self.configDelegate?.componentId;
-        var resourceId = self.configDelegate?.resourceId;
+        var componentId: String = self.configDelegate!.componentId;
+        var resourceId: String = "";
+        var applicationId: String = self.configDelegate!.appId;
+        var runId: String = self.configDelegate!.runId;
         
-        var from = "";
-        
-        if let cid = componentId {
-            from += cid
-            if let rid =  resourceId {
-                from += "/" + rid
-            }
+        if let rid = self.configDelegate?.resourceId {
+            resourceId = rid
         }
+        
+        var from: [String:AnyObject] = ["type":"run",
+            "run_id": runId,
+            "app_id": applicationId,
+            "resource_id": resourceId,
+            "component_id": componentId
+        ];
         
         var finalMessage: [String:AnyObject] = [String:AnyObject]()
         
@@ -161,19 +170,23 @@ public class NutellaNet: SimpleMQTTClientDelegate {
             println("[\(self)] asyncRequest channel: \(channel) message: \(message)")
         }
         
-        var componentId = self.configDelegate?.componentId;
-        var resourceId = self.configDelegate?.resourceId;
+        var componentId: String = self.configDelegate!.componentId;
+        var resourceId: String = "";
+        var applicationId: String = self.configDelegate!.appId;
+        var runId: String = self.configDelegate!.runId;
+        
+        if let rid = self.configDelegate?.resourceId {
+            resourceId = rid
+        }
         
         var id = Int(arc4random_uniform(1000000000))
         
-        var from = "";
-        
-        if let cid = componentId {
-            from += cid
-            if let rid =  resourceId {
-                from += "/" + rid
-            }
-        }
+        var from: [String:AnyObject] = ["type":"run",
+            "run_id": runId,
+            "app_id": applicationId,
+            "resource_id": resourceId,
+            "component_id": componentId
+        ];
         
         requests[id] = NutellaNetRequest(channel: channel,
             id: id,
@@ -291,6 +304,16 @@ public class NutellaNet: SimpleMQTTClientDelegate {
         
         // Remove the runId from the channel
         var path:[String] = channel.componentsSeparatedByString("/")
+        
+        if path.count < 6 {
+            return
+        }
+        
+        path.removeAtIndex(0)
+        path.removeAtIndex(0)
+        path.removeAtIndex(0)
+        path.removeAtIndex(0)
+        path.removeAtIndex(0)
         path.removeAtIndex(0)
         let newChannel = "/".join(path)
         
@@ -299,6 +322,11 @@ public class NutellaNet: SimpleMQTTClientDelegate {
         if var w = wildcard {
             // Remove the runId from the wildcard
             path = w.componentsSeparatedByString("/")
+            path.removeAtIndex(0)
+            path.removeAtIndex(0)
+            path.removeAtIndex(0)
+            path.removeAtIndex(0)
+            path.removeAtIndex(0)
             path.removeAtIndex(0)
             w = "/".join(path)
             
@@ -323,18 +351,20 @@ public class NutellaNet: SimpleMQTTClientDelegate {
             // Check if is a valid request
             if let id = jsonDic["id"] as? Int {
                 if let type = jsonDic["type"] as? String {
-                    if let from = jsonDic["from"] as? String {
+                    if let from = jsonDic["from"] as? [String:AnyObject] {
                         
-                        var fromComponents:[String] = from.componentsSeparatedByString("/")
+                        //var fromComponents:[String] = from.componentsSeparatedByString("/")
                         var componentId = ""
                         var resourceId = ""
                         
+                        /*
                         if(fromComponents.count > 0) {
                             componentId = fromComponents[0];
                         }
                         if(fromComponents.count > 1) {
                             resourceId = fromComponents[1];
                         }
+                        */
                         
                         if type == "request" {
                             if self.subscribed[subscriptionKey]?.request == true {
@@ -346,19 +376,23 @@ public class NutellaNet: SimpleMQTTClientDelegate {
                                 // Reply if the delegate implements the requestReceived function
                                 if let reply: AnyObject = self.delegate?.requestReceived?(newChannel, request: payload, componentId: componentId, resourceId: resourceId) {
                                     
-                                    var componentId = self.configDelegate?.componentId;
-                                    var resourceId = self.configDelegate?.resourceId;
+                                    var componentId: String = self.configDelegate!.componentId;
+                                    var resourceId: String = "";
+                                    var applicationId: String = self.configDelegate!.appId;
+                                    var runId: String = self.configDelegate!.runId;
+                                    
+                                    if let rid = self.configDelegate?.resourceId {
+                                        resourceId = rid
+                                    }
                                     
                                     //Publish the response
                                     
-                                    var from = "";
-                                    
-                                    if let cid = componentId {
-                                        from += cid
-                                        if let rid =  resourceId {
-                                            from += "/" + rid
-                                        }
-                                    }
+                                    var from: [String:AnyObject] = ["type":"run",
+                                        "run_id": runId,
+                                        "app_id": applicationId,
+                                        "resource_id": resourceId,
+                                        "component_id": componentId
+                                    ];
                                     
                                     var finalMessage: [String:AnyObject] = [
                                         "id": id,
@@ -381,18 +415,20 @@ public class NutellaNet: SimpleMQTTClientDelegate {
             
             // Check if is a valid publish message
             if let type = jsonDic["type"] as? String {
-                if let from = jsonDic["from"] as? String {
+                if let from = jsonDic["from"] as? [String:AnyObject] {
                     
-                    var fromComponents:[String] = from.componentsSeparatedByString("/")
+                    //var fromComponents:[String] = from.componentsSeparatedByString("/")
                     var componentId = ""
                     var resourceId = ""
                     
+                    /*
                     if(fromComponents.count > 0) {
                         componentId = fromComponents[0];
                     }
                     if(fromComponents.count > 1) {
                         resourceId = fromComponents[1];
                     }
+                    */
                     
                     if type == "publish" {
                         if let payload: AnyObject = jsonDic["payload"] {
@@ -408,18 +444,20 @@ public class NutellaNet: SimpleMQTTClientDelegate {
             if let id = jsonDic["id"] as? Int {
                 if let type = jsonDic["type"] as? String {
                     if let payload: AnyObject = jsonDic["payload"] {
-                        if let from = jsonDic["from"] as? String {
+                        if let from = jsonDic["from"] as? [String:AnyObject] {
                             
-                            var fromComponents:[String] = from.componentsSeparatedByString("/")
+                            //var fromComponents:[String] = from.componentsSeparatedByString("/")
                             var componentId = ""
                             var resourceId = ""
                             
+                            /*
                             if(fromComponents.count > 0) {
                                 componentId = fromComponents[0];
                             }
                             if(fromComponents.count > 1) {
                                 resourceId = fromComponents[1];
                             }
+                            */
                             
                             if type == "response" {
                                 if let request = requests[id] {

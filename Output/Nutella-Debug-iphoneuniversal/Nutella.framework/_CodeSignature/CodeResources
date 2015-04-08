@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/SimpleMQTTClient</key>
 		<data>
-		93qyIyrGAR7OOZ7E73FGTJMHGCg=
+		lZYlfijsPSa1/Y0N4EroiUDhyGc=
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -146,7 +146,7 @@
 		</data>
 		<key>Headers/Nutella-Swift.h</key>
 		<data>
-		x0qdCR2NYNkpbRkOSyWCuFFPbbI=
+		Xmgzh447IK2vJUAMQlNGW6z4RXE=
 		</data>
 		<key>Headers/Nutella.h</key>
 		<data>
@@ -158,19 +158,19 @@
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftdoc</key>
 		<data>
-		P+MJmZixI1mFWlSCVOA5vLw31hc=
+		PQW1QffEI5cIwu26XCGcAgCbgrQ=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftmodule</key>
 		<data>
-		ry0bK9RUdGOW1jI3oCJnIj/a8+A=
+		tQj/biCimwBKmSAzcwhCiLjvLX4=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		P+MJmZixI1mFWlSCVOA5vLw31hc=
+		PQW1QffEI5cIwu26XCGcAgCbgrQ=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		iN811RB2p4gx2zZctYikNxcodtI=
+		8aBYCpGkS0C5UoOw8/GbT5eomtk=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -221,7 +221,7 @@
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/SimpleMQTTClient</key>
 		<data>
-		93qyIyrGAR7OOZ7E73FGTJMHGCg=
+		lZYlfijsPSa1/Y0N4EroiUDhyGc=
 		</data>
 		<key>Frameworks/SimpleMQTTClient.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -321,7 +321,7 @@
 		</data>
 		<key>Headers/Nutella-Swift.h</key>
 		<data>
-		x0qdCR2NYNkpbRkOSyWCuFFPbbI=
+		Xmgzh447IK2vJUAMQlNGW6z4RXE=
 		</data>
 		<key>Headers/Nutella.h</key>
 		<data>
@@ -329,19 +329,19 @@
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftdoc</key>
 		<data>
-		P+MJmZixI1mFWlSCVOA5vLw31hc=
+		PQW1QffEI5cIwu26XCGcAgCbgrQ=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftmodule</key>
 		<data>
-		ry0bK9RUdGOW1jI3oCJnIj/a8+A=
+		tQj/biCimwBKmSAzcwhCiLjvLX4=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		P+MJmZixI1mFWlSCVOA5vLw31hc=
+		PQW1QffEI5cIwu26XCGcAgCbgrQ=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		iN811RB2p4gx2zZctYikNxcodtI=
+		8aBYCpGkS0C5UoOw8/GbT5eomtk=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>

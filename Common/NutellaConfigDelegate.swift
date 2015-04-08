@@ -10,6 +10,7 @@ import Foundation
 
 @objc protocol NutellaConfigDelegate {
     var runId: String { get }
+    var appId: String { get }
     var componentId: String { get }
     var resourceId: String? { get }
 }

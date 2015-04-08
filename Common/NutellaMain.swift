@@ -21,6 +21,7 @@ import Foundation
 public class Nutella: NutellaConfigDelegate {
     var componentId: String
     var runId: String
+    var appId: String
     
     public var resourceId: String? {
         get {
@@ -55,10 +56,11 @@ public class Nutella: NutellaConfigDelegate {
         :param: runId The run id of the instance of the application.
         :param: clientId The client id used for techinical reason. Do not use it unless you have a valid motivation, the system will take care of generating it if left null
     */
-    public init(brokerHostname: String, runId: String, componentId: String) {
+    public init(brokerHostname: String, appId: String, runId: String, componentId: String) {
         
         self.componentId = componentId
         self.runId = runId
+        self.appId = appId
         self.net = NutellaNet(host: brokerHostname, clientId: nil)
         self.location = NutellaLocation(locationServer: brokerHostname)
         
@@ -72,7 +74,7 @@ public class Nutella: NutellaConfigDelegate {
         self.location.downloadBeaconList()
         self.location.downloadResourceList()
         
-        self.location.startMonitorning()
+        //self.location.startMonitorning()
         self.location.subscribeResourceUpdate()
     }
     

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import CoreBluetooth
 
 class NLBeacon {
     init(uuid: String,
@@ -309,7 +310,7 @@ func == (left: NLBeacon, right: CLBeacon) -> Bool {
 /**
     This class enables the communication with RoomPlaces module
 */
-public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDelegate, NLManagedResourceDelegate {
+public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDelegate, NLManagedResourceDelegate, CBPeripheralDelegate {
     
     var delegate: NutellaLocationDelegate?
     
@@ -335,6 +336,19 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
             if resourceId != nil {
                 if let resource = self.resource.resources[resourceId!] {
                     self._resource = resource
+                    
+                    self.stopMonitoring()
+                    self.stopVirtualBeacon()
+                    
+                    // STATIC => MONITORING
+                    if self._resource?.type == NLResourceType.STATIC {
+                        self.startMonitorning()
+                    }
+                    // DYNAMIC && iBeacon => VIRTUAL BEACON
+                    if self._resource?.type == NLResourceType.DYNAMIC && self._resource?.trackingSystem == NLResourceTrackingSystem.PROXIMITY {
+                        self.startVirtualBeacon()
+                    }
+                    
                 }
             }
         }
@@ -343,6 +357,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
     var beacons = [String:NLBeacon]()
     var regions = [CLBeaconRegion]()
     let locationManager = CLLocationManager()
+    let peripheralManager = CBPeripheralManager(delegate: nil, queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
     
     var resources: [String] {
         get {
@@ -399,6 +414,9 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         self.net.subscribe("location/resources/updated");
         self.net.subscribe("location/resource/static/#");
         
+        // Subscribe to beacon and virtual beacon update
+        self.net.subscribe("beacon/beacons/added");
+        
     }
     
     public func startMonitoringRegions(uuids: [String]) {
@@ -407,6 +425,12 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
             self.locationManager.startRangingBeaconsInRegion(region)
             self.regions.append(region)
         }
+        
+        // Hardcoded region for virtual beacons
+        let uuid = "00000000-0000-0000-0000-000000000000"
+        var region: CLBeaconRegion = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: uuid), identifier: uuid)
+        self.locationManager.startRangingBeaconsInRegion(region)
+        self.regions.append(region)
     }
     
     public func startMonitorning() {
@@ -419,6 +443,33 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         for region in self.regions {
             self.locationManager.stopMonitoringForRegion(region)
         }
+        self.regions = []
+    }
+    
+    public func startVirtualBeacon() {
+        if let rid = self._resource?.rid {
+            self.net.asyncRequest("beacon/virtual_beacon", message: ["rid": rid], requestName: "virtual_beacon")
+        }
+    }
+    
+    public func startVirtualBeacon(major: Int, minor: Int) {
+        /*
+        if peripheralManager.state.rawValue < CBPeripheralManagerState.PoweredOn.rawValue {
+            println("WARNING: Bluetooth disabled")
+        }
+        */
+        
+        // Create the region
+        let uuid = NSUUID(UUIDString: "00000000-0000-0000-0000-000000000000")
+        var region = CLBeaconRegion(proximityUUID: uuid, major: UInt16(major), minor: UInt16(minor), identifier: "virtual_beacon")
+        
+        if let peripheralData = region.peripheralDataWithMeasuredPower(-59) {
+            peripheralManager.startAdvertising(peripheralData)
+        }
+    }
+    
+    public func stopVirtualBeacon() {
+        peripheralManager.stopAdvertising()
     }
     
     public func locationManager(manager: CLLocationManager, didRangeBeacons: [AnyObject], inRegion: CLBeaconRegion) {
@@ -627,6 +678,36 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                 }
             }
         }
+        
+        // Beacon or virtual beacon added
+        if channel == "beacon/beacons/added" {
+            if let beacons = message["beacons"] as? [Dictionary<String, AnyObject>] {
+                for beacon in beacons {
+                    if let uuid = beacon["uuid"] as? String {
+                        if let minorS = beacon["minor"] as? String {
+                            if let majorS = beacon["major"] as? String {
+                                if let minor = minorS.toInt() {
+                                    if let major = majorS.toInt() {
+                                        if let rid = beacon["rid"] as? String {
+                                            var b = NLBeacon(uuid: uuid,
+                                                minor: minor,
+                                                major: major,
+                                                rid: rid)
+                                            self.beacons[rid] = b
+                                            
+                                            if let resource = self.resource.resources[rid] {
+                                                b.resource = resource
+                                                resource.beacon = b
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     public func responseReceived(channelName: String, requestName: String?, response: AnyObject) {
@@ -674,84 +755,24 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                 if let resources = response["resources"] as? [Dictionary<String, AnyObject>] {
                     for resource in resources {
                         updateResource(resource)
-                        /*
-                        if let rid = resource["rid"] as? String {
-                            if let model = resource["model"] as? String {
-                                if let type = resource["type"] as? String {
-                                    var newResource = NLResource(rid: rid)
-                                    if let continuous = resource["continuous"] as? Dictionary<String, AnyObject> {
-                                        newResource.trackingSystem = NLResourceTrackingSystem.CONTINUOUS;
-                                        if let x = continuous["x"] as? Double {
-                                            if let y = continuous["y"] as? Double {
-                                                newResource.continuous = NLResourceContinuous(x: x, y: y)
-                                            }
-                                        }
-                                    }
-                                    if let discrete = resource["discrete"] as? Dictionary<String, AnyObject> {
-                                        newResource.trackingSystem = NLResourceTrackingSystem.DISCRETE;
-                                        if let x = discrete["x"] as? Double {
-                                            if let y = discrete["y"] as? Double {
-                                                newResource.discrete = NLResourceDiscrete(x: x, y: y)
-                                            }
-                                        }
-                                    }
-                                    if let proximity = resource["proximity"] as? Dictionary<String, AnyObject> {
-                                        newResource.trackingSystem = NLResourceTrackingSystem.PROXIMITY;
-                                        if let baseStationRid = proximity["rid"] as? String {
-                                            if let distance = proximity["distance"] as? Double {
-                                                newResource.proximity = NLResourceProximity(rid: rid, distance: distance)
-                                            }
-                                        }
-                                    }
-                                    
-                                    switch(type) {
-                                    case "STATIC":
-                                        newResource.type = NLResourceType.STATIC
-                                        break
-                                    case "DYNAMIC":
-                                        newResource.type = NLResourceType.DYNAMIC
-                                        break
-                                    default:
-                                        newResource.type = NLResourceType.UNKNOWN
-                                    }
-                                    
-                                    switch(model) {
-                                    case "IMAC":
-                                        newResource.model = NLResourceModel.IMAC
-                                        break
-                                    case "IPHONE":
-                                        newResource.model = NLResourceModel.IPHONE
-                                        break
-                                    case "IPAD":
-                                        newResource.model = NLResourceModel.IPAD
-                                        break
-                                    case "IBEACON":
-                                        newResource.model = NLResourceModel.IBEACON
-                                        break
-                                    default:
-                                        newResource.model = NLResourceModel.UNKNOWN
-                                    }
-                                    
-                                    self.resource.resources[rid] = newResource
-                                    
-                                    // Search the corresponding beacon and connect it
-                                    if let beacon = self.beacons[rid] {
-                                        beacon.resource = newResource
-                                        newResource.beacon = beacon
-                                    }
-                                    
-                                    // Set the resource type of the client
-                                    if let resourceId = self.resourceId {
-                                        if resourceId == rid {
-                                            self._resource = newResource
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        */
                     }
                 }
+            }
+        }
+        
+        if requestName == "virtual_beacon" {
+            if let r = response as? Dictionary<String, AnyObject> {
+                if let minorS = r["minor"] as? String {
+                    if let majorS = r["major"] as? String {
+                        if let minor = minorS.toInt() {
+                            if let major = majorS.toInt() {
+                                println(minor);
+                                self.startVirtualBeacon(major, minor: minor)
+                            }
+                        }
+                    }
+                }
+
             }
         }
     }

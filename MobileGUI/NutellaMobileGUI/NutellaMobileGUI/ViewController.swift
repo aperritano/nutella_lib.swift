@@ -26,7 +26,7 @@ class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDeleg
         var resourceId = segmentedControl.titleForSegmentAtIndex(segmentedControl.selectedSegmentIndex)
         
         
-        nutella = Nutella(brokerHostname: textLabel.text, runId: "crepe", componentId: "test_component")
+        nutella = Nutella(brokerHostname: textLabel.text, appId: "crepe", runId: "default", componentId: "test_component")
         nutella?.resourceId = resourceId
         nutella?.netDelegate = self
         nutella?.locationDelegate = self

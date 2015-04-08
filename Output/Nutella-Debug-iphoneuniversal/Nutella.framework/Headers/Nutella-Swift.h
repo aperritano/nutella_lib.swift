@@ -66,6 +66,7 @@ typedef struct _NSZone NSZone;
 @import Foundation;
 @import ObjectiveC;
 @import CoreLocation;
+@import CoreBluetooth;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -120,13 +121,16 @@ SWIFT_PROTOCOL("_TtP7Nutella18NutellaNetDelegate_")
 
 /// This class enables the communication with RoomPlaces module
 SWIFT_CLASS("_TtC7Nutella15NutellaLocation")
-@interface NutellaLocation : NSObject <NutellaNetDelegate, CLLocationManagerDelegate>
+@interface NutellaLocation : NSObject <NutellaNetDelegate, CLLocationManagerDelegate, CBPeripheralDelegate>
 - (void)downloadBeaconList;
 - (void)downloadResourceList;
 - (void)subscribeResourceUpdate;
 - (void)startMonitoringRegions:(NSArray *)uuids;
 - (void)startMonitorning;
 - (void)stopMonitoring;
+- (void)startVirtualBeacon;
+- (void)startVirtualBeacon:(NSInteger)major minor:(NSInteger)minor;
+- (void)stopVirtualBeacon;
 - (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)didRangeBeacons inRegion:(CLBeaconRegion *)inRegion;
 - (void)messageReceived:(NSString *)channel message:(id)message componentId:(NSString *)componentId resourceId:(NSString *)resourceId;
 - (void)responseReceived:(NSString *)channelName requestName:(NSString *)requestName response:(id)response;
