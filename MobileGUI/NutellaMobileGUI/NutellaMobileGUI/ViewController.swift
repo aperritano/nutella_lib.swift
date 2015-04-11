@@ -14,19 +14,26 @@ class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDeleg
     var nutella: Nutella?
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var textLabel: UITextField!
+    @IBOutlet weak var brokerText: UITextField!
+    @IBOutlet weak var appIdText: UITextField!
+    @IBOutlet weak var runIdText: UITextField!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var parametersTableView: UITableView!
     
     @IBAction func startMonitoring(sender: AnyObject) {
         self.startButton.enabled = false
-        self.textLabel.enabled = false
+        self.brokerText.enabled = false
+        self.appIdText.enabled = false
+        self.runIdText.enabled = false
         
         var resourceId = segmentedControl.titleForSegmentAtIndex(segmentedControl.selectedSegmentIndex)
         
         
-        nutella = Nutella(brokerHostname: textLabel.text, appId: "crepe", runId: "default", componentId: "test_component")
+        nutella = Nutella(brokerHostname: brokerText.text,
+            appId: appIdText.text,
+            runId: runIdText.text,
+            componentId: "test_component")
         nutella?.resourceId = resourceId
         nutella?.netDelegate = self
         nutella?.locationDelegate = self

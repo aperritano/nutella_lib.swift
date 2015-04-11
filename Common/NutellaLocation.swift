@@ -464,7 +464,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         var region = CLBeaconRegion(proximityUUID: uuid, major: UInt16(major), minor: UInt16(minor), identifier: "virtual_beacon")
         
         if let peripheralData = region.peripheralDataWithMeasuredPower(-59) {
-            peripheralManager.startAdvertising(peripheralData)
+            peripheralManager.startAdvertising(peripheralData as [NSObject : AnyObject])
         }
     }
     
@@ -487,14 +487,14 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                 
                 // Search for the right beacon
                 for (rid, b) in self.beacons {
-                    if b == clBeacon as CLBeacon {
+                    if b == clBeacon as! CLBeacon {
                         beacon = b
                         break
                     }
                 }
                 
                 if beacon != nil {
-                    let distance = (clBeacon as CLBeacon).accuracy
+                    let distance = (clBeacon as! CLBeacon).accuracy
                     
                     if distance < 0 {
                         continue

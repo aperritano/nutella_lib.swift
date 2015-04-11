@@ -11,5 +11,5 @@ import Foundation
 /**
     This protocol is there for future uses
 */
-@objc public protocol NutellaDelegate {
+public protocol NutellaDelegate: class {
 }

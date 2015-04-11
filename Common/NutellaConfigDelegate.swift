@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc protocol NutellaConfigDelegate {
+protocol NutellaConfigDelegate: class {
     var runId: String { get }
     var appId: String { get }
     var componentId: String { get }
