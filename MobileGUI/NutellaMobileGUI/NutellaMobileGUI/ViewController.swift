@@ -33,12 +33,10 @@ class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDeleg
         nutella = Nutella(brokerHostname: brokerText.text,
             appId: appIdText.text,
             runId: runIdText.text,
-            componentId: "test_component")
+            componentId: "test_component",
+            netDelegate: self,
+            locationDelegate: self)
         nutella?.resourceId = resourceId
-        nutella?.netDelegate = self
-        nutella?.locationDelegate = self
-        
-        nutella?.location.resource[resourceId!]?.notifyEnter = true
     }
     
     @IBAction func ipadSelectionChanged(sender: AnyObject) {
@@ -101,6 +99,29 @@ class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDeleg
         println("---- EXIT ----")
         println(dynamicResource.rid)
         println(staticResource.rid)
+    }
+    
+    func ready() {
+        var resourceId = segmentedControl.titleForSegmentAtIndex(segmentedControl.selectedSegmentIndex)
+        
+        nutella?.location.resource[resourceId!]?.notifyEnter = true
+        nutella?.location.resource[resourceId!]?.notifyEnter = false
+        
+        var table1 = nutella?.location.resource["Table1"]
+        var discrete1 = nutella?.location.resource["discrete1"]
+        var discrete = discrete1?.discrete
+        var x = discrete?.x
+        
+        println(x)
+
+        /*
+        switch(x!) {
+            case .Letter(let letter):
+                println(letter)
+            case .Number(let number):
+                println(number)
+        }
+        */
     }
     
     // MARK: UITableViewDataSource

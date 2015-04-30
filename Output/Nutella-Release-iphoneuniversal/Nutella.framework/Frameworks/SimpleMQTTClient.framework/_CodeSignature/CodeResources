@@ -6,84 +6,11 @@
 	<dict>
 		<key>Info.plist</key>
 		<data>
-		7ZN733QlkMJProLXu76hWERzX5Q=
-		</data>
-		<key>Modules/SimpleMQTTClient.swiftmodule/arm.swiftdoc</key>
-		<data>
-		Y+a52NvDEotSER9OqeiKPRUfdYI=
-		</data>
-		<key>Modules/SimpleMQTTClient.swiftmodule/arm.swiftmodule</key>
-		<data>
-		+E6mx4WYB6BiuFNdKCOGk37QoqY=
-		</data>
-		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftdoc</key>
-		<data>
-		Y+a52NvDEotSER9OqeiKPRUfdYI=
-		</data>
-		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftmodule</key>
-		<data>
-		TkzyD9JEDCDX0yFB6AosSL0waEc=
-		</data>
-		<key>Modules/SimpleMQTTClient.swiftmodule/i386.swiftdoc</key>
-		<data>
-		Y+a52NvDEotSER9OqeiKPRUfdYI=
-		</data>
-		<key>Modules/SimpleMQTTClient.swiftmodule/i386.swiftmodule</key>
-		<data>
-		MwZ9jQL2oLtSZ+nkgyb/7r2ik7U=
-		</data>
-		<key>Modules/SimpleMQTTClient.swiftmodule/x86_64.swiftdoc</key>
-		<data>
-		Y+a52NvDEotSER9OqeiKPRUfdYI=
-		</data>
-		<key>Modules/SimpleMQTTClient.swiftmodule/x86_64.swiftmodule</key>
-		<data>
-		vWc4FBNQ2L32d+mmYwdaIiGfqEI=
-		</data>
-		<key>Modules/module.modulemap</key>
-		<data>
-		IqEY/DnhOU4t+EFez2+xxP0CLVc=
+		M2CdAVKVQHBbpOP2qEhxpdllAzM=
 		</data>
 	</dict>
 	<key>files2</key>
-	<dict>
-		<key>Modules/SimpleMQTTClient.swiftmodule/arm.swiftdoc</key>
-		<data>
-		Y+a52NvDEotSER9OqeiKPRUfdYI=
-		</data>
-		<key>Modules/SimpleMQTTClient.swiftmodule/arm.swiftmodule</key>
-		<data>
-		+E6mx4WYB6BiuFNdKCOGk37QoqY=
-		</data>
-		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftdoc</key>
-		<data>
-		Y+a52NvDEotSER9OqeiKPRUfdYI=
-		</data>
-		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftmodule</key>
-		<data>
-		TkzyD9JEDCDX0yFB6AosSL0waEc=
-		</data>
-		<key>Modules/SimpleMQTTClient.swiftmodule/i386.swiftdoc</key>
-		<data>
-		Y+a52NvDEotSER9OqeiKPRUfdYI=
-		</data>
-		<key>Modules/SimpleMQTTClient.swiftmodule/i386.swiftmodule</key>
-		<data>
-		MwZ9jQL2oLtSZ+nkgyb/7r2ik7U=
-		</data>
-		<key>Modules/SimpleMQTTClient.swiftmodule/x86_64.swiftdoc</key>
-		<data>
-		Y+a52NvDEotSER9OqeiKPRUfdYI=
-		</data>
-		<key>Modules/SimpleMQTTClient.swiftmodule/x86_64.swiftmodule</key>
-		<data>
-		vWc4FBNQ2L32d+mmYwdaIiGfqEI=
-		</data>
-		<key>Modules/module.modulemap</key>
-		<data>
-		IqEY/DnhOU4t+EFez2+xxP0CLVc=
-		</data>
-	</dict>
+	<dict/>
 	<key>rules</key>
 	<dict>
 		<key>^</key>

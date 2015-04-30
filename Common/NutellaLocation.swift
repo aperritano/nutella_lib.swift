@@ -202,7 +202,12 @@ public struct NLResourceContinuous {
 }
 
 public struct NLResourceDiscrete {
-    public var x, y: Double
+    public var x, y: NLDiscrete
+}
+
+public enum NLDiscrete {
+    case Number(Int)
+    case Letter(Character)
 }
 
 /**
@@ -237,7 +242,7 @@ public class NLManagedResourceContinuous: NLManaged {
     Manages the discrete coordinate of a resource
 */
 public class NLManagedResourceDiscrete: NLManaged {
-    public var x: Double? {
+    public var x: NLDiscrete? {
         get {
             return self.resource?.discrete?.x
         }
@@ -248,7 +253,7 @@ public class NLManagedResourceDiscrete: NLManaged {
             }
         }
     }
-    public var y: Double? {
+    public var y: NLDiscrete? {
         get {
             return self.resource?.discrete?.y
         }
@@ -399,16 +404,19 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         locationManager.delegate = self
     }
     
+    var beaconListDownloaded = false
     public func downloadBeaconList() {
         // Download the list of beacons from beacon-cloud-bot
         self.net.asyncRequest("beacon/beacons", message: [:], requestName: "beacons")
     }
     
+    var resourceListDownloaded = false
     public func downloadResourceList() {
         // Download the list of resources from room-places-bot
         self.net.asyncRequest("location/resources", message: [:], requestName: "resources")
     }
     
+    var subscribedToResources = false
     public func subscribeResourceUpdate() {
         // Subscribe to all resource update
         self.net.subscribe("location/resources/updated");
@@ -417,6 +425,9 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         // Subscribe to beacon and virtual beacon update
         self.net.subscribe("beacon/beacons/added");
         
+        subscribedToResources = true
+        
+        self.checkReady()
     }
     
     public func startMonitoringRegions(uuids: [String]) {
@@ -580,10 +591,25 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                         
                         if let discrete = resource["discrete"] as? Dictionary<String, AnyObject> {
                             r!.trackingSystem = NLResourceTrackingSystem.DISCRETE
+                            var _x: NLDiscrete? = nil,
+                                _y: NLDiscrete? = nil
+                            
                             if let x = discrete["x"] as? Double {
-                                if let y = discrete["y"] as? Double {
-                                    r!.discrete = NLResourceDiscrete(x: x, y: y)
-                                }
+                                _x = .Number(Int(x))
+                            }
+                            else if let x = discrete["x"] as? String {
+                                _x = .Letter(x[x.startIndex])
+                            }
+                            
+                            if let y = discrete["y"] as? Double {
+                                _y = .Number(Int(y))
+                            }
+                            else if let y = discrete["y"] as? String {
+                                _y = .Letter(y[y.startIndex])
+                            }
+                        
+                            if _x != nil && _y != nil {
+                                r!.discrete = NLResourceDiscrete(x: _x!, y: _y!)
                             }
                         }
                         
@@ -624,7 +650,14 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         }
     }
     
-    
+    public func checkReady() {
+        if(beaconListDownloaded && resourceListDownloaded && subscribedToResources) {
+            var backgroundQueue = NSOperationQueue()
+            backgroundQueue.addOperationWithBlock(){
+                self.delegate?.ready()
+            }
+        }
+    }
     
     // MARK: NutellaNetDelegate
     public func messageReceived(channel: String, message: AnyObject, componentId: String?, resourceId: String?) {
@@ -748,6 +781,8 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                     }
                 }
             }
+            beaconListDownloaded = true
+            self.checkReady()
         }
         
         if requestName == "resources" {
@@ -758,6 +793,8 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                     }
                 }
             }
+            resourceListDownloaded = true
+            self.checkReady()
         }
         
         if requestName == "virtual_beacon" {
