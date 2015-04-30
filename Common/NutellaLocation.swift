@@ -484,6 +484,9 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
     }
     
     public func locationManager(manager: CLLocationManager, didRangeBeacons: [AnyObject], inRegion: CLBeaconRegion) {
+        
+        var updatedResources = [Dictionary<String,AnyObject>]()
+        
         for clBeacon in didRangeBeacons {
             println(clBeacon.proximityUUID);
             println(clBeacon.major);
@@ -514,17 +517,33 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                     // If the beacon is associated to a resource
                     if let resource = beacon!.resource {
                         if let clientResource = self._resource {
+                            var updatedResource = [String:AnyObject]()
+                            
                             if(clientResource.type == NLResourceType.STATIC &&
                                resource.type == NLResourceType.DYNAMIC) {
+                                
+                                    updatedResource["rid"] = beacon!.rid
+                                    updatedResource["proximity"] = [
+                                        "rid": myRid,
+                                        "distance": distance
+                                    ]
+                                    /*
                                     self.net.publish("location/resource/update", message: [
                                         "rid": beacon!.rid,
                                         "proximity": ["rid": myRid,
                                             "distance": distance
                                         ]
                                         ])
+                                    */
                             }
                             else if(clientResource.type == NLResourceType.DYNAMIC &&
                                     resource.type == NLResourceType.STATIC) {
+                                    updatedResource["rid"] = myRid
+                                    updatedResource["proximity"] = [
+                                        "rid": beacon!.rid,
+                                        "distance": distance
+                                    ]
+                                    /*
                                     self.net.publish("location/resource/update", message: [
                                         "rid": myRid
                                         ,
@@ -532,11 +551,21 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                                             "distance": distance
                                         ]
                                         ])
+                                    */
                             }
+                            
+                            updatedResources.append(updatedResource)
                         }
                     }
                 }
             }
+        }
+        
+        if updatedResources.count > 0 {
+            self.net.publish("location/resources/update", message: [
+                "resources": updatedResources
+            ])
+
         }
     }
     
