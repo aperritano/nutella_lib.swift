@@ -96,35 +96,11 @@ typedef struct _NSZone NSZone;
 @end
 
 
-
-/// This protocol allows client to control the asynchronous requests, response and message received
 SWIFT_PROTOCOL("_TtP7Nutella18NutellaNetDelegate_")
 @protocol NutellaNetDelegate
 @optional
-
-/// Called when a message is received from a publish.
-///
-/// \param channel The name of the Nutella chennal on which the message is received.
-///
-/// \param message The message.
-///
-/// \param from The actor name of the client that sent the message.
 - (void)messageReceived:(NSString * __nonnull)channel message:(id __nonnull)message componentId:(NSString * __nullable)componentId resourceId:(NSString * __nullable)resourceId;
-
-/// A response to a previos request is received.
-///
-/// \param channelName The Nutella channel on which the message is received.
-///
-/// \param requestName The optional name of request.
-///
-/// \param response The dictionary/array/string containing the JSON representation.
 - (void)responseReceived:(NSString * __nonnull)channelName requestName:(NSString * __nullable)requestName response:(id __nonnull)response;
-
-/// A request is received on a Nutella channel that was previously handled (with the handleRequest).
-///
-/// \param channelName The name of the Nutella chennal on which the request is received.
-///
-/// \param request The dictionary/array/string containing the JSON representation of the request.
 - (id __nullable)requestReceived:(NSString * __nonnull)channelName request:(id __nullable)request componentId:(NSString * __nullable)componentId resourceId:(NSString * __nullable)resourceId;
 @end
 
@@ -145,6 +121,7 @@ SWIFT_CLASS("_TtC7Nutella15NutellaLocation")
 - (void)startVirtualBeacon:(NSInteger)major minor:(NSInteger)minor;
 - (void)stopVirtualBeacon;
 - (void)locationManager:(CLLocationManager * __nonnull)manager didRangeBeacons:(NSArray * __nonnull)didRangeBeacons inRegion:(CLBeaconRegion * __nonnull)inRegion;
+- (void)checkReady;
 - (void)messageReceived:(NSString * __nonnull)channel message:(id __nonnull)message componentId:(NSString * __nullable)componentId resourceId:(NSString * __nullable)resourceId;
 - (void)responseReceived:(NSString * __nonnull)channelName requestName:(NSString * __nullable)requestName response:(id __nonnull)response;
 @end

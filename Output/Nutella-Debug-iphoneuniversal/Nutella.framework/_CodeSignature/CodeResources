@@ -18,7 +18,7 @@
 		</data>
 		<key>Headers/Nutella-Swift.h</key>
 		<data>
-		lzIiBTv5u9yres4rko+7snpk6bo=
+		CgI2yXaUi1cxw8LXIo6enBQYETc=
 		</data>
 		<key>Headers/Nutella.h</key>
 		<data>
@@ -26,15 +26,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		vY20WMkwT6QGy1wqZp3XQRgGNmU=
+		xhn2nCPz+Qsr8IZ0/44tijBrDTA=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftdoc</key>
 		<data>
-		tkhh7SS1e84jH547RkyTtFWvee4=
+		gQY9VZ3yafnhwqjSd2aOkS3uXHI=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftmodule</key>
 		<data>
-		uKI2hAYeMO/KUE+BF9dsVi3Uk0s=
+		nLpIoibKNlfTlmEimq+52+gsEvc=
+		</data>
+		<key>Modules/Nutella.swiftmodule/arm64.swiftdoc</key>
+		<data>
+		ii/ngXjvJWq60lEeIFZYRamMle0=
+		</data>
+		<key>Modules/Nutella.swiftmodule/arm64.swiftmodule</key>
+		<data>
+		UykQJMpAbOv9M6Yr0lz3D5U9Ncs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -57,7 +65,7 @@
 		</data>
 		<key>Headers/Nutella-Swift.h</key>
 		<data>
-		lzIiBTv5u9yres4rko+7snpk6bo=
+		CgI2yXaUi1cxw8LXIo6enBQYETc=
 		</data>
 		<key>Headers/Nutella.h</key>
 		<data>
@@ -65,11 +73,19 @@
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftdoc</key>
 		<data>
-		tkhh7SS1e84jH547RkyTtFWvee4=
+		gQY9VZ3yafnhwqjSd2aOkS3uXHI=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftmodule</key>
 		<data>
-		uKI2hAYeMO/KUE+BF9dsVi3Uk0s=
+		nLpIoibKNlfTlmEimq+52+gsEvc=
+		</data>
+		<key>Modules/Nutella.swiftmodule/arm64.swiftdoc</key>
+		<data>
+		ii/ngXjvJWq60lEeIFZYRamMle0=
+		</data>
+		<key>Modules/Nutella.swiftmodule/arm64.swiftmodule</key>
+		<data>
+		UykQJMpAbOv9M6Yr0lz3D5U9Ncs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>

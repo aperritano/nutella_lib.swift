@@ -352,6 +352,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                     // DYNAMIC && iBeacon => VIRTUAL BEACON
                     if self._resource?.type == NLResourceType.DYNAMIC && self._resource?.trackingSystem == NLResourceTrackingSystem.PROXIMITY {
                         self.startVirtualBeacon()
+                        self.startMonitorning()
                     }
                     
                 }
@@ -483,6 +484,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         peripheralManager.stopAdvertising()
     }
     
+    // MARK: CLLocationManagerDelegate
     public func locationManager(manager: CLLocationManager, didRangeBeacons: [AnyObject], inRegion: CLBeaconRegion) {
         
         var updatedResources = [Dictionary<String,AnyObject>]()
@@ -508,7 +510,8 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                 }
                 
                 if beacon != nil {
-                    let distance = (clBeacon as! CLBeacon).accuracy
+            
+                    let distance = self.calculateDistance((clBeacon as! CLBeacon))
                     
                     if distance < 0 {
                         continue
@@ -567,6 +570,50 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
             ])
 
         }
+    }
+    
+    /**
+        This is the algorithm for estimating the distance
+    */
+    func calculateDistance(clBeacon: CLBeacon) -> Double {
+        let accuracy = clBeacon.accuracy
+        var distance = 0.0
+        
+        let proximityWeight = 0.9
+        let accuracyWeight = 0.1
+        
+        if accuracy < 0 {
+            return -1
+        }
+        
+        switch(clBeacon.proximity) {
+            case CLProximity.Immediate:
+                if accuracy < 0.2 {
+                    distance = accuracy
+                }
+                else {
+                    distance = 0.1
+                }
+            case CLProximity.Near:
+                if accuracy < 2.0 {
+                    distance = accuracy
+                }
+                else {
+                    distance = 1.0 * proximityWeight + accuracy * accuracyWeight
+                }
+            case CLProximity.Far:
+                if accuracy > 2.0 {
+                    distance = accuracy
+                }
+                else {
+                    distance = 2.0 * proximityWeight + accuracy * accuracyWeight
+                }
+            case CLProximity.Unknown:
+                distance = accuracy
+        }
+        
+        //return distance
+        return accuracy;
     }
     
     func updateResource(resource: Dictionary<String, AnyObject>) {

@@ -9,30 +9,55 @@
 import UIKit
 import Nutella
 
-class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDelegate, UITableViewDataSource {
+class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDelegate {
     
     var nutella: Nutella?
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var runSegmentedControl: UISegmentedControl!
     @IBOutlet weak var brokerText: UITextField!
+    @IBOutlet weak var brokerLabel: UILabel!
     @IBOutlet weak var appIdText: UITextField!
-    @IBOutlet weak var runIdText: UITextField!
+    @IBOutlet weak var runIdLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var stepper: UIStepper!
-    @IBOutlet weak var parametersTableView: UITableView!
+    @IBOutlet weak var habitatLabel: UILabel!
+    @IBOutlet weak var yWallConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageWall: UIImageView!
     
     @IBAction func startMonitoring(sender: AnyObject) {
         self.startButton.enabled = false
         self.brokerText.enabled = false
         self.appIdText.enabled = false
-        self.runIdText.enabled = false
         
         var resourceId = segmentedControl.titleForSegmentAtIndex(segmentedControl.selectedSegmentIndex)
+        var runId = runSegmentedControl.titleForSegmentAtIndex(runSegmentedControl.selectedSegmentIndex)
         
+        self.brokerLabel.text = self.brokerText.text
+        self.runIdLabel.text = runId
+        
+        switch resourceId! {
+            case "wallscope0":
+                self.habitatLabel.text = "Habitat 1"
+            case "wallscope1":
+                self.habitatLabel.text = "Habitat 2"
+            case "wallscope2":
+                self.habitatLabel.text = "Habitat 3"
+            case "wallscope3":
+                self.habitatLabel.text = "Habitat 4"
+            default:
+                self.habitatLabel.text = "Error"
+        }
+        self.habitatLabel.alpha = 1;
+        
+        self.yWallConstraint.constant = 0
+        self.view.setNeedsUpdateConstraints()
+        UIView.animateWithDuration(1.0, animations: {
+            self.view.layoutIfNeeded()
+        })
         
         nutella = Nutella(brokerHostname: brokerText.text,
             appId: appIdText.text,
-            runId: runIdText.text,
+            runId: runId!,
             componentId: "test_component",
             netDelegate: self,
             locationDelegate: self)
@@ -51,10 +76,6 @@ class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDeleg
         nutella?.location.resource[resourceId!]?.notifyExit = true
         
         nutella?.resourceId = resourceId
-        if let x = nutella?.location.resource[resourceId!]?.continuous.x {
-            self.stepper.value = x
-        }
-        parametersTableView.reloadData()
     }
     
     @IBAction func positionChanged(sender: AnyObject) {
@@ -86,7 +107,6 @@ class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDeleg
         println(resource.rid)
         println(resource.continuous.x)
         println(resource.continuous.y)
-        parametersTableView.reloadData()
     }
     
     func resourceEntered(dynamicResource: NLManagedResource, staticResource: NLManagedResource) {
@@ -122,46 +142,6 @@ class ViewController: UIViewController, NutellaNetDelegate, NutellaLocationDeleg
                 println(number)
         }
         */
-    }
-    
-    // MARK: UITableViewDataSource
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("ciao") as? UITableViewCell
-        if cell == nil{
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "ciao")
-            
-        }
-        if tableView.tag == 1 {
-            let key = self.nutella!.location.resource[self.nutella!.resourceId!]!.parameters[indexPath.row]
-            let value = self.nutella!.location.resource[self.nutella!.resourceId!]!.parameter[key]!
-            cell!.textLabel?.text = key + ":" + value
-        }
-        return cell!
-
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView.tag == 1 {
-            if let numParam = self.nutella?.location.resource[self.nutella!.resourceId!]?.parameters.count {
-                return numParam
-            }
-            return 0
-        }
-        else if tableView.tag == 2 {
-            return 0
-        }
-        return 0
-    }
-    
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if tableView.tag == 1 {
-            return "Property"
-        }
-        else if tableView.tag == 2 {
-            return "Dynamic resources"
-        }
-        return "Table"
     }
 
 }
