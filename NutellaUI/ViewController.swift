@@ -133,7 +133,7 @@ extension ViewController: NutellaLocationDelegate {
     
     func ready() {
         print("NutellaLocationDelegate:READY")
-        self.nutella?.net.subscribe("echo_out")
+        //self.nutella?.net.subscribe("echo_out")
 //    })
 
 //        if let nutella = self.nutella {
