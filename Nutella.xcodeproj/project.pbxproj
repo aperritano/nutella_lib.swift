@@ -43,8 +43,8 @@
 		703382BB1D1A539500A445CC /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382B71D1A539500A445CC /* JSON.swift */; };
 		703382BC1D1A539500A445CC /* NutellaMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382B81D1A539500A445CC /* NutellaMain.swift */; };
 		703776B11D1B24B20039BFFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 702CDA4E1D1AFB5300A5ABF4 /* LaunchScreen.storyboard */; };
+		70617B8B1D1B796900D74A01 /* SimpleMQTTClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70617B8A1D1B796900D74A01 /* SimpleMQTTClient.framework */; };
 		70E472581D1B252700B1E746 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70E472571D1B252700B1E746 /* Main.storyboard */; };
-		70E4725A1D1B53B200B1E746 /* SimpleMQTTClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E472591D1B53B200B1E746 /* SimpleMQTTClient.framework */; };
 		70E4725B1D1B53BF00B1E746 /* SimpleMQTTClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 703382A11D1A524800A445CC /* SimpleMQTTClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -106,8 +106,8 @@
 		703382B61D1A539500A445CC /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		703382B71D1A539500A445CC /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		703382B81D1A539500A445CC /* NutellaMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutellaMain.swift; sourceTree = "<group>"; };
+		70617B8A1D1B796900D74A01 /* SimpleMQTTClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SimpleMQTTClient.framework; sourceTree = "<group>"; };
 		70E472571D1B252700B1E746 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		70E472591D1B53B200B1E746 /* SimpleMQTTClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SimpleMQTTClient.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				702CDA551D1AFB5D00A5ABF4 /* Nutella.framework in Frameworks */,
-				70E4725A1D1B53B200B1E746 /* SimpleMQTTClient.framework in Frameworks */,
+				70617B8B1D1B796900D74A01 /* SimpleMQTTClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +190,7 @@
 		702CDA441D1AFB5300A5ABF4 /* NutellaUI */ = {
 			isa = PBXGroup;
 			children = (
-				70E472591D1B53B200B1E746 /* SimpleMQTTClient.framework */,
+				70617B8A1D1B796900D74A01 /* SimpleMQTTClient.framework */,
 				70E472571D1B252700B1E746 /* Main.storyboard */,
 				702CDA451D1AFB5300A5ABF4 /* AppDelegate.swift */,
 				702CDA471D1AFB5300A5ABF4 /* ViewController.swift */,

@@ -38,11 +38,11 @@
 		</data>
 		<key>Headers/SimpleMQTTClient-Swift.h</key>
 		<data>
-		FZHmKcM+Ze7TS2cYe+tkIWRYKV4=
+		7vZnW6zubmNGBOompSjW1uhjKXY=
 		</data>
 		<key>Headers/SimpleMQTTClient.h</key>
 		<data>
-		XAJ9ClIuevkUQP9bbzaUxhQY1p4=
+		7XKgWOv1kYumSjjJ78hvh1jsP9Y=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm.swiftdoc</key>
 		<data>
-		kMr+Jr6sFWPgeq3xN6vYwY0KiGQ=
+		H1rqErRG7302P6XqZd1iDZcU0Vw=
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm.swiftmodule</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		+scLEDcuqVhMewH9Qf+eM7NtZPI=
+		NgKbSqG1Yy5LgnxzeXAOeqn+dDU=
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftmodule</key>
 		<data>
@@ -163,33 +163,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FZHmKcM+Ze7TS2cYe+tkIWRYKV4=
+			7vZnW6zubmNGBOompSjW1uhjKXY=
 			</data>
 			<key>hash2</key>
 			<data>
-			coWvu3jtLLEe43cENsU2wKobQDltAonjLaOxB+GvVzg=
+			in3jjj/abvywdqHxgYTKcHOyWDUdbyptJXiyhLppXuE=
 			</data>
 		</dict>
 		<key>Headers/SimpleMQTTClient.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			XAJ9ClIuevkUQP9bbzaUxhQY1p4=
+			7XKgWOv1kYumSjjJ78hvh1jsP9Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			TtzqrakhSnCMOyPJIGSdvKgM3y9HFPSv5LE6LJ+NDPA=
+			wexOgsv3LEAFusC33raF0+5BQHViaczRWEv9JPsX1lA=
 			</data>
 		</dict>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			kMr+Jr6sFWPgeq3xN6vYwY0KiGQ=
+			H1rqErRG7302P6XqZd1iDZcU0Vw=
 			</data>
 			<key>hash2</key>
 			<data>
-			5KKzyJcD4KUyNyJYZnMu/RCJP7Zw7rMF4rSYGuLO4tU=
+			DeUL0dKOSM7ZmAD0xkF/FioHr5cg5QFg+zDKk79x1Fw=
 			</data>
 		</dict>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm.swiftmodule</key>
@@ -207,11 +207,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+scLEDcuqVhMewH9Qf+eM7NtZPI=
+			NgKbSqG1Yy5LgnxzeXAOeqn+dDU=
 			</data>
 			<key>hash2</key>
 			<data>
-			4jg/rWktN9iNplLw4M2o7X/Vza3/J1sYLiBeVYHk+M8=
+			UZthQXEuxMX/OWGzmNzOfCr4m8sWuK5tSyG0h8iLpGc=
 			</data>
 		</dict>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftmodule</key>

@@ -112,19 +112,19 @@ SWIFT_CLASS("_TtC16SimpleMQTTClient16SimpleMQTTClient")
 @property (nonatomic) BOOL synchronous;
 @property (nonatomic, weak) id <SimpleMQTTClientDelegate> _Nullable delegate;
 
-/// <code>Delegate initializer.
+/// <code>   Delegate initializer.
 /// 
-/// - parameter synchronous: If true the client is synchronous, otherwise all the functions will return immediately without waiting for acks.
-/// - parameter clientId: The client id used internally by the protocol. You need to have a good reason for set this, otherwise it is better to let the function generate it for you.
+///    - parameter synchronous: If true the client is synchronous, otherwise all the functions will return immediately without waiting for acks.
+///    - parameter clientId: The client id used internally by the protocol. You need to have a good reason for set this, otherwise it is better to let the function generate it for you.
 /// 
 /// </code>
 - (nonnull instancetype)initWithSynchronous:(BOOL)synchronous clientId:(NSString * _Nullable)optionalClientId OBJC_DESIGNATED_INITIALIZER;
 
-/// <code>Convenience initializers. It inizialize the client and connect to a server
+/// <code>   Convenience initializers. It inizialize the client and connect to a server
 /// 
-/// - parameter host: The hostname.
-/// - parameter synchronous: If synchronous or not
-/// - parameter clientId: An optional client id, you need to have a good reason for setting this, otherwise let the system generate it for you.
+///    - parameter host: The hostname.
+///    - parameter synchronous: If synchronous or not
+///    - parameter clientId: An optional client id, you need to have a good reason for setting this, otherwise let the system generate it for you.
 /// 
 /// </code>
 - (nonnull instancetype)initWithHost:(NSString * _Nonnull)host synchronous:(BOOL)synchronous clientId:(NSString * _Nullable)optionalClientId;
@@ -144,10 +144,10 @@ SWIFT_CLASS("_TtC16SimpleMQTTClient16SimpleMQTTClient")
 /// \returns  Array of strings, every sstring is a channel subscribed.
 - (NSArray<NSString *> * _Nonnull)getSubscribedChannels;
 
-/// <code>Return true if is subscribeb or no to a channel, takes into account wildcards.
+/// <code>   Return true if is subscribeb or no to a channel, takes into account wildcards.
 /// 
-/// - parameter channel: Channel name.
-/// - returns: true if is is subscribed to the channel.
+///    - parameter channel: Channel name.
+///    - returns: true if is is subscribed to the channel.
 /// 
 /// </code>
 - (BOOL)isSubscribed:(NSString * _Nonnull)channel;
