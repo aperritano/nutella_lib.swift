@@ -29,7 +29,6 @@
 		702CDA4D1D1AFB5300A5ABF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 702CDA4C1D1AFB5300A5ABF4 /* Assets.xcassets */; };
 		702CDA551D1AFB5D00A5ABF4 /* Nutella.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7011CB8E1D1A47C600BD11A4 /* Nutella.framework */; };
 		702CDA561D1AFB5D00A5ABF4 /* Nutella.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7011CB8E1D1A47C600BD11A4 /* Nutella.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		703382A21D1A524800A445CC /* SimpleMQTTClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703382A11D1A524800A445CC /* SimpleMQTTClient.framework */; };
 		703382A61D1A52AF00A445CC /* NutellaConfigDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382A31D1A52AF00A445CC /* NutellaConfigDelegate.swift */; };
 		703382A71D1A52AF00A445CC /* NutellaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382A41D1A52AF00A445CC /* NutellaDelegate.swift */; };
 		703382A81D1A52AF00A445CC /* NutellaNetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382A51D1A52AF00A445CC /* NutellaNetDelegate.swift */; };
@@ -43,9 +42,8 @@
 		703382BB1D1A539500A445CC /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382B71D1A539500A445CC /* JSON.swift */; };
 		703382BC1D1A539500A445CC /* NutellaMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382B81D1A539500A445CC /* NutellaMain.swift */; };
 		703776B11D1B24B20039BFFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 702CDA4E1D1AFB5300A5ABF4 /* LaunchScreen.storyboard */; };
-		70617B8B1D1B796900D74A01 /* SimpleMQTTClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70617B8A1D1B796900D74A01 /* SimpleMQTTClient.framework */; };
+		7082EBBA1D37617F00D23D68 /* SimpleMQTTClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7082EBB91D37617F00D23D68 /* SimpleMQTTClient.framework */; };
 		70E472581D1B252700B1E746 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70E472571D1B252700B1E746 /* Main.storyboard */; };
-		70E4725B1D1B53BF00B1E746 /* SimpleMQTTClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 703382A11D1A524800A445CC /* SimpleMQTTClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +70,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				70E4725B1D1B53BF00B1E746 /* SimpleMQTTClient.framework in Embed Frameworks */,
 				702CDA561D1AFB5D00A5ABF4 /* Nutella.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -93,7 +90,6 @@
 		702CDA4C1D1AFB5300A5ABF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		702CDA4F1D1AFB5300A5ABF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		702CDA511D1AFB5300A5ABF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		703382A11D1A524800A445CC /* SimpleMQTTClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SimpleMQTTClient.framework; sourceTree = "<group>"; };
 		703382A31D1A52AF00A445CC /* NutellaConfigDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutellaConfigDelegate.swift; sourceTree = "<group>"; };
 		703382A41D1A52AF00A445CC /* NutellaDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutellaDelegate.swift; sourceTree = "<group>"; };
 		703382A51D1A52AF00A445CC /* NutellaNetDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutellaNetDelegate.swift; sourceTree = "<group>"; };
@@ -106,7 +102,7 @@
 		703382B61D1A539500A445CC /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		703382B71D1A539500A445CC /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		703382B81D1A539500A445CC /* NutellaMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutellaMain.swift; sourceTree = "<group>"; };
-		70617B8A1D1B796900D74A01 /* SimpleMQTTClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SimpleMQTTClient.framework; sourceTree = "<group>"; };
+		7082EBB91D37617F00D23D68 /* SimpleMQTTClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SimpleMQTTClient.framework; sourceTree = "<group>"; };
 		70E472571D1B252700B1E746 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,7 +113,7 @@
 			files = (
 				703382AE1D1A531600A445CC /* CoreBluetooth.framework in Frameworks */,
 				703382AC1D1A530D00A445CC /* CoreLocation.framework in Frameworks */,
-				703382A21D1A524800A445CC /* SimpleMQTTClient.framework in Frameworks */,
+				7082EBBA1D37617F00D23D68 /* SimpleMQTTClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,7 +130,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				702CDA551D1AFB5D00A5ABF4 /* Nutella.framework in Frameworks */,
-				70617B8B1D1B796900D74A01 /* SimpleMQTTClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +185,6 @@
 		702CDA441D1AFB5300A5ABF4 /* NutellaUI */ = {
 			isa = PBXGroup;
 			children = (
-				70617B8A1D1B796900D74A01 /* SimpleMQTTClient.framework */,
 				70E472571D1B252700B1E746 /* Main.storyboard */,
 				702CDA451D1AFB5300A5ABF4 /* AppDelegate.swift */,
 				702CDA471D1AFB5300A5ABF4 /* ViewController.swift */,
@@ -204,9 +198,9 @@
 		703382AF1D1A532900A445CC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7082EBB91D37617F00D23D68 /* SimpleMQTTClient.framework */,
 				703382AD1D1A531600A445CC /* CoreBluetooth.framework */,
 				703382AB1D1A530D00A445CC /* CoreLocation.framework */,
-				703382A11D1A524800A445CC /* SimpleMQTTClient.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -298,11 +292,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = ltg.evl.uic.edu;
 				TargetAttributes = {
 					7011CB8D1D1A47C600BD11A4 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = CN8G286W67;
+						DevelopmentTeamName = "Anthony Perritano";
 					};
 					7011CB971D1A47C600BD11A4 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -312,6 +308,7 @@
 					};
 					702CDA5F1D1B105700A5ABF4 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -535,13 +532,13 @@
 		7011CBA31D1A47C600BD11A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Nutella",
@@ -560,13 +557,13 @@
 		7011CBA41D1A47C600BD11A4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Nutella",
@@ -578,6 +575,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ltg.evl.uic.edu.Nutella;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -598,15 +596,16 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ltg.evl.uic.edu.NutellaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
 		702CDA521D1AFB5300A5ABF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -623,9 +622,9 @@
 		702CDA531D1AFB5300A5ABF4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -636,6 +635,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ltg.evl.uic.edu.NutellaUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -643,6 +643,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -650,6 +651,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

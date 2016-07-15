@@ -15,7 +15,7 @@ import Foundation
         - parameter message: The message.
         - parameter from: The actor name of the client that sent the message.
     */
-    optional func messageReceived(channel: String, message: AnyObject, componentId: String?, resourceId: String?)
+    @objc optional func messageReceived(channel: String, message: AnyObject, componentId: String?, resourceId: String?)
     
     /**
         A response to a previos request is received.
@@ -24,7 +24,7 @@ import Foundation
         - parameter requestName: The optional name of request.
         - parameter response: The dictionary/array/string containing the JSON representation.
     */
-    optional func responseReceived(channelName: String, requestName: String?, response: AnyObject)
+    @objc optional func responseReceived(channelName: String, requestName: String?, response: AnyObject)
     
     /**
         A request is received on a Nutella channel that was previously handled (with the handleRequest).
@@ -32,5 +32,5 @@ import Foundation
         - parameter channelName: The name of the Nutella chennal on which the request is received.
         - parameter request: The dictionary/array/string containing the JSON representation of the request.
     */
-    optional func requestReceived(channelName: String, request: AnyObject?, componentId: String?, resourceId: String?) -> AnyObject?
+    @objc optional func requestReceived(channelName: String, request: AnyObject?, componentId: String?, resourceId: String?) -> AnyObject?
 }

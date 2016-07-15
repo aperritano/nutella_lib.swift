@@ -38,7 +38,7 @@
 		</data>
 		<key>Headers/SimpleMQTTClient-Swift.h</key>
 		<data>
-		7vZnW6zubmNGBOompSjW1uhjKXY=
+		oQchNaxVeqIzJxCfuzOFvuirMCI=
 		</data>
 		<key>Headers/SimpleMQTTClient.h</key>
 		<data>
@@ -46,23 +46,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Kb2XDOFXRSxMnu3v+yzySM9/xSg=
+		1aELRSvReggqi0kldScMOsRe44s=
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm.swiftdoc</key>
 		<data>
-		H1rqErRG7302P6XqZd1iDZcU0Vw=
+		cSNsTxORxrgQQZzD6tZJM9yNvK4=
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm.swiftmodule</key>
 		<data>
-		7AKeykqVy++hJCVH/6Jke3++siQ=
+		VQPBckVxxek0OJpbihCrWulIXnQ=
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		NgKbSqG1Yy5LgnxzeXAOeqn+dDU=
+		KWQuZI36Z4dyVIEUbiAu1ixkqWM=
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		HFX6xjW4Ur+GvJEUpIkanyIp/C0=
+		hqpYkm4f9SwTHpHPx/+D5ABfa2E=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -163,11 +163,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7vZnW6zubmNGBOompSjW1uhjKXY=
+			oQchNaxVeqIzJxCfuzOFvuirMCI=
 			</data>
 			<key>hash2</key>
 			<data>
-			in3jjj/abvywdqHxgYTKcHOyWDUdbyptJXiyhLppXuE=
+			BIe9sUOqZBQg6c4NrU/MXbEwhFKKu9iCv5mROyWOnpk=
 			</data>
 		</dict>
 		<key>Headers/SimpleMQTTClient.h</key>
@@ -185,44 +185,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			H1rqErRG7302P6XqZd1iDZcU0Vw=
+			cSNsTxORxrgQQZzD6tZJM9yNvK4=
 			</data>
 			<key>hash2</key>
 			<data>
-			DeUL0dKOSM7ZmAD0xkF/FioHr5cg5QFg+zDKk79x1Fw=
+			Dojkz5nWMuoh7u0u2bfhyVxAgLbFKE54JKRmOwDk9mM=
 			</data>
 		</dict>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			7AKeykqVy++hJCVH/6Jke3++siQ=
+			VQPBckVxxek0OJpbihCrWulIXnQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			cnr56cCRBNogjnnJIjQi1kdOgdES6AuKlwSI+2rVpAA=
+			FIJ1hwFKyz2PTfqlVXoFlKEg2GrU4Yolq1+1c6aCl+4=
 			</data>
 		</dict>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			NgKbSqG1Yy5LgnxzeXAOeqn+dDU=
+			KWQuZI36Z4dyVIEUbiAu1ixkqWM=
 			</data>
 			<key>hash2</key>
 			<data>
-			UZthQXEuxMX/OWGzmNzOfCr4m8sWuK5tSyG0h8iLpGc=
+			BrPqjsIJEQm7tPSzNResxmh4l31Ox52x5plW3pxxLh8=
 			</data>
 		</dict>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			HFX6xjW4Ur+GvJEUpIkanyIp/C0=
+			hqpYkm4f9SwTHpHPx/+D5ABfa2E=
 			</data>
 			<key>hash2</key>
 			<data>
-			EebHfXZnASQ6Td1yBbnRKTRotcXNlJp//5tzDFI/Hzk=
+			lr3MEQOkqFigVsCNC6sg8wGFYwKQPtJoLyg/U3GdF0s=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
