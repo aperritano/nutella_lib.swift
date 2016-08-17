@@ -110,126 +110,79 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # define SWIFT_UNAVAILABLE __attribute__((unavailable))
 #endif
 #if defined(__has_feature) && __has_feature(modules)
-@import ObjectiveC;
 @import Foundation;
+@import ObjectiveC;
+@import CoreLocation;
+@import CoreBluetooth;
 #endif
-
-#import <SimpleMQTTClient/SimpleMQTTClient.h>
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
-@class NSTimer;
-@class MQTTSession;
-@protocol SimpleMQTTClientDelegate;
+
+@interface NSNumber (SWIFT_EXTENSION(Nutella))
+@end
+
 
 /**
-  This class provide a simple interface that let you use the MQTT protocol
+  This protocol allows client to control the asynchronous requests, response and message received
 */
-SWIFT_CLASS("_TtC16SimpleMQTTClient16SimpleMQTTClient")
-@interface SimpleMQTTClient : NSObject <MQTTSessionDelegate>
-@property (nonatomic) BOOL synchronous;
-@property (nonatomic, weak) id <SimpleMQTTClientDelegate> _Nullable delegate;
+SWIFT_PROTOCOL("_TtP7Nutella18NutellaNetDelegate_")
+@protocol NutellaNetDelegate
+@optional
 /**
-  \code
-     Delegate initializer.
-
-     - parameter synchronous: If true the client is synchronous, otherwise all the functions will return immediately without waiting for acks.
-     - parameter clientId: The client id used internally by the protocol. You need to have a good reason for set this, otherwise it is better to let the function generate it for you.
-
-  \endcode*/
-- (nonnull instancetype)initWithSynchronous:(BOOL)synchronous clientId:(NSString * _Nullable)optionalClientId OBJC_DESIGNATED_INITIALIZER;
-/**
-  \code
-     Convenience initializers. It inizialize the client and connect to a server
-
-     - parameter host: The hostname.
-     - parameter synchronous: If synchronous or not
-     - parameter clientId: An optional client id, you need to have a good reason for setting this, otherwise let the system generate it for you.
-
-  \endcode*/
-- (nonnull instancetype)initWithHost:(NSString * _Nonnull)host synchronous:(BOOL)synchronous clientId:(NSString * _Nullable)optionalClientId;
-/**
-  Subscribe to an MQTT channel.
-  \param channel The name of the channel.
-
-*/
-- (void)subscribe:(NSString * _Nonnull)channel;
-/**
-  Unsubscribe from an MQTT channel.
-  \param channel The name of the channel.
-
-*/
-- (void)unsubscribe:(NSString * _Nonnull)channel;
-/**
-  Return an array of channels, it contains also the wildcards.
-
-  returns:
-  Array of strings, every sstring is a channel subscribed.
-*/
-- (NSArray<NSString *> * _Nonnull)getSubscribedChannels;
-/**
-  \code
-     Return true if is subscribeb or no to a channel, takes into account wildcards.
-
-     - parameter channel: Channel name.
-     - returns: true if is is subscribed to the channel.
-
-  \endcode*/
-- (BOOL)isSubscribed:(NSString * _Nonnull)channel;
-/**
-  Return the wildcard that contains the current channel if there’s any
-  \param channel Channel name.
-
-
-  returns:
-  the String of the wildcard
-*/
-- (NSString * _Nullable)wildcardSubscribed:(NSString * _Nonnull)channel;
-/**
-  Publish a message on the desired MQTT channel.
-  \param channel The name of the channel.
+  Called when a message is received from a publish.
+  \param channel The name of the Nutella chennal on which the message is received.
 
   \param message The message.
 
+  \param from The actor name of the client that sent the message.
+
 */
-- (void)publish:(NSString * _Nonnull)channel message:(NSString * _Nonnull)message;
+- (void)messageReceived:(NSString * _Nonnull)channel message:(id _Nonnull)message componentId:(NSString * _Nullable)componentId resourceId:(NSString * _Nullable)resourceId;
 /**
-  Disconnect the client immediately.
+  A response to a previos request is received.
+  \param channelName The Nutella channel on which the message is received.
+
+  \param requestName The optional name of request.
+
+  \param response The dictionary/array/string containing the JSON representation.
+
 */
-- (void)disconnect;
+- (void)responseReceived:(NSString * _Nonnull)channelName requestName:(NSString * _Nullable)requestName response:(id _Nonnull)response;
 /**
-  Reconnect the client to the MQTT server.
+  A request is received on a Nutella channel that was previously handled (with the handleRequest).
+  \param channelName The name of the Nutella chennal on which the request is received.
+
+  \param request The dictionary/array/string containing the JSON representation of the request.
+
 */
-- (void)reconnect;
-- (void)reconnect:(NSTimer * _Nonnull)timer;
-- (void)newMessage:(MQTTSession * _Null_unspecified)session data:(NSData * _Null_unspecified)data onTopic:(NSString * _Null_unspecified)topic qos:(MQTTQosLevel)qos retained:(BOOL)retained mid:(uint32_t)mid;
-- (void)handleEvent:(MQTTSession * _Null_unspecified)session event:(MQTTSessionEvent)eventCode error:(NSError * _Null_unspecified)error;
+- (id _Nullable)requestReceived:(NSString * _Nonnull)channelName request:(id _Nullable)request componentId:(NSString * _Nullable)componentId resourceId:(NSString * _Nullable)resourceId;
+@end
+
+@class CLLocationManager;
+@class CLBeacon;
+@class CLBeaconRegion;
+
+/**
+  This class enables the communication with RoomPlaces module
+*/
+SWIFT_CLASS("_TtC7Nutella15NutellaLocation")
+@interface NutellaLocation : NSObject <NutellaNetDelegate, CLLocationManagerDelegate, CBPeripheralDelegate>
+- (void)downloadBeaconList;
+- (void)downloadResourceList;
+- (void)subscribeResourceUpdate;
+- (void)startMonitoringRegions:(NSArray<NSString *> * _Nonnull)uuids;
+- (void)startMonitorning;
+- (void)stopMonitoring;
+- (void)startVirtualBeacon;
+- (void)startVirtualBeacon:(NSInteger)major minor:(NSInteger)minor;
+- (void)stopVirtualBeacon;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didRangeBeacons:(NSArray<CLBeacon *> * _Nonnull)beacons inRegion:(CLBeaconRegion * _Nonnull)region;
+- (void)checkReady;
+- (void)messageReceived:(NSString * _Nonnull)channel message:(id _Nonnull)message componentId:(NSString * _Nullable)componentId resourceId:(NSString * _Nullable)resourceId;
+- (void)responseReceived:(NSString * _Nonnull)channelName requestName:(NSString * _Nullable)requestName response:(id _Nonnull)response;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
-
-/**
-  This delegate protocol allows to control the status change of the MQTT client.
-*/
-SWIFT_PROTOCOL("_TtP16SimpleMQTTClient24SimpleMQTTClientDelegate_")
-@protocol SimpleMQTTClientDelegate
-@optional
-/**
-  Called when a new message is received
-  \param channel The name of the channel
-
-  \param message The message
-
-*/
-- (void)messageReceived:(NSString * _Nonnull)channel message:(NSString * _Nonnull)message;
-/**
-  Called when the client will be disconnected.
-*/
-- (void)disconnected;
-/**
-  Called when the client will be connected.
-*/
-- (void)connected;
-@end
 
 #pragma clang diagnostic pop

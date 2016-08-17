@@ -36,39 +36,43 @@ class ViewController: UIViewController {
     func nutellaSetup() {
         
         
-                    self.nutella = Nutella(brokerHostname: "localhost",
-                        appId: "wallcology",
-                        runId: "default",
-                        componentId: "test_component")
-                    self.nutella?.netDelegate = self
-                    self.nutella?.resourceId = "hello"
-                    self.nutella?.net.subscribe("echo_out")
+        self.nutella = Nutella(brokerHostname: "localhost",
+                               appId: "wallcology",
+                               runId: "default",
+                               componentId: "test_component")
+        self.nutella?.netDelegate = self
+        self.nutella?.resourceId = "hello"
+       // self.nutella?.net.subscribe("echo_out")
         
         
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-//            // ... do any setup ...
-//
-//            
-//
-//
-//        })
-//        
+        //        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+        //            // ... do any setup ...
+        //
+        //
+        //
+        //
+        //        })
+        //
         
         
     }
     
-    @IBAction func publishMessageToNutella(sender: UIButton){
+    @IBAction func publishMessageToNutella(_ sender: UIButton){
         if let message = messageTextField.text {
-            outputTextView.text = outputTextView.text + " SENT: " + message + "TIMESTAMP: \(NSDate()) \n"
+            outputTextView.text = outputTextView.text + " SENT: " + message + "TIMESTAMP: \(Date()) \n"
             
             if let nutella = nutella {
                 
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                    // ... do any setup ...
-                nutella.net.publish("echo_in", message: ["echo":"Hello Major Tom, are you receiving this? Turn the thrusters on, we're standing by"])
-            })
-
+                let block = DispatchWorkItem {
+                    var m = "Hello Major Tom, are you receiving this? Turn the thrusters on, we're standing by"
+                    var dict = [String:String]()
+                    dict["group"] = "1"
+                    
+                    nutella.net.asyncRequest("all_notes_with_group", message: dict as AnyObject, requestName: "all_notes_with_group")
+                    //nutella.net.publish("all_notes", message: dict as AnyObject)
+                }
                 
+                DispatchQueue.main.async(execute: block)
                 
             }
             
@@ -77,7 +81,7 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func reloadAction(sender: UIButton) {
+    @IBAction func reloadAction(_ sender: UIButton) {
         nutellaSetup()
     }
     
@@ -92,7 +96,7 @@ extension ViewController: NutellaNetDelegate {
      - parameter message: The message.
      - parameter from: The actor name of the client that sent the message.
      */
-    func messageReceived(channel: String, message: AnyObject, componentId: String?, resourceId: String?) {
+    func messageReceived(_ channel: String, message: AnyObject, componentId: String?, resourceId: String?) {
         print("messageReceived \(channel) message: \(message) componentId: \(componentId) resourceId: \(resourceId)")
     }
     
@@ -103,7 +107,7 @@ extension ViewController: NutellaNetDelegate {
      - parameter requestName: The optional name of request.
      - parameter response: The dictionary/array/string containing the JSON representation.
      */
-    func responseReceived(channelName: String, requestName: String?, response: AnyObject) {
+    func responseReceived(_ channelName: String, requestName: String?, response: AnyObject) {
         print("responseReceived \(channelName) requestName: \(requestName) response: \(response)")
         
     }
@@ -114,35 +118,35 @@ extension ViewController: NutellaNetDelegate {
      - parameter channelName: The name of the Nutella chennal on which the request is received.
      - parameter request: The dictionary/array/string containing the JSON representation of the request.
      */
-    func requestReceived(channelName: String, request: AnyObject?, componentId: String?, resourceId: String?) -> AnyObject? {
+    func requestReceived(_ channelName: String, request: AnyObject?, componentId: String?, resourceId: String?) -> AnyObject? {
         print("responseReceived \(channelName) request: \(request) componentId: \(componentId)")
         return nil
     }
 }
 
 extension ViewController: NutellaLocationDelegate {
-    func resourceUpdated(resource: NLManagedResource) {
+    func resourceUpdated(_ resource: NLManagedResource) {
         
     }
-    func resourceEntered(dynamicResource: NLManagedResource, staticResource: NLManagedResource) {
+    func resourceEntered(_ dynamicResource: NLManagedResource, staticResource: NLManagedResource) {
         
     }
-    func resourceExited(dynamicResource: NLManagedResource, staticResource: NLManagedResource) {
+    func resourceExited(_ dynamicResource: NLManagedResource, staticResource: NLManagedResource) {
         
     }
     
     func ready() {
         print("NutellaLocationDelegate:READY")
         //self.nutella?.net.subscribe("echo_out")
-//    })
-
-//        if let nutella = self.nutella {
-//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-//                // ... do any setup ...
-//            nutella.net.subscribe("echo_out")            })
-//         
-//        }
-    
+        //    })
+        
+        //        if let nutella = self.nutella {
+        //            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+        //                // ... do any setup ...
+        //            nutella.net.subscribe("echo_out")            })
+        //
+        //        }
+        
     }
 }
 

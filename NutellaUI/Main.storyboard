@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G19a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ZcC-DU-eJc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ZcC-DU-eJc">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,17 +16,14 @@
                         <viewControllerLayoutGuide type="bottom" id="1e6-nA-2LE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gqy-w4-mBW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KbK-pe-M6A">
-                                <rect key="frame" x="86" y="172" width="428" height="257"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="KbK-pe-M6A">
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="kdZ-fX-NqU">
-                                        <rect key="frame" x="0.0" y="0.0" width="428" height="30"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fBQ-JJ-A5f">
-                                                <rect key="frame" x="0.0" y="0.0" width="353" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="V5G-QM-hiH"/>
                                                     <constraint firstAttribute="width" constant="200" id="irn-cn-dkH"/>
@@ -39,48 +37,42 @@
                                                 </variation>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="px1-PR-ziU">
-                                                <rect key="frame" x="353" y="0.0" width="75" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="75" id="8Po-Zr-h2w"/>
                                                 </constraints>
                                                 <state key="normal" title="SEND"/>
                                                 <connections>
-                                                    <action selector="publishMessageToNutella:" destination="ZcC-DU-eJc" eventType="touchUpInside" id="cdf-gC-ELp"/>
+                                                    <action selector="publishMessageToNutella:" destination="ZcC-DU-eJc" eventType="touchUpInside" id="4gJ-hC-JPG"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vGi-gT-drh">
-                                        <rect key="frame" x="0.0" y="30" width="428" height="227"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yo5-bq-kFG">
+                                        <state key="normal" title="RELOAD"/>
+                                        <connections>
+                                            <action selector="reloadAction:" destination="ZcC-DU-eJc" eventType="touchUpInside" id="Kcc-LQ-QLH"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yo5-bq-kFG">
-                                <rect key="frame" x="86" y="447" width="428" height="30"/>
-                                <state key="normal" title="RELOAD"/>
-                                <connections>
-                                    <action selector="reloadAction:" destination="ZcC-DU-eJc" eventType="touchUpInside" id="bMD-6b-b6b"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="KbK-pe-M6A" firstAttribute="centerX" secondItem="gqy-w4-mBW" secondAttribute="centerX" id="46G-vs-Rmy"/>
                             <constraint firstItem="KbK-pe-M6A" firstAttribute="centerY" secondItem="gqy-w4-mBW" secondAttribute="centerY" id="Jdl-Jb-vxO"/>
-                            <constraint firstItem="yo5-bq-kFG" firstAttribute="trailing" secondItem="vGi-gT-drh" secondAttribute="trailing" id="Lla-4n-C9d"/>
-                            <constraint firstItem="yo5-bq-kFG" firstAttribute="top" secondItem="vGi-gT-drh" secondAttribute="bottom" constant="18" id="Xz6-MQ-5zx"/>
                             <constraint firstItem="KbK-pe-M6A" firstAttribute="top" secondItem="Acy-nh-cKb" secondAttribute="bottom" constant="152" id="ico-xR-7aO"/>
-                            <constraint firstItem="yo5-bq-kFG" firstAttribute="centerX" secondItem="gqy-w4-mBW" secondAttribute="centerX" id="jMI-LA-KEO"/>
                             <constraint firstItem="KbK-pe-M6A" firstAttribute="leading" secondItem="gqy-w4-mBW" secondAttribute="leadingMargin" constant="66" id="vKM-8k-uwO"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="messageTextField" destination="fBQ-JJ-A5f" id="XDY-hM-zuR"/>
-                        <outlet property="outputTextView" destination="vGi-gT-drh" id="Us8-bQ-eyW"/>
-                        <outlet property="reloadButton" destination="yo5-bq-kFG" id="mOI-sn-n7F"/>
+                        <outlet property="messageTextField" destination="fBQ-JJ-A5f" id="Mht-c9-cGu"/>
+                        <outlet property="outputTextView" destination="vGi-gT-drh" id="yCq-fu-6wW"/>
+                        <outlet property="reloadButton" destination="yo5-bq-kFG" id="rNT-de-eXV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFW-0S-Q17" userLabel="First Responder" sceneMemberID="firstResponder"/>

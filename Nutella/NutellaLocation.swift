@@ -43,9 +43,9 @@ class NLResource {
             self.notifyExit = false
     }
     convenience init(rid: String) {
-        self.init(model: NLResourceModel.UNKNOWN,
-            type: NLResourceType.UNKNOWN,
-            trackingSystem: NLResourceTrackingSystem.NONE,
+        self.init(model: NLResourceModel.unknown,
+            type: NLResourceType.unknown,
+            trackingSystem: NLResourceTrackingSystem.none,
             rid: rid,
             parameters: Dictionary<String,String>())
     }
@@ -72,7 +72,7 @@ class NLResource {
 /**
     This class manages part of a resource and keep it synchronized with the server
 */
-public class NLManaged {
+open class NLManaged {
     weak var delegate: NLManagedResourceDelegate?
     weak var resource: NLResource?
     
@@ -85,7 +85,7 @@ public class NLManaged {
 /**
     This class manages a resource and keep it synchronized with the server, it exposes the right permission for every part of the resource
 */
-public class NLManagedResource: NLManaged {
+open class NLManagedResource: NLManaged {
     
     override init(resource: NLResource, delegate: NLManagedResourceDelegate?) {
         self.continuous = NLManagedResourceContinuous(resource: resource, delegate: delegate)
@@ -106,23 +106,23 @@ public class NLManagedResource: NLManaged {
     }
     
     // Expose all the properties of NLResource using the right permissions
-    public var model: NLResourceModel? {
+    open var model: NLResourceModel? {
         return self.resource?.model
     }
-    public var type: NLResourceType? {
+    open var type: NLResourceType? {
         return self.resource?.type
     }
-    public var rid: String? {
+    open var rid: String? {
         return self.resource?.rid
     }
-    public var trackingSystem: NLResourceTrackingSystem? {
+    open var trackingSystem: NLResourceTrackingSystem? {
         return self.resource?.trackingSystem
     }
-    public var continuous: NLManagedResourceContinuous
-    public var discrete: NLManagedResourceDiscrete
-    public var parameter: NLManagedResourceParameterManager
+    open var continuous: NLManagedResourceContinuous
+    open var discrete: NLManagedResourceDiscrete
+    open var parameter: NLManagedResourceParameterManager
     
-    public var parameters: [String] {
+    open var parameters: [String] {
         var keys = [String]()
         if let resource = self.resource {
             for (key, _) in resource.parameters {
@@ -132,7 +132,7 @@ public class NLManagedResource: NLManaged {
         return keys
     }
     
-    public var notifyUpdate: Bool? {
+    open var notifyUpdate: Bool? {
         get {
             return resource?.notifyUpdate
         }
@@ -141,7 +141,7 @@ public class NLManagedResource: NLManaged {
         }
     }
     
-    public var notifyEnter: Bool? {
+    open var notifyEnter: Bool? {
         get {
             return resource?.notifyEnter
         }
@@ -150,7 +150,7 @@ public class NLManagedResource: NLManaged {
         }
     }
     
-    public var notifyExit: Bool? {
+    open var notifyExit: Bool? {
         get {
             return resource?.notifyExit
         }
@@ -161,37 +161,37 @@ public class NLManagedResource: NLManaged {
 }
 
 protocol NLManagedResourceDelegate : class {
-    func updateResource(resource: NLResource)
+    func updateResource(_ resource: NLResource)
 }
 
 /**
     Model of a resource
 */
 public enum NLResourceModel {
-    case IMAC
-    case IPHONE
-    case IPAD
-    case IBEACON
-    case UNKNOWN
+    case imac
+    case iphone
+    case ipad
+    case ibeacon
+    case unknown
 }
 
 /**
     Type of resource
 */
 public enum NLResourceType {
-    case STATIC
-    case DYNAMIC
-    case UNKNOWN
+    case `static`
+    case dynamic
+    case unknown
 }
 
 /**
     Tracking system type
 */
 public enum NLResourceTrackingSystem {
-    case CONTINUOUS
-    case DISCRETE
-    case PROXIMITY
-    case NONE
+    case continuous
+    case discrete
+    case proximity
+    case none
 }
 
 public struct NLResourceContinuous {
@@ -203,33 +203,33 @@ public struct NLResourceDiscrete {
 }
 
 public enum NLDiscrete {
-    case Number(Int)
-    case Letter(Character)
+    case number(Int)
+    case letter(Character)
 }
 
 /**
     Manages the continuous coordinate of a resource
 */
-public class NLManagedResourceContinuous: NLManaged {
-    public var x: Double? {
+open class NLManagedResourceContinuous: NLManaged {
+    open var x: Double? {
         get {
             return self.resource?.continuous?.x
         }
         set(x) {
             self.resource?.continuous?.x = x!
             if let resource = self.resource {
-                self.delegate?.updateResource(resource: resource)
+                self.delegate?.updateResource(resource)
             }
         }
     }
-    public var y: Double? {
+    open var y: Double? {
         get {
             return self.resource?.continuous?.y
         }
         set(y) {
             self.resource?.continuous?.y = y!
             if let resource = self.resource {
-                self.delegate?.updateResource(resource: resource)
+                self.delegate?.updateResource(resource)
             }
         }
     }
@@ -238,26 +238,26 @@ public class NLManagedResourceContinuous: NLManaged {
 /**
     Manages the discrete coordinate of a resource
 */
-public class NLManagedResourceDiscrete: NLManaged {
-    public var x: NLDiscrete? {
+open class NLManagedResourceDiscrete: NLManaged {
+    open var x: NLDiscrete? {
         get {
             return self.resource?.discrete?.x
         }
         set(x) {
             self.resource?.discrete?.x = x!
             if let resource = self.resource {
-                self.delegate?.updateResource(resource: resource)
+                self.delegate?.updateResource(resource)
             }
         }
     }
-    public var y: NLDiscrete? {
+    open var y: NLDiscrete? {
         get {
             return self.resource?.discrete?.y
         }
         set(y) {
             self.resource?.discrete?.y = y!
             if let resource = self.resource {
-                self.delegate?.updateResource(resource: resource)
+                self.delegate?.updateResource(resource)
             }
         }
     }
@@ -268,15 +268,15 @@ public struct NLResourceProximity {
     var distance: Double
 }
 
-public class NLManagedResourceParameterManager: NLManaged {
-    public subscript(key: String) -> String? {
+open class NLManagedResourceParameterManager: NLManaged {
+    open subscript(key: String) -> String? {
         get {
             return self.resource?.parameters[key]
         }
         set(newValue) {
             self.resource?.parameters[key] = newValue
             if let resource = self.resource {
-                self.delegate?.updateResource(resource: resource)
+                self.delegate?.updateResource(resource)
             }
         }
     }
@@ -285,14 +285,14 @@ public class NLManagedResourceParameterManager: NLManaged {
 /**
     Manages all the resources and keep them accessible to the client
 */
-public class NLResourceManager {
+open class NLResourceManager {
     var resources = [String:NLResource]()
     
     init(delegate: NLManagedResourceDelegate? = nil) {
         self.delegate = delegate
     }
     
-    public subscript(rid: String) -> NLManagedResource? {
+    open subscript(rid: String) -> NLManagedResource? {
         let resource = self.resources[rid]
         if resource == nil {
             return nil
@@ -305,14 +305,14 @@ public class NLResourceManager {
 
 func == (left: NLBeacon, right: CLBeacon) -> Bool {
     return left.uuid.lowercased() == right.proximityUUID.uuidString.lowercased() &&
-        left.minor == right.minor &&
-        left.major == right.major
+        Int(left.minor) == Int(right.minor) &&
+        Int(left.major) == Int(right.major)
 }
 
 /**
     This class enables the communication with RoomPlaces module
 */
-public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDelegate, NLManagedResourceDelegate, CBPeripheralDelegate {
+open class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDelegate, NLManagedResourceDelegate, CBPeripheralDelegate {
     
     var delegate: NutellaLocationDelegate?
     
@@ -343,11 +343,11 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                     self.stopVirtualBeacon()
                     
                     // STATIC => MONITORING
-                    if self._resource?.type == NLResourceType.STATIC {
+                    if self._resource?.type == NLResourceType.static {
                         self.startMonitorning()
                     }
                     // DYNAMIC && iBeacon => VIRTUAL BEACON
-                    if self._resource?.type == NLResourceType.DYNAMIC && self._resource?.trackingSystem == NLResourceTrackingSystem.PROXIMITY {
+                    if self._resource?.type == NLResourceType.dynamic && self._resource?.trackingSystem == NLResourceTrackingSystem.proximity {
                         self.startVirtualBeacon()
                         self.startMonitorning()
                     }
@@ -360,7 +360,9 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
     var beacons = [String:NLBeacon]()
     var regions = [CLBeaconRegion]()
     let locationManager = CLLocationManager()
-    let peripheralManager = CBPeripheralManager(delegate: nil, queue: DispatchQueue.global(attributes: .qosDefault))
+    //let peripheralManager = CBPeripheralManager(delegate: nil, queue: DispatchQueue.global(attributes: .qosDefault))
+    
+    let peripheralManager = CBPeripheralManager(delegate: nil, queue: DispatchQueue.global(qos: .default))
     
     var resources: [String] {
         get {
@@ -375,7 +377,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
     /**
         Resource manager: enable the access to the resources
     */
-    public var resource: NLResourceManager!
+    open var resource: NLResourceManager!
     
     // Resource associated with nutella client
     var _resource: NLResource?
@@ -405,47 +407,48 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
     var beaconListDownloaded = false
     public func downloadBeaconList() {
         // Download the list of beacons from beacon-cloud-bot
-        self.net.asyncRequest(channel: "beacon/beacons", message: [:], requestName: "beacons")
+        //self.net.asyncRequest("beacon/beacons", message: [:], requestName: "beacons")
     }
     
     var resourceListDownloaded = false
     public func downloadResourceList() {
         // Download the list of resources from room-places-bot
-        self.net.asyncRequest(channel: "location/resources", message: [:], requestName: "resources")
+        //self.net.asyncRequest("location/resources", message: [:], requestName: "resources")
     }
     
     var subscribedToResources = false
     public func subscribeResourceUpdate() {
         // Subscribe to all resource update
-        self.net.subscribe(channel: "location/resources/updated");
-        self.net.subscribe(channel: "location/resource/static/#");
+        self.net.subscribe("location/resources/updated");
+        self.net.subscribe("location/resource/static/#");
         
         // Subscribe to beacon and virtual beacon update
-        self.net.subscribe(channel: "beacon/beacons/added");
+        self.net.subscribe("beacon/beacons/added");
         
         subscribedToResources = true
         
         self.checkReady()
     }
     
-    public func startMonitoringRegions(uuids: [String]) {
+    public func startMonitoringRegions(_ uuids: [String]) {
         for uuid in uuids {
-            let region: CLBeaconRegion = CLBeaconRegion(proximityUUID: NSUUID(uuidString: uuid)! as UUID, identifier: uuid)
+            let region: CLBeaconRegion = CLBeaconRegion(proximityUUID: UUID(uuidString: uuid)! as UUID, identifier: uuid)
             self.locationManager.startRangingBeacons(in: region)
             self.regions.append(region)
         }
         
         // Hardcoded region for virtual beacons
         let uuid = "00000000-0000-0000-0000-000000000000"
-        let region: CLBeaconRegion = CLBeaconRegion(proximityUUID: NSUUID(uuidString: uuid)! as UUID, identifier: uuid)
+        let region: CLBeaconRegion = CLBeaconRegion(proximityUUID: UUID(uuidString: uuid)! as UUID, identifier: uuid)
         self.locationManager.startRangingBeacons(in: region)
         self.regions.append(region)
     }
     
+    // TODO
     public func startMonitorning() {
         // Request the beacon cloud service for the uuids list
         
-        self.net.asyncRequest(channel: "beacon/uuids", message: [:], requestName: "uuids")
+       // self.net.asyncRequest("beacon/uuids", message: [:], requestName: "uuids")
     }
     
     public func stopMonitoring() {
@@ -455,13 +458,14 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         self.regions = []
     }
     
+    // TODO
     public func startVirtualBeacon() {
         if let rid = self._resource?.rid {
-            self.net.asyncRequest(channel: "beacon/virtual_beacon", message: ["rid": rid], requestName: "virtual_beacon")
+         //   self.net.asyncRequest("beacon/virtual_beacon", message: ["rid": rid], requestName: "virtual_beacon")
         }
     }
     
-    public func startVirtualBeacon(major: Int, minor: Int) {
+    open func startVirtualBeacon(_ major: Int, minor: Int) {
         /*
         if peripheralManager.state.rawValue < CBPeripheralManagerState.PoweredOn.rawValue {
             println("WARNING: Bluetooth disabled")
@@ -469,7 +473,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         */
         
         // Create the region
-        let uuid = NSUUID(uuidString: "00000000-0000-0000-0000-000000000000")
+        let uuid = UUID(uuidString: "00000000-0000-0000-0000-000000000000")
         let region = CLBeaconRegion(proximityUUID: uuid! as UUID, major: UInt16(major), minor: UInt16(minor), identifier: "virtual_beacon")
         
         //fuck up
@@ -481,13 +485,13 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
 //        }
     }
     
-    public func stopVirtualBeacon() {
+    open func stopVirtualBeacon() {
         peripheralManager.stopAdvertising()
     }
     
     // MARK: CLLocationManagerDelegate
     
-    public func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+    open func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
 
         
         var updatedResources = [Dictionary<String,AnyObject>]()
@@ -514,7 +518,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                 
                 if beacon != nil {
             
-                    let distance = self.calculateDistance(clBeacon: (clBeacon))
+                    let distance = self.calculateDistance((clBeacon))
                     
                     if distance < 0 {
                         continue
@@ -525,14 +529,14 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                         if let clientResource = self._resource {
                             var updatedResource = [String:AnyObject]()
                             
-                            if(clientResource.type == NLResourceType.STATIC &&
-                               resource.type == NLResourceType.DYNAMIC) {
+                            if(clientResource.type == NLResourceType.static &&
+                               resource.type == NLResourceType.dynamic) {
                                 
-                                    updatedResource["rid"] = beacon!.rid
-                                    updatedResource["proximity"] = [
-                                        "rid": myRid,
-                                        "distance": distance
-                                    ]
+//                                    updatedResource["rid"] = beacon!.rid
+//                                    updatedResource["proximity"] = [
+//                                        "rid": myRid,
+//                                        "distance": distance
+//                                    ]
                                     /*
                                     self.net.publish("location/resource/update", message: [
                                         "rid": beacon!.rid,
@@ -542,13 +546,13 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                                         ])
                                     */
                             }
-                            else if(clientResource.type == NLResourceType.DYNAMIC &&
-                                    resource.type == NLResourceType.STATIC) {
-                                    updatedResource["rid"] = myRid
-                                    updatedResource["proximity"] = [
-                                        "rid": beacon!.rid,
-                                        "distance": distance
-                                    ]
+                            else if(clientResource.type == NLResourceType.dynamic &&
+                                    resource.type == NLResourceType.static) {
+//                                    updatedResource["rid"] = myRid
+//                                    updatedResource["proximity"] = [
+//                                        "rid": beacon!.rid,
+//                                        "distance": distance
+//                                    ]
                                     /*
                                     self.net.publish("location/resource/update", message: [
                                         "rid": myRid
@@ -568,9 +572,9 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         }
         
         if updatedResources.count > 0 {
-            self.net.publish(channel: "location/resources/update", message: [
-                "resources": updatedResources
-            ])
+//            self.net.publish("location/resources/update", message: [
+//                "resources": updatedResources
+//            ])
 
         }
     }
@@ -578,7 +582,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
     /**
         This is the algorithm for estimating the distance
     */
-    func calculateDistance(clBeacon: CLBeacon) -> Double {
+    func calculateDistance(_ clBeacon: CLBeacon) -> Double {
         let accuracy = clBeacon.accuracy
         //var distance = 0.0
         
@@ -619,7 +623,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         return accuracy;
     }
     
-    func updateResource(resource: Dictionary<String, AnyObject>) {
+    func updateResource(_ resource: Dictionary<String, AnyObject>) {
         if let rid = resource["rid"] as? String {
             if let type = resource["type"] as? String {
                 if let model = resource["model"] as? String {
@@ -633,34 +637,34 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                         
                         switch(type) {
                         case "STATIC":
-                            r!.type = NLResourceType.STATIC
+                            r!.type = NLResourceType.static
                             break
                         case "DYNAMIC":
-                            r!.type = NLResourceType.DYNAMIC
+                            r!.type = NLResourceType.dynamic
                             break
                         default:
-                            r!.type = NLResourceType.UNKNOWN
+                            r!.type = NLResourceType.unknown
                         }
                         
                         switch(model) {
                         case "IMAC":
-                            r!.model = NLResourceModel.IMAC
+                            r!.model = NLResourceModel.imac
                             break
                         case "IPHONE":
-                            r!.model = NLResourceModel.IPHONE
+                            r!.model = NLResourceModel.iphone
                             break
                         case "IPAD":
-                            r!.model = NLResourceModel.IPAD
+                            r!.model = NLResourceModel.ipad
                             break
                         case "IBEACON":
-                            r!.model = NLResourceModel.IBEACON
+                            r!.model = NLResourceModel.ibeacon
                             break
                         default:
-                            r!.model = NLResourceModel.UNKNOWN
+                            r!.model = NLResourceModel.unknown
                         }
                         
                         if let continuous = resource["continuous"] as? Dictionary<String, AnyObject> {
-                            r!.trackingSystem = NLResourceTrackingSystem.CONTINUOUS
+                            r!.trackingSystem = NLResourceTrackingSystem.continuous
                             if let x = continuous["x"] as? Double {
                                 if let y = continuous["y"] as? Double {
                                     r!.continuous = NLResourceContinuous(x: x, y: y)
@@ -669,22 +673,22 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                         }
                         
                         if let discrete = resource["discrete"] as? Dictionary<String, AnyObject> {
-                            r!.trackingSystem = NLResourceTrackingSystem.DISCRETE
+                            r!.trackingSystem = NLResourceTrackingSystem.discrete
                             var _x: NLDiscrete? = nil,
                                 _y: NLDiscrete? = nil
                             
                             if let x = discrete["x"] as? Double {
-                                _x = .Number(Int(x))
+                                _x = .number(Int(x))
                             }
                             else if let x = discrete["x"] as? String {
-                                _x = .Letter(x[x.startIndex])
+                                _x = .letter(x[x.startIndex])
                             }
                             
                             if let y = discrete["y"] as? Double {
-                                _y = .Number(Int(y))
+                                _y = .number(Int(y))
                             }
                             else if let y = discrete["y"] as? String {
-                                _y = .Letter(y[y.startIndex])
+                                _y = .letter(y[y.startIndex])
                             }
                         
                             if _x != nil && _y != nil {
@@ -693,7 +697,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                         }
                         
                         if let proximity = resource["proximity"] as? Dictionary<String, AnyObject> {
-                            r!.trackingSystem = NLResourceTrackingSystem.PROXIMITY
+                            r!.trackingSystem = NLResourceTrackingSystem.proximity
                             
                             if ((proximity["rid"] as? String) != nil) {
                                 if let distance = proximity["distance"] as? Double {
@@ -723,7 +727,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                         
                         // Update the resource if updates enabled
                         if r?.notifyUpdate == true {
-                            self.delegate?.resourceUpdated(resource: NLManagedResource(resource: r!, delegate: self))
+                            self.delegate?.resourceUpdated(NLManagedResource(resource: r!, delegate: self))
                         }
                     }
                 }
@@ -731,7 +735,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         }
     }
     
-    public func checkReady() {
+    open func checkReady() {
         if(beaconListDownloaded && resourceListDownloaded && subscribedToResources) {
             let backgroundQueue = OperationQueue()
             backgroundQueue.addOperation(){
@@ -741,12 +745,12 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
     }
     
     // MARK: NutellaNetDelegate
-    public func messageReceived(channel: String, message: AnyObject, componentId: String?, resourceId: String?) {
+    open func messageReceived(_ channel: String, message: AnyObject, componentId: String?, resourceId: String?) {
         // Resource update
         if channel == "location/resources/updated" {
             if let resources = message["resources"] as? [Dictionary<String, AnyObject>] {
                 for resource in resources {
-                    updateResource(resource: resource)
+                    updateResource(resource)
                 }
             }
         }
@@ -768,13 +772,13 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
             // Update the resources
             if let resources = message["resources"] as? [Dictionary<String, AnyObject>] {
                 for resource in resources {
-                    updateResource(resource: resource)
+                    updateResource(resource)
                     if let rid = resource["rid"] as? String {
                         let dynamicResource = self.resource.resources[rid]
                         let staticResource = self.resource.resources[baseStationRid]
                         
                         if dynamicResource != nil && staticResource !=  nil && staticResource?.notifyEnter == true {
-                            self.delegate?.resourceEntered(dynamicResource: NLManagedResource(resource: dynamicResource!, delegate: self),
+                            self.delegate?.resourceEntered(NLManagedResource(resource: dynamicResource!, delegate: self),
                                 staticResource: NLManagedResource(resource: staticResource!, delegate: self))
                         }
                     }
@@ -796,13 +800,13 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
             // Update the resources
             if let resources = message["resources"] as? [Dictionary<String, AnyObject>] {
                 for resource in resources {
-                    updateResource(resource: resource)
+                    updateResource(resource)
                     if let rid = resource["rid"] as? String {
                         let dynamicResource = self.resource.resources[rid]
                         let staticResource = self.resource.resources[baseStationRid]
                         
                         if dynamicResource != nil && staticResource !=  nil && staticResource?.notifyExit == true {
-                            self.delegate?.resourceExited(dynamicResource: NLManagedResource(resource: dynamicResource!, delegate: self),
+                            self.delegate?.resourceExited(NLManagedResource(resource: dynamicResource!, delegate: self),
                                 staticResource: NLManagedResource(resource: staticResource!, delegate: self))
                         }
                     }
@@ -841,11 +845,11 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
         }
     }
     
-    public func responseReceived(channelName: String, requestName: String?, response: AnyObject) {
+    open func responseReceived(_ channelName: String, requestName: String?, response: AnyObject) {
         if requestName == "uuids" {
             if response is Dictionary<String, [String]> {
                 if let uuids = response["uuids"] as? [String] {
-                    self.startMonitoringRegions(uuids: uuids)
+                    self.startMonitoringRegions(uuids)
                 }
             }
         }
@@ -886,7 +890,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
             if response is Dictionary<String, [AnyObject]> {
                 if let resources = response["resources"] as? [Dictionary<String, AnyObject>] {
                     for resource in resources {
-                        updateResource(resource: resource)
+                        updateResource(resource)
                     }
                 }
             }
@@ -901,7 +905,7 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
                         if let minor = Int(minorS) {
                             if let major = Int(majorS) {
                                 print(minor);
-                                self.startVirtualBeacon(major: major, minor: minor)
+                                self.startVirtualBeacon(major, minor: minor)
                             }
                         }
                     }
@@ -920,19 +924,19 @@ public class NutellaLocation: NSObject, NutellaNetDelegate, CLLocationManagerDel
     // MARK: NLManagedResourceDelegate
     
     // Update the resource on the server
-    func updateResource(resource: NLResource) {
-        var message: [String:AnyObject] = [
-            "rid": resource.rid
+    func updateResource(_ resource: NLResource) {
+        var message: [String:Dictionary<String,Int>] = [
+            "rid": (resource.rid as AnyObject) as! Dictionary<String, Int>
         ]
         
-        if resource.trackingSystem == NLResourceTrackingSystem.CONTINUOUS {
+        if resource.trackingSystem == NLResourceTrackingSystem.continuous {
             message["continuous"] = [
-                "x": resource.continuous!.x,
-                "y": resource.continuous!.y]
+                "x": Int(resource.continuous!.x),
+                "y": Int(resource.continuous!.y)]
         }
         
-        self.net.publish(channel: "location/resource/update",
-            message: message)
+        self.net.publish("location/resource/update",
+            message: message as AnyObject)
     }
 
 }

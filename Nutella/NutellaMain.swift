@@ -21,12 +21,12 @@ let DEBUG = true
 /**
     This is the main class that contains all the modules. It acts as a interface with the external world.
 */
-public class Nutella: NutellaConfigDelegate {
+open class Nutella: NutellaConfigDelegate {
     var componentId: String
     var runId: String
     var appId: String
     
-    public var resourceId: String? {
+    open var resourceId: String? {
         get {
             return self.location.resourceId
         }
@@ -39,17 +39,17 @@ public class Nutella: NutellaConfigDelegate {
     /**
         Nutella network module, it enable the explicit interaction using MQTT protocol.
     */
-    public var net: NutellaNet
+    open var net: NutellaNet
     
     /**
         Nutella location module, it enable the detection of near beacon
     */
-    public var location: NutellaLocation
+    open var location: NutellaLocation
     
     /**
         The NutellaDelegateused in order to manage the notification about the status of Nutella.
     */
-    public weak var delegate: NutellaDelegate?
+    open weak var delegate: NutellaDelegate?
     
     /**
         Designated initializer.
@@ -87,7 +87,7 @@ public class Nutella: NutellaConfigDelegate {
         Nutella newtork module delegate.
     */
     
-    public var netDelegate: NutellaNetDelegate? {
+    open var netDelegate: NutellaNetDelegate? {
         get {
             return self.net.delegate
         }
@@ -99,7 +99,7 @@ public class Nutella: NutellaConfigDelegate {
     /**
         Nutella location module delegate
     */
-    public var locationDelegate: NutellaLocationDelegate? {
+    open var locationDelegate: NutellaLocationDelegate? {
         get {
             return self.location.delegate
         }

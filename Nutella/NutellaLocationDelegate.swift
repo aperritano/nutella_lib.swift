@@ -10,8 +10,8 @@ import Foundation
 */
 public protocol NutellaLocationDelegate {
     
-    func resourceUpdated(resource: NLManagedResource)
-    func resourceEntered(dynamicResource: NLManagedResource, staticResource: NLManagedResource)
-    func resourceExited(dynamicResource: NLManagedResource, staticResource: NLManagedResource)
+    func resourceUpdated(_ resource: NLManagedResource)
+    func resourceEntered(_ dynamicResource: NLManagedResource, staticResource: NLManagedResource)
+    func resourceExited(_ dynamicResource: NLManagedResource, staticResource: NLManagedResource)
     func ready()
 }
