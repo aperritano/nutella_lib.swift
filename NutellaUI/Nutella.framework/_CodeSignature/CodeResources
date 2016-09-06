@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/Nutella-Swift.h</key>
 		<data>
-		4CnaiNpxd/DLCPlkX+/5Os41eVs=
+		mWVImc33qFsyqWvEWioHH0ig834=
 		</data>
 		<key>Headers/Nutella.h</key>
 		<data>
@@ -14,23 +14,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ZHFv46BGZD8wsvX7Ex67PTpjx2s=
+		0tlqn4TqRy+wPsnh993+XtD4xes=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftdoc</key>
 		<data>
-		t+oDYdc3YbQwScQ2oTwKrsZod7U=
+		EmPJ6tiBe5xvUrcIA/UMNg+T3Ig=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftmodule</key>
 		<data>
-		E87HrpYL5CRXH8WlmVIhzHiYyCI=
+		XHS75w7rc8+23tmIJoBi1ZsI7O0=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		qzd0WfUxhO6sv7J2JiNkq0YFuCg=
+		ieocMmq6F0DBIsIZ/+OKVGY+MAs=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		+Lc29wIb0L+f9A/NdqjTOVMrnhY=
+		4dZjXtNLNcIaHp//gjOFdUvLU9w=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -43,11 +43,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4CnaiNpxd/DLCPlkX+/5Os41eVs=
+			mWVImc33qFsyqWvEWioHH0ig834=
 			</data>
 			<key>hash2</key>
 			<data>
-			GagfIqmr8ZjCzwkyDzDsokCmIj3vmE4PEc2m/GVqhbY=
+			z15o4DPx/5TdjCP8ir2OzvRtyhhE9GoC6HcfJvvsm/k=
 			</data>
 		</dict>
 		<key>Headers/Nutella.h</key>
@@ -65,44 +65,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			t+oDYdc3YbQwScQ2oTwKrsZod7U=
+			EmPJ6tiBe5xvUrcIA/UMNg+T3Ig=
 			</data>
 			<key>hash2</key>
 			<data>
-			exWAv9Mj1hmQtXWPr90kUCWwCr/IuOf7DlPSGmAzeNM=
+			vukmoxHfel6CJJRdKXM/Xrl6StCS4fh4RTSpe2B43OI=
 			</data>
 		</dict>
 		<key>Modules/Nutella.swiftmodule/arm.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			E87HrpYL5CRXH8WlmVIhzHiYyCI=
+			XHS75w7rc8+23tmIJoBi1ZsI7O0=
 			</data>
 			<key>hash2</key>
 			<data>
-			DDD6dWrnjZdFAKpt+BAIzC5h6Epv+Y9/YU0oRPUa5jM=
+			bICIhXrwcOU3VLDVpxTkNiJQYBQACYovWPBbAXtdLLw=
 			</data>
 		</dict>
 		<key>Modules/Nutella.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			qzd0WfUxhO6sv7J2JiNkq0YFuCg=
+			ieocMmq6F0DBIsIZ/+OKVGY+MAs=
 			</data>
 			<key>hash2</key>
 			<data>
-			Vh4YuVWzKslZ2uW8LL8s0FjeSB3Lr8HURtLKTeoThGM=
+			ekaIHGAvBErY22OO9puBI4dMqIvc1oSzOirdnVqZ2PA=
 			</data>
 		</dict>
 		<key>Modules/Nutella.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+Lc29wIb0L+f9A/NdqjTOVMrnhY=
+			4dZjXtNLNcIaHp//gjOFdUvLU9w=
 			</data>
 			<key>hash2</key>
 			<data>
-			b2Gl4YP+hwgcMx0l2qp8nIqGzAE3rShH6e9f+T4RTmM=
+			gLnhU7Gqyw5Jm+2WnZ1+IREBbntewxmvxiQqa3/uiqA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -134,6 +134,11 @@
 			<true/>
 			<key>weight</key>
 			<real>1100</real>
+		</dict>
+		<key>^Base\.lproj/</key>
+		<dict>
+			<key>weight</key>
+			<real>1010</real>
 		</dict>
 		<key>^version.plist$</key>
 		<true/>
@@ -179,6 +184,11 @@
 			<true/>
 			<key>weight</key>
 			<real>1100</real>
+		</dict>
+		<key>^Base\.lproj/</key>
+		<dict>
+			<key>weight</key>
+			<real>1010</real>
 		</dict>
 		<key>^Info\.plist$</key>
 		<dict>

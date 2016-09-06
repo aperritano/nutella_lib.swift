@@ -36,14 +36,19 @@ class ViewController: UIViewController {
     func nutellaSetup() {
         
         
-        self.nutella = Nutella(brokerHostname: "localhost",
-                               appId: "wallcology",
-                               runId: "default",
-                               componentId: "test_component")
-        self.nutella?.netDelegate = self
-        self.nutella?.resourceId = "hello"
-       // self.nutella?.net.subscribe("echo_out")
+     
         
+        let block = DispatchWorkItem {
+            self.nutella = Nutella(brokerHostname: "localhost",
+                                   appId: "wallcology",
+                                   runId: "default",
+                                   componentId: "test_component")
+            self.nutella?.netDelegate = self
+            self.nutella?.resourceId = "default"
+            self.nutella?.net.subscribe("echo_out")
+        }
+        
+        DispatchQueue.main.async(execute: block)
         
         //        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
         //            // ... do any setup ...
@@ -64,12 +69,12 @@ class ViewController: UIViewController {
             if let nutella = nutella {
                 
                 let block = DispatchWorkItem {
-                    var m = "Hello Major Tom, are you receiving this? Turn the thrusters on, we're standing by"
+                    let m = "Hello Major Tom, are you receiving this? Turn the thrusters on, we're standing by"
                     var dict = [String:String]()
-                    dict["group"] = "1"
+                    dict["speciesIndex"] = "1"
                     
-                    nutella.net.asyncRequest("all_notes_with_group", message: dict as AnyObject, requestName: "all_notes_with_group")
-                    //nutella.net.publish("all_notes", message: dict as AnyObject)
+                    nutella.net.asyncRequest("all_notes_with_species", message: dict as AnyObject, requestName: "all_notes_with_species")
+                    //nutella.net.publish("echo_in", message: dict as AnyObject)
                 }
                 
                 DispatchQueue.main.async(execute: block)
@@ -96,8 +101,8 @@ extension ViewController: NutellaNetDelegate {
      - parameter message: The message.
      - parameter from: The actor name of the client that sent the message.
      */
-    func messageReceived(_ channel: String, message: AnyObject, componentId: String?, resourceId: String?) {
-        print("messageReceived \(channel) message: \(message) componentId: \(componentId) resourceId: \(resourceId)")
+    func messageReceived(_ channel: String, message: AnyObject, from: [String:String]?) {
+        print("messageReceived \(channel) message: \(message) from: \(from)")
     }
     
     /**

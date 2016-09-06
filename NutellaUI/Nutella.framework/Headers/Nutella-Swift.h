@@ -148,7 +148,7 @@ SWIFT_PROTOCOL("_TtP7Nutella18NutellaNetDelegate_")
   \param response The dictionary/array/string containing the JSON representation.
 
 */
-- (void)responseReceived:(NSString * _Nonnull)channelName requestName:(NSString * _Nullable)requestName response:(id _Nonnull)response;
+- (void)responseReceived:(NSString * _Nonnull)channel requestName:(NSString * _Nullable)requestName response:(id _Nonnull)response componentId:(NSString * _Nullable)componentId resourceId:(NSString * _Nullable)resourceId;
 /**
   A request is received on a Nutella channel that was previously handled (with the handleRequest).
   \param channelName The name of the Nutella chennal on which the request is received.
@@ -156,7 +156,7 @@ SWIFT_PROTOCOL("_TtP7Nutella18NutellaNetDelegate_")
   \param request The dictionary/array/string containing the JSON representation of the request.
 
 */
-- (id _Nullable)requestReceived:(NSString * _Nonnull)channelName request:(id _Nullable)request componentId:(NSString * _Nullable)componentId resourceId:(NSString * _Nullable)resourceId;
+- (id _Nullable)requestReceived:(NSString * _Nonnull)channel request:(id _Nullable)request componentId:(NSString * _Nullable)componentId resourceId:(NSString * _Nullable)resourceId;
 @end
 
 @class CLLocationManager;
