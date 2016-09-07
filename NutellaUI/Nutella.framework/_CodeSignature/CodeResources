@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/Nutella-Swift.h</key>
 		<data>
-		mWVImc33qFsyqWvEWioHH0ig834=
+		PAoJ79gkWdVKvsoO5jOcHkmW65c=
 		</data>
 		<key>Headers/Nutella.h</key>
 		<data>
@@ -18,19 +18,19 @@
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftdoc</key>
 		<data>
-		EmPJ6tiBe5xvUrcIA/UMNg+T3Ig=
+		PiZzs+qQJiroGfHI9tQ1gw7ZfPs=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm.swiftmodule</key>
 		<data>
-		XHS75w7rc8+23tmIJoBi1ZsI7O0=
+		VjWIKydyCS7TlQGkS6lgaoQ+/WE=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		ieocMmq6F0DBIsIZ/+OKVGY+MAs=
+		SBRLz2KBSd7OKDrcp1TeKzPgTTE=
 		</data>
 		<key>Modules/Nutella.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		4dZjXtNLNcIaHp//gjOFdUvLU9w=
+		Qvl9nNq1dPknbYCgI7+G/RKoXGw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -43,11 +43,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mWVImc33qFsyqWvEWioHH0ig834=
+			PAoJ79gkWdVKvsoO5jOcHkmW65c=
 			</data>
 			<key>hash2</key>
 			<data>
-			z15o4DPx/5TdjCP8ir2OzvRtyhhE9GoC6HcfJvvsm/k=
+			LWvfeqnIXzAVOStk22fa0bC9or7ifzE2V16I0SJfDFs=
 			</data>
 		</dict>
 		<key>Headers/Nutella.h</key>
@@ -65,44 +65,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			EmPJ6tiBe5xvUrcIA/UMNg+T3Ig=
+			PiZzs+qQJiroGfHI9tQ1gw7ZfPs=
 			</data>
 			<key>hash2</key>
 			<data>
-			vukmoxHfel6CJJRdKXM/Xrl6StCS4fh4RTSpe2B43OI=
+			q4gS2WNWqPaw2yCAag6spKybaT0dZSFiQ5kYDOlzRCo=
 			</data>
 		</dict>
 		<key>Modules/Nutella.swiftmodule/arm.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			XHS75w7rc8+23tmIJoBi1ZsI7O0=
+			VjWIKydyCS7TlQGkS6lgaoQ+/WE=
 			</data>
 			<key>hash2</key>
 			<data>
-			bICIhXrwcOU3VLDVpxTkNiJQYBQACYovWPBbAXtdLLw=
+			FKiX1Ra8DOMiq5sqMu0/soYdKW4Np4FbYhb1I2IwluY=
 			</data>
 		</dict>
 		<key>Modules/Nutella.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ieocMmq6F0DBIsIZ/+OKVGY+MAs=
+			SBRLz2KBSd7OKDrcp1TeKzPgTTE=
 			</data>
 			<key>hash2</key>
 			<data>
-			ekaIHGAvBErY22OO9puBI4dMqIvc1oSzOirdnVqZ2PA=
+			MgvQTDF9Kq571JWOLnegZpBJRsZ0Bt29rIJGupmtL3c=
 			</data>
 		</dict>
 		<key>Modules/Nutella.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			4dZjXtNLNcIaHp//gjOFdUvLU9w=
+			Qvl9nNq1dPknbYCgI7+G/RKoXGw=
 			</data>
 			<key>hash2</key>
 			<data>
-			gLnhU7Gqyw5Jm+2WnZ1+IREBbntewxmvxiQqa3/uiqA=
+			ekw/8fMGh6b3CHb7CZUa43rEo5N+32lyfq4RH/OYotk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

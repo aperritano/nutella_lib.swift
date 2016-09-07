@@ -138,7 +138,7 @@ SWIFT_PROTOCOL("_TtP7Nutella18NutellaNetDelegate_")
   \param from The actor name of the client that sent the message.
 
 */
-- (void)messageReceived:(NSString * _Nonnull)channel message:(id _Nonnull)message componentId:(NSString * _Nullable)componentId resourceId:(NSString * _Nullable)resourceId;
+- (void)messageReceived:(NSString * _Nonnull)channel message:(id _Nonnull)message from:(NSDictionary<NSString *, NSString *> * _Nullable)from;
 /**
   A response to a previos request is received.
   \param channelName The Nutella channel on which the message is received.

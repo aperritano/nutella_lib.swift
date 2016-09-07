@@ -54,7 +54,7 @@
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm.swiftmodule</key>
 		<data>
-		9b2AR80dj0/kul/dKdSivdLBF+Q=
+		acjnOjIrXaESSC1JvVuwbNmghNs=
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -62,7 +62,7 @@
 		</data>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		kYZcA15c6otEJ66oWUV2gvBf0rY=
+		JMEPDQufCnubh2p+jTtoO1R28tE=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -196,11 +196,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			9b2AR80dj0/kul/dKdSivdLBF+Q=
+			acjnOjIrXaESSC1JvVuwbNmghNs=
 			</data>
 			<key>hash2</key>
 			<data>
-			LNx2L7FzKghNsbQkukQbGaee7ms/b/1pnmbP7DZUsY4=
+			RloEbZdC6W79qX1eK2mNQxQX8XYIAuPCEXEMvUU9VwU=
 			</data>
 		</dict>
 		<key>Modules/SimpleMQTTClient.swiftmodule/arm64.swiftdoc</key>
@@ -218,11 +218,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			kYZcA15c6otEJ66oWUV2gvBf0rY=
+			JMEPDQufCnubh2p+jTtoO1R28tE=
 			</data>
 			<key>hash2</key>
 			<data>
-			HbFp5xyA2wNwHkOZcwLw7kmYKJ15y/+U0Dwf8nlzFv8=
+			87WmFAaKocD8nLaJ1QvHPREoKue/4Vz7Xue+MHxcUuA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

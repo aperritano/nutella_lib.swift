@@ -126,18 +126,12 @@ open class NutellaNet: SimpleMQTTClientDelegate {
         }
         
         let componentId: String = self.configDelegate!.componentId;
-        var resourceId: String = "";
         let applicationId: String = self.configDelegate!.appId;
         let runId: String = self.configDelegate!.runId;
-        
-        if let rid = self.configDelegate?.resourceId {
-            resourceId = rid
-        }
         
         let from: [String:AnyObject] = ["type":"run" as AnyObject,
                                         "run_id": runId as AnyObject,
                                         "app_id": applicationId as AnyObject,
-                                        "resource_id": resourceId as AnyObject,
                                         "component_id": componentId as AnyObject
         ];
         
@@ -167,20 +161,14 @@ open class NutellaNet: SimpleMQTTClientDelegate {
         }
         
         let componentId: String = self.configDelegate!.componentId;
-        var resourceId: String = "";
         let applicationId: String = self.configDelegate!.appId;
         let runId: String = self.configDelegate!.runId;
-        
-        if let rid = self.configDelegate?.resourceId {
-            resourceId = rid
-        }
         
         let id = Int(arc4random_uniform(1000000000))
         
         let from: [String:AnyObject] = ["type":"run" as AnyObject,
                                         "run_id": runId as AnyObject,
                                         "app_id": applicationId as AnyObject,
-                                        "resource_id": resourceId as AnyObject,
                                         "component_id": componentId as AnyObject
         ];
         
@@ -350,34 +338,18 @@ open class NutellaNet: SimpleMQTTClientDelegate {
                                 payload = p
                             }
                             
-                            var componentId = ""
-                            var resourceId = ""
-                            
-                            if let id = fromDict["component_id"] {
-                                componentId = id
-                            }
-                            
-                            if let id = fromDict["resource_id"] {
-                                resourceId = id
-                            }
-                            
+                     
                             // Reply if the delegate implements the requestReceived function
-                            if let reply: AnyObject = self.delegate?.requestReceived?(newChannel, request: payload, componentId: componentId, resourceId: resourceId) {
+                            if let reply: AnyObject = self.delegate?.requestReceived?(newChannel, request: payload, from: fromDict) {
                                 
                                 let componentId: String = self.configDelegate!.componentId;
-                                var resourceId: String = "";
                                 let applicationId: String = self.configDelegate!.appId;
                                 let runId: String = self.configDelegate!.runId;
-                                
-                                if let rid = self.configDelegate?.resourceId {
-                                    resourceId = rid
-                                }
                                 
                                 //Publish the response
                                 let from: [String:AnyObject] = ["type":"run" as AnyObject,
                                                                 "run_id": runId as AnyObject,
                                                                 "app_id": applicationId as AnyObject,
-                                                                "resource_id": resourceId as AnyObject,
                                                                 "component_id": componentId as AnyObject
                                 ];
                                 
@@ -403,20 +375,9 @@ open class NutellaNet: SimpleMQTTClientDelegate {
                             
                             let fromDict = parseFromComponents(withJson: json["from"])
                             
-                            var componentId = ""
-                            var resourceId = ""
-                            
-                            if let id = fromDict["component_id"] {
-                                componentId = id
-                            }
-                            
-                            if let id = fromDict["resource_id"] {
-                                resourceId = id
-                            }
-                            
                             if let request = requests[id] {
                                 if self.subscribed[subscriptionKey]?.response == true {
-                                    self.delegate?.responseReceived?(newChannel, requestName: request.name, response: payload, componentId: componentId, resourceId: resourceId)
+                                    self.delegate?.responseReceived?(newChannel, requestName: request.name, response: payload, from: fromDict)
                                     self.subscribed[subscriptionKey]!.response = false
                                     
                                     if self.subscribed[subscriptionKey]!.subscribed == false {
@@ -436,7 +397,7 @@ open class NutellaNet: SimpleMQTTClientDelegate {
             } else {
                 //condition 2 from subscription
                 if let type = json["type"].string, let from = json["from"].dictionary {
-                    print("channel: \(channel), type: \(type), from: \(from), message: \(message)")
+                    //print("channel: \(channel), type: \(type), from: \(from), message: \(message)")
                     
                     switch type {
                     case "publish":

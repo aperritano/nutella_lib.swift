@@ -30,24 +30,22 @@
 		703382A61D1A52AF00A445CC /* NutellaConfigDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382A31D1A52AF00A445CC /* NutellaConfigDelegate.swift */; };
 		703382A71D1A52AF00A445CC /* NutellaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382A41D1A52AF00A445CC /* NutellaDelegate.swift */; };
 		703382A81D1A52AF00A445CC /* NutellaNetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382A51D1A52AF00A445CC /* NutellaNetDelegate.swift */; };
-		703382AA1D1A52DF00A445CC /* NutellaLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382A91D1A52DF00A445CC /* NutellaLocation.swift */; };
 		703382AC1D1A530D00A445CC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703382AB1D1A530D00A445CC /* CoreLocation.framework */; };
 		703382AE1D1A531600A445CC /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703382AD1D1A531600A445CC /* CoreBluetooth.framework */; };
-		703382B11D1A534000A445CC /* NutellaLocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382B01D1A534000A445CC /* NutellaLocationDelegate.swift */; };
 		703382B41D1A536900A445CC /* NutellaNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382B31D1A536900A445CC /* NutellaNet.swift */; };
 		703382B91D1A539500A445CC /* NutellaNetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382B51D1A539500A445CC /* NutellaNetRequest.swift */; };
 		703382BA1D1A539500A445CC /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382B61D1A539500A445CC /* Dictionary.swift */; };
-		703382BC1D1A539500A445CC /* NutellaMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382B81D1A539500A445CC /* NutellaMain.swift */; };
+		703382BC1D1A539500A445CC /* Nutella.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382B81D1A539500A445CC /* Nutella.swift */; };
 		703776B11D1B24B20039BFFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 702CDA4E1D1AFB5300A5ABF4 /* LaunchScreen.storyboard */; };
+		70A675471D804D0B00800F9A /* Nutella.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A675461D804D0B00800F9A /* Nutella.framework */; };
+		70A675491D804D2500800F9A /* SimpleMQTTClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A675481D804D2500800F9A /* SimpleMQTTClient.framework */; };
+		70A6754A1D804D2500800F9A /* SimpleMQTTClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A675481D804D2500800F9A /* SimpleMQTTClient.framework */; };
+		70A6754B1D804D3100800F9A /* SimpleMQTTClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70A675481D804D2500800F9A /* SimpleMQTTClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		70A6754C1D804D3100800F9A /* Nutella.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70A675461D804D0B00800F9A /* Nutella.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		70BB14021D64B93900140733 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BB14011D64B93900140733 /* SwiftyJSON.swift */; };
 		70BB14031D64B93900140733 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BB14011D64B93900140733 /* SwiftyJSON.swift */; };
 		70BB14041D64B93900140733 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BB14011D64B93900140733 /* SwiftyJSON.swift */; };
 		70E472581D1B252700B1E746 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70E472571D1B252700B1E746 /* Main.storyboard */; };
-		70EF98BD1D7F1C3000738E04 /* SimpleMQTTClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EF98BC1D7F1C3000738E04 /* SimpleMQTTClient.framework */; };
-		70EF98BE1D7F1C3000738E04 /* SimpleMQTTClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EF98BC1D7F1C3000738E04 /* SimpleMQTTClient.framework */; };
-		70EF98C01D7F1DDA00738E04 /* Nutella.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EF98BF1D7F1DDA00738E04 /* Nutella.framework */; };
-		70EF98C11D7F1E1700738E04 /* SimpleMQTTClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70EF98BC1D7F1C3000738E04 /* SimpleMQTTClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		70EF98C21D7F1E1C00738E04 /* Nutella.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70EF98BF1D7F1DDA00738E04 /* Nutella.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +65,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				70EF98C21D7F1E1C00738E04 /* Nutella.framework in Embed Frameworks */,
-				70EF98C11D7F1E1700738E04 /* SimpleMQTTClient.framework in Embed Frameworks */,
+				70A6754B1D804D3100800F9A /* SimpleMQTTClient.framework in Embed Frameworks */,
+				70A6754C1D804D3100800F9A /* Nutella.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,19 +89,17 @@
 		703382A31D1A52AF00A445CC /* NutellaConfigDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutellaConfigDelegate.swift; sourceTree = "<group>"; };
 		703382A41D1A52AF00A445CC /* NutellaDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutellaDelegate.swift; sourceTree = "<group>"; };
 		703382A51D1A52AF00A445CC /* NutellaNetDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutellaNetDelegate.swift; sourceTree = "<group>"; };
-		703382A91D1A52DF00A445CC /* NutellaLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutellaLocation.swift; sourceTree = "<group>"; };
 		703382AB1D1A530D00A445CC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		703382AD1D1A531600A445CC /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		703382B01D1A534000A445CC /* NutellaLocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutellaLocationDelegate.swift; sourceTree = "<group>"; };
 		703382B31D1A536900A445CC /* NutellaNet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutellaNet.swift; sourceTree = "<group>"; };
 		703382B51D1A539500A445CC /* NutellaNetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutellaNetRequest.swift; sourceTree = "<group>"; };
 		703382B61D1A539500A445CC /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
-		703382B81D1A539500A445CC /* NutellaMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutellaMain.swift; sourceTree = "<group>"; };
+		703382B81D1A539500A445CC /* Nutella.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nutella.swift; sourceTree = "<group>"; };
+		70A675461D804D0B00800F9A /* Nutella.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nutella.framework; sourceTree = "<group>"; };
+		70A675481D804D2500800F9A /* SimpleMQTTClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SimpleMQTTClient.framework; sourceTree = "<group>"; };
 		70BB14001D64B93800140733 /* NutellaBuilder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NutellaBuilder-Bridging-Header.h"; sourceTree = "<group>"; };
 		70BB14011D64B93900140733 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		70E472571D1B252700B1E746 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		70EF98BC1D7F1C3000738E04 /* SimpleMQTTClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SimpleMQTTClient.framework; sourceTree = "<group>"; };
-		70EF98BF1D7F1DDA00738E04 /* Nutella.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nutella.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +109,7 @@
 			files = (
 				703382AE1D1A531600A445CC /* CoreBluetooth.framework in Frameworks */,
 				703382AC1D1A530D00A445CC /* CoreLocation.framework in Frameworks */,
-				70EF98BD1D7F1C3000738E04 /* SimpleMQTTClient.framework in Frameworks */,
+				70A675491D804D2500800F9A /* SimpleMQTTClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,8 +125,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70EF98C01D7F1DDA00738E04 /* Nutella.framework in Frameworks */,
-				70EF98BE1D7F1C3000738E04 /* SimpleMQTTClient.framework in Frameworks */,
+				70A675471D804D0B00800F9A /* Nutella.framework in Frameworks */,
+				70A6754A1D804D2500800F9A /* SimpleMQTTClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,11 +158,10 @@
 			children = (
 				703382B21D1A535C00A445CC /* Delegates */,
 				703382B31D1A536900A445CC /* NutellaNet.swift */,
-				703382A91D1A52DF00A445CC /* NutellaLocation.swift */,
 				703382B51D1A539500A445CC /* NutellaNetRequest.swift */,
 				703382B61D1A539500A445CC /* Dictionary.swift */,
 				70BB14011D64B93900140733 /* SwiftyJSON.swift */,
-				703382B81D1A539500A445CC /* NutellaMain.swift */,
+				703382B81D1A539500A445CC /* Nutella.swift */,
 				703382AF1D1A532900A445CC /* Frameworks */,
 				7011CB911D1A47C600BD11A4 /* Nutella.h */,
 				7011CB931D1A47C600BD11A4 /* Info.plist */,
@@ -187,7 +182,7 @@
 		702CDA441D1AFB5300A5ABF4 /* NutellaUI */ = {
 			isa = PBXGroup;
 			children = (
-				70EF98BF1D7F1DDA00738E04 /* Nutella.framework */,
+				70A675461D804D0B00800F9A /* Nutella.framework */,
 				70E472571D1B252700B1E746 /* Main.storyboard */,
 				702CDA451D1AFB5300A5ABF4 /* AppDelegate.swift */,
 				702CDA471D1AFB5300A5ABF4 /* ViewController.swift */,
@@ -201,7 +196,7 @@
 		703382AF1D1A532900A445CC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				70EF98BC1D7F1C3000738E04 /* SimpleMQTTClient.framework */,
+				70A675481D804D2500800F9A /* SimpleMQTTClient.framework */,
 				703382AD1D1A531600A445CC /* CoreBluetooth.framework */,
 				703382AB1D1A530D00A445CC /* CoreLocation.framework */,
 			);
@@ -211,7 +206,6 @@
 		703382B21D1A535C00A445CC /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				703382B01D1A534000A445CC /* NutellaLocationDelegate.swift */,
 				703382A31D1A52AF00A445CC /* NutellaConfigDelegate.swift */,
 				703382A51D1A52AF00A445CC /* NutellaNetDelegate.swift */,
 				703382A41D1A52AF00A445CC /* NutellaDelegate.swift */,
@@ -391,10 +385,8 @@
 				703382BA1D1A539500A445CC /* Dictionary.swift in Sources */,
 				70BB14021D64B93900140733 /* SwiftyJSON.swift in Sources */,
 				703382B41D1A536900A445CC /* NutellaNet.swift in Sources */,
-				703382BC1D1A539500A445CC /* NutellaMain.swift in Sources */,
+				703382BC1D1A539500A445CC /* Nutella.swift in Sources */,
 				703382A71D1A52AF00A445CC /* NutellaDelegate.swift in Sources */,
-				703382AA1D1A52DF00A445CC /* NutellaLocation.swift in Sources */,
-				703382B11D1A534000A445CC /* NutellaLocationDelegate.swift in Sources */,
 				703382A61D1A52AF00A445CC /* NutellaConfigDelegate.swift in Sources */,
 				703382B91D1A539500A445CC /* NutellaNetRequest.swift in Sources */,
 			);
