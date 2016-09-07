@@ -111,9 +111,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if defined(__has_feature) && __has_feature(modules)
 @import Foundation;
-@import ObjectiveC;
-@import CoreLocation;
-@import CoreBluetooth;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -128,7 +125,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 */
 SWIFT_PROTOCOL("_TtP7Nutella18NutellaNetDelegate_")
 @protocol NutellaNetDelegate
-@optional
 /**
   Called when a message is received from a publish.
   \param channel The name of the Nutella chennal on which the message is received.
@@ -138,7 +134,7 @@ SWIFT_PROTOCOL("_TtP7Nutella18NutellaNetDelegate_")
   \param from The actor name of the client that sent the message.
 
 */
-- (void)messageReceived:(NSString * _Nonnull)channel message:(id _Nonnull)message from:(NSDictionary<NSString *, NSString *> * _Nullable)from;
+- (void)messageReceived:(NSString * _Nonnull)channel message:(id _Nonnull)message from:(NSDictionary<NSString *, NSString *> * _Nonnull)from;
 /**
   A response to a previos request is received.
   \param channelName The Nutella channel on which the message is received.
@@ -148,7 +144,7 @@ SWIFT_PROTOCOL("_TtP7Nutella18NutellaNetDelegate_")
   \param response The dictionary/array/string containing the JSON representation.
 
 */
-- (void)responseReceived:(NSString * _Nonnull)channel requestName:(NSString * _Nullable)requestName response:(id _Nonnull)response componentId:(NSString * _Nullable)componentId resourceId:(NSString * _Nullable)resourceId;
+- (void)responseReceived:(NSString * _Nonnull)channel requestName:(NSString * _Nullable)requestName response:(id _Nonnull)response from:(NSDictionary<NSString *, NSString *> * _Nonnull)from;
 /**
   A request is received on a Nutella channel that was previously handled (with the handleRequest).
   \param channelName The name of the Nutella chennal on which the request is received.
@@ -156,33 +152,7 @@ SWIFT_PROTOCOL("_TtP7Nutella18NutellaNetDelegate_")
   \param request The dictionary/array/string containing the JSON representation of the request.
 
 */
-- (id _Nullable)requestReceived:(NSString * _Nonnull)channel request:(id _Nullable)request componentId:(NSString * _Nullable)componentId resourceId:(NSString * _Nullable)resourceId;
+- (id _Nullable)requestReceived:(NSString * _Nonnull)channel request:(id _Nullable)request from:(NSDictionary<NSString *, NSString *> * _Nonnull)from;
 @end
-
-@class CLLocationManager;
-@class CLBeacon;
-@class CLBeaconRegion;
-
-/**
-  This class enables the communication with RoomPlaces module
-*/
-SWIFT_CLASS("_TtC7Nutella15NutellaLocation")
-@interface NutellaLocation : NSObject <NutellaNetDelegate, CLLocationManagerDelegate, CBPeripheralDelegate>
-- (void)downloadBeaconList;
-- (void)downloadResourceList;
-- (void)subscribeResourceUpdate;
-- (void)startMonitoringRegions:(NSArray<NSString *> * _Nonnull)uuids;
-- (void)startMonitorning;
-- (void)stopMonitoring;
-- (void)startVirtualBeacon;
-- (void)startVirtualBeacon:(NSInteger)major minor:(NSInteger)minor;
-- (void)stopVirtualBeacon;
-- (void)locationManager:(CLLocationManager * _Nonnull)manager didRangeBeacons:(NSArray<CLBeacon *> * _Nonnull)beacons inRegion:(CLBeaconRegion * _Nonnull)region;
-- (void)checkReady;
-- (void)messageReceived:(NSString * _Nonnull)channel message:(id _Nonnull)message componentId:(NSString * _Nullable)componentId resourceId:(NSString * _Nullable)resourceId;
-- (void)responseReceived:(NSString * _Nonnull)channelName requestName:(NSString * _Nullable)requestName response:(id _Nonnull)response;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-@end
-
 
 #pragma clang diagnostic pop

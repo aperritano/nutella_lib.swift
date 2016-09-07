@@ -317,46 +317,43 @@ open class NutellaNet: SimpleMQTTClientDelegate {
             subscriptionKey = w
         }
         
-        let error: NSError? = nil
         let data:Data! = message.data(using: String.Encoding.utf8,
                                       allowLossyConversion: true)
-        
-        let jsonObject = JSON(data:data).object
         
         let json = JSON(data:data)
         if json != nil {
             //condition 1 either request or response
             if let id = json["id"].int {
-                if let type = json["type"].string, let from = json["from"].dictionary {
+                if let type = json["type"].string, let _ = json["from"].dictionary {
                     let fromDict = parseFromComponents(withJson: json["from"])
                     switch type {
                     case "request":
                         
                         if self.subscribed[subscriptionKey]?.request == true {
-                            var payload: AnyObject? = nil
-                            if let p: AnyObject = json["payload"] as? AnyObject {
-                                payload = p
+                            var payload: Any? = nil
+                            if json["payload"] != nil {
+                                payload = json["payload"].object
                             }
                             
-                     
+                            
                             // Reply if the delegate implements the requestReceived function
-                            if let reply: AnyObject = self.delegate?.requestReceived?(newChannel, request: payload, from: fromDict) {
+                            if let reply: Any = self.delegate?.requestReceived(newChannel, request: payload, from: fromDict) {
                                 
                                 let componentId: String = self.configDelegate!.componentId;
                                 let applicationId: String = self.configDelegate!.appId;
                                 let runId: String = self.configDelegate!.runId;
                                 
                                 //Publish the response
-                                let from: [String:AnyObject] = ["type":"run" as AnyObject,
-                                                                "run_id": runId as AnyObject,
-                                                                "app_id": applicationId as AnyObject,
-                                                                "component_id": componentId as AnyObject
+                                let from: [String:Any] = ["type":"run" as Any,
+                                                          "run_id": runId as Any,
+                                                          "app_id": applicationId as Any,
+                                                          "component_id": componentId as Any
                                 ];
                                 
-                                var finalMessage: [String:AnyObject] = [
-                                    "id": id as AnyObject,
-                                    "from": from as AnyObject,
-                                    "type": "response" as AnyObject]
+                                var finalMessage: [String:Any] = [
+                                    "id": id as Any,
+                                    "from": from as Any,
+                                    "type": "response" as Any]
                                 
                                 finalMessage["payload"] = reply
                                 
@@ -370,23 +367,24 @@ open class NutellaNet: SimpleMQTTClientDelegate {
                         
                         break
                     case "response":
+                        var payload: Any?
                         
-                        if let payload: AnyObject = json["payload"] as? AnyObject {
-                            
-                            let fromDict = parseFromComponents(withJson: json["from"])
-                            
-                            if let request = requests[id] {
-                                if self.subscribed[subscriptionKey]?.response == true {
-                                    self.delegate?.responseReceived?(newChannel, requestName: request.name, response: payload, from: fromDict)
-                                    self.subscribed[subscriptionKey]!.response = false
-                                    
-                                    if self.subscribed[subscriptionKey]!.subscribed == false {
-                                        mqtt.unsubscribe(channel)
-                                    }
+                        if json["payload"] != nil {
+                            payload = json["payload"].object
+                        }
+                        
+                        let fromDict = parseFromComponents(withJson: json["from"])
+                        
+                        if let request = requests[id] {
+                            if self.subscribed[subscriptionKey]?.response == true {
+                                self.delegate?.responseReceived(newChannel, requestName: request.name, response: payload, from: fromDict)
+                                self.subscribed[subscriptionKey]!.response = false
+                                
+                                if self.subscribed[subscriptionKey]!.subscribed == false {
+                                    mqtt.unsubscribe(channel)
                                 }
                             }
                         }
-                        
                         break
                     default:
                         //send empty message
@@ -396,7 +394,7 @@ open class NutellaNet: SimpleMQTTClientDelegate {
                 
             } else {
                 //condition 2 from subscription
-                if let type = json["type"].string, let from = json["from"].dictionary {
+                if let type = json["type"].string, let _ = json["from"].dictionary {
                     //print("channel: \(channel), type: \(type), from: \(from), message: \(message)")
                     
                     switch type {
@@ -404,9 +402,10 @@ open class NutellaNet: SimpleMQTTClientDelegate {
                         
                         let fromDict = parseFromComponents(withJson: json["from"])
                         
-                        if let payload: AnyObject = json["payload"] as? AnyObject {
+                        if json["payload"] != nil {
+                            let payload = json["payload"].object
                             if self.subscribed[subscriptionKey]?.subscribe == true {
-                                self.delegate?.messageReceived?(newChannel, message: payload, from: fromDict)
+                                self.delegate?.messageReceived(newChannel, message: payload, from: fromDict)
                             }
                         }
                         break
@@ -453,14 +452,11 @@ open class NutellaNet: SimpleMQTTClientDelegate {
         return from
     }
     
-    @objc open func disconnected() {
+    open func disconnected() {
         // Do nothing and wait for the reconnection
     }
     
-    @objc open func connected() -> Bool {
-        if mqtt != nil {
-            return mqtt.isConnect()
-        }
-        return false
+    open func sessionConnected() -> Bool {
+        return mqtt.isConnect()
     }
 }

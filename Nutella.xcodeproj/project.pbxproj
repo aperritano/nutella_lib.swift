@@ -27,6 +27,8 @@
 		702CDA461D1AFB5300A5ABF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702CDA451D1AFB5300A5ABF4 /* AppDelegate.swift */; };
 		702CDA481D1AFB5300A5ABF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702CDA471D1AFB5300A5ABF4 /* ViewController.swift */; };
 		702CDA4D1D1AFB5300A5ABF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 702CDA4C1D1AFB5300A5ABF4 /* Assets.xcassets */; };
+		702FDD881D805AD100B0EEDE /* Nutella.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7011CB8E1D1A47C600BD11A4 /* Nutella.framework */; };
+		702FDD891D805AD800B0EEDE /* Nutella.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70A6754D1D805AAC00800F9A /* Nutella.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		703382A61D1A52AF00A445CC /* NutellaConfigDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382A31D1A52AF00A445CC /* NutellaConfigDelegate.swift */; };
 		703382A71D1A52AF00A445CC /* NutellaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382A41D1A52AF00A445CC /* NutellaDelegate.swift */; };
 		703382A81D1A52AF00A445CC /* NutellaNetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382A51D1A52AF00A445CC /* NutellaNetDelegate.swift */; };
@@ -37,11 +39,9 @@
 		703382BA1D1A539500A445CC /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382B61D1A539500A445CC /* Dictionary.swift */; };
 		703382BC1D1A539500A445CC /* Nutella.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703382B81D1A539500A445CC /* Nutella.swift */; };
 		703776B11D1B24B20039BFFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 702CDA4E1D1AFB5300A5ABF4 /* LaunchScreen.storyboard */; };
-		70A675471D804D0B00800F9A /* Nutella.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A675461D804D0B00800F9A /* Nutella.framework */; };
 		70A675491D804D2500800F9A /* SimpleMQTTClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A675481D804D2500800F9A /* SimpleMQTTClient.framework */; };
 		70A6754A1D804D2500800F9A /* SimpleMQTTClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A675481D804D2500800F9A /* SimpleMQTTClient.framework */; };
 		70A6754B1D804D3100800F9A /* SimpleMQTTClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70A675481D804D2500800F9A /* SimpleMQTTClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		70A6754C1D804D3100800F9A /* Nutella.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70A675461D804D0B00800F9A /* Nutella.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		70BB14021D64B93900140733 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BB14011D64B93900140733 /* SwiftyJSON.swift */; };
 		70BB14031D64B93900140733 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BB14011D64B93900140733 /* SwiftyJSON.swift */; };
 		70BB14041D64B93900140733 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BB14011D64B93900140733 /* SwiftyJSON.swift */; };
@@ -65,8 +65,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				702FDD891D805AD800B0EEDE /* Nutella.framework in Embed Frameworks */,
 				70A6754B1D804D3100800F9A /* SimpleMQTTClient.framework in Embed Frameworks */,
-				70A6754C1D804D3100800F9A /* Nutella.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,8 +95,8 @@
 		703382B51D1A539500A445CC /* NutellaNetRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutellaNetRequest.swift; sourceTree = "<group>"; };
 		703382B61D1A539500A445CC /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		703382B81D1A539500A445CC /* Nutella.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nutella.swift; sourceTree = "<group>"; };
-		70A675461D804D0B00800F9A /* Nutella.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nutella.framework; sourceTree = "<group>"; };
 		70A675481D804D2500800F9A /* SimpleMQTTClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SimpleMQTTClient.framework; sourceTree = "<group>"; };
+		70A6754D1D805AAC00800F9A /* Nutella.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nutella.framework; sourceTree = "<group>"; };
 		70BB14001D64B93800140733 /* NutellaBuilder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NutellaBuilder-Bridging-Header.h"; sourceTree = "<group>"; };
 		70BB14011D64B93900140733 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		70E472571D1B252700B1E746 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70A675471D804D0B00800F9A /* Nutella.framework in Frameworks */,
+				702FDD881D805AD100B0EEDE /* Nutella.framework in Frameworks */,
 				70A6754A1D804D2500800F9A /* SimpleMQTTClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,7 +182,7 @@
 		702CDA441D1AFB5300A5ABF4 /* NutellaUI */ = {
 			isa = PBXGroup;
 			children = (
-				70A675461D804D0B00800F9A /* Nutella.framework */,
+				70A6754D1D805AAC00800F9A /* Nutella.framework */,
 				70E472571D1B252700B1E746 /* Main.storyboard */,
 				702CDA451D1AFB5300A5ABF4 /* AppDelegate.swift */,
 				702CDA471D1AFB5300A5ABF4 /* ViewController.swift */,
